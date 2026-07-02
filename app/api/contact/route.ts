@@ -24,9 +24,9 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.redirect(new URL("/?sent=true", request.url));
+    return NextResponse.redirect(new URL("/?sent=true", request.url), 303);
   } catch (error) {
     console.error(error);
-    return NextResponse.redirect(new URL("/?sent=false", request.url));
+    return NextResponse.redirect(new URL("/?sent=false", request.url), 303);
   }
 }
