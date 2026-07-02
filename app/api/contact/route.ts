@@ -24,9 +24,9 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.redirect(new URL("/?sent=true", request.url), 303);
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error(error);
-    return NextResponse.redirect(new URL("/?sent=false", request.url), 303);
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }

@@ -1,12 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
 
-useEffect(() => {
-  setSent(window.location.search.includes("sent=true"));
-}, []);
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      setSent(true);
+      form.reset();
+
+      setTimeout(() => {
+        setSent(false);
+      }, 5000);
+    }
+  }
 
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-24">
@@ -31,12 +49,13 @@ useEffect(() => {
             </div>
           </div>
 
-          <form action="/api/contact" method="POST" className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {sent && (
-  <div className="rounded-xl border border-green-400/30 bg-green-500/10 px-4 py-3 text-sm font-medium leading-6 text-green-300">
-    ✅ Bedankt! We hebben je bericht goed ontvangen. We nemen zo snel mogelijk contact met je op.
-  </div>
-)}
+              <div className="rounded-xl border border-green-400/30 bg-green-500/10 px-4 py-3 text-sm font-medium leading-6 text-green-300">
+                ✅ Bedankt! We hebben je bericht goed ontvangen. We nemen zo snel mogelijk contact met je op.
+              </div>
+            )}
+
             <input
               type="text"
               name="name"
