@@ -28,7 +28,7 @@ export default function Contact() {
           </div>
 
           <form
-  action="https://formspree.io/f/mvzjwqbr"
+  action="/api/contact"
   method="POST"
   className="space-y-4"
 >
