@@ -33,11 +33,10 @@ useEffect(() => {
 
           <form action="/api/contact" method="POST" className="space-y-4">
             {sent && (
-              <div className="rounded-xl bg-green-500/10 px-4 py-3 text-sm font-semibold text-green-300">
-                ✅ Bedankt! We hebben je bericht goed ontvangen. We nemen zo snel mogelijk contact met je op.
-              </div>
-            )}
-
+  <div className="rounded-xl border border-green-400/30 bg-green-500/10 px-4 py-3 text-sm font-medium leading-6 text-green-300">
+    ✅ Bedankt! We hebben je bericht goed ontvangen. We nemen zo snel mogelijk contact met je op.
+  </div>
+)}
             <input
               type="text"
               name="name"
