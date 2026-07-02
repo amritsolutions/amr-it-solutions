@@ -1,0 +1,43 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "AMR IT Solutions | IT Support, Websites & Microsoft 365",
+  description:
+    "AMR IT Solutions helpt particulieren en bedrijven met IT Support, computerreparatie, websites, Microsoft 365 en cloudoplossingen.",
+  keywords: [
+    "IT Support",
+    "Computer reparatie",
+    "Websites",
+    "Microsoft 365",
+    "Breda",
+    "AMR IT Solutions",
+  ],
+  authors: [{ name: "AMR IT Solutions" }],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
+}
