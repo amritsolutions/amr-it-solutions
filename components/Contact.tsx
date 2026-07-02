@@ -1,10 +1,12 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-
+import { useEffect, useState } from "react";
 export default function Contact() {
-  const searchParams = useSearchParams();
-  const sent = searchParams.get("sent") === "true";
+  const [sent, setSent] = useState(false);
+
+useEffect(() => {
+  setSent(window.location.search.includes("sent=true"));
+}, []);
 
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-24">
