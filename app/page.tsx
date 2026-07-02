@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CookieBanner from "@/components/CookieBanner";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -21,6 +22,7 @@ export default function Home() {
   <Contact />
   <Footer />
   <WhatsAppButton />
+  <CookieBanner />
 </main>
   );
 }
