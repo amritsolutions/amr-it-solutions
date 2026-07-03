@@ -1,79 +1,76 @@
-import {
-  Laptop,
-  Monitor,
-  Zap,
-  Printer,
-  Globe,
-  Cloud,
-} from "lucide-react";
+import { Laptop, Monitor, Zap, Printer, Globe, Cloud } from "lucide-react";
 
 const services = [
   {
     icon: <Laptop className="h-8 w-8 text-blue-600" />,
-    title: "IT Support",
-    text: "Hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik.",
+    title: "IT Support Breda",
+    text: "Snelle hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik voor particulieren en kleine bedrijven in Breda en omgeving.",
   },
   {
     icon: <Monitor className="h-8 w-8 text-blue-600" />,
-    title: "Windows installeren",
-    text: "Windows installeren, opnieuw installeren, herstellen en klaarzetten voor gebruik.",
+    title: "Computerreparatie & Windows",
+    text: "Windows installeren, opnieuw installeren, herstellen en computers gebruiksklaar maken. Ook hulp bij foutmeldingen, updates en trage systemen.",
   },
   {
     icon: <Zap className="h-8 w-8 text-blue-600" />,
     title: "Laptop sneller maken",
-    text: "Trage laptops opschonen, optimaliseren en verbeteren voor betere prestaties.",
+    text: "Trage laptops opschonen, optimaliseren en verbeteren met slimme instellingen, softwarecontrole en advies over SSD- of geheugenupgrades.",
   },
   {
     icon: <Printer className="h-8 w-8 text-blue-600" />,
-    title: "Printer & WiFi",
-    text: "Printers installeren, WiFi-problemen oplossen en netwerkverbindingen verbeteren.",
+    title: "Printer, WiFi & netwerk",
+    text: "Hulp bij printers installeren, WiFi-problemen oplossen, netwerkverbindingen verbeteren en apparaten opnieuw verbinden.",
   },
   {
     icon: <Globe className="h-8 w-8 text-blue-600" />,
-    title: "Websites",
-    text: "Moderne websites voor zzp'ers, kleine bedrijven en portfolio's.",
+    title: "Website laten maken",
+    text: "Moderne, snelle en mobiele websites voor zzp’ers, kleine bedrijven en portfolio’s. Inclusief domein, hostingadvies en basis-SEO.",
   },
   {
     icon: <Cloud className="h-8 w-8 text-blue-600" />,
-    title: "Microsoft 365",
-    text: "Hulp met Outlook, OneDrive, Teams, Exchange en Microsoft 365 instellingen.",
+    title: "Microsoft 365 hulp",
+    text: "Ondersteuning bij Outlook, OneDrive, Teams, Exchange, e-mailinstellingen en Microsoft 365 voor particulieren en bedrijven.",
   },
 ];
 
 export default function Services() {
   return (
-    <section
-  id="diensten"
-  className="mx-auto max-w-7xl px-6 py-20"
->
-      <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-        Onze diensten
-      </h2>
-
-      <p className="mt-4 max-w-2xl text-slate-600">
-        Van computerproblemen tot moderne cloudoplossingen. Wij helpen snel,
-        duidelijk en professioneel.
+    <section id="diensten" className="mx-auto max-w-7xl px-6 py-20">
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+        Diensten
       </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
+        IT support, computerreparatie en websites in Breda
+      </h2>
+
+      <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+        AMR IT Solutions helpt particulieren, studenten, zzp’ers en kleine
+        bedrijven met praktische IT-oplossingen. Van trage laptops en
+        WiFi-problemen tot Microsoft 365 en professionele websites.
+      </p>
+
+      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <div
             key={service.title}
-            className="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="mb-5 text-3xl">{service.icon}</div>
+            <div className="mb-5">{service.icon}</div>
 
-            <h3 className="text-xl font-semibold">{service.title}</h3>
+            <h3 className="text-xl font-semibold text-slate-950">
+              {service.title}
+            </h3>
 
-            <p className="mt-3 text-sm leading-6 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-slate-600">
               {service.text}
             </p>
 
             <a
-              href="#"
-              className="mt-5 inline-block text-sm font-semibold text-blue-600"
+              href="#contact"
+              className="mt-5 inline-block text-sm font-semibold text-blue-600 hover:text-blue-700"
             >
-              Meer informatie →
+              Vraag hulp aan →
             </a>
           </div>
         ))}
