@@ -38,9 +38,8 @@ export default function Footer() {
           </h3>
 
           <div className="mt-4 space-y-3">
-            <p>📧 info@amritsolutions.nl</p>
-            <p>📞 +31 6 12345678</p>
             <p>📍 Breda en omgeving</p>
+            <p>📩 Neem contact op via het contactformulier</p>
           </div>
         </div>
       </div>

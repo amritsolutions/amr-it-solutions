@@ -43,9 +43,8 @@ export default function Contact() {
             </p>
 
             <div className="mt-8 space-y-3 text-slate-300">
-              <p>📧 info@amritsolutions.nl</p>
-              <p>📞 +31 6 12345678</p>
-              <p>📍 Breda en omgeving</p>
+            📍 Breda en omgeving
+            📩 Neem contact op via het contactformulier
             </div>
           </div>
 
