@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-slate-300/40 blur-3xl" />
 
       <div className="relative grid items-center gap-16 lg:grid-cols-2">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl animate-fade-up">
           <div className="mb-6 flex flex-wrap gap-3">
             <span className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm">
               💻 IT Support Breda
@@ -64,7 +64,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative flex justify-center">
+        <div className="relative flex justify-center animate-fade-up">
           <div className="absolute inset-0 rounded-[2rem] bg-blue-600/20 blur-3xl" />
 
           <Image
