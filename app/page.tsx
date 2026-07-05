@@ -7,6 +7,7 @@ import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CookieBanner from "@/components/CookieBanner";
+import FadeIn from "@/components/FadeIn";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -16,10 +17,22 @@ export default function Home() {
     <Hero />
   </section>
 
+  <FadeIn>
   <Services />
-  <WhyUs />
+</FadeIn>
+
+<FadeIn>
   <Portfolio />
+</FadeIn>
+
+<FadeIn>
+  <WhyUs />
+</FadeIn>
+
+<FadeIn>
   <Contact />
+</FadeIn>
+
   <Footer />
   <WhatsAppButton />
   <CookieBanner />
