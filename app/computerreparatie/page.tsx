@@ -29,6 +29,27 @@ export default function ComputerReparatiePage() {
         >
           Vraag direct hulp aan
         </a>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div className="rounded-2xl bg-slate-50 p-5 text-center">
+    <div className="text-3xl">⚡</div>
+    <p className="mt-2 font-semibold">Snelle service</p>
+  </div>
+
+  <div className="rounded-2xl bg-slate-50 p-5 text-center">
+    <div className="text-3xl">📍</div>
+    <p className="mt-2 font-semibold">Breda & omgeving</p>
+  </div>
+
+  <div className="rounded-2xl bg-slate-50 p-5 text-center">
+    <div className="text-3xl">💻</div>
+    <p className="mt-2 font-semibold">Laptop & PC reparatie</p>
+  </div>
+
+  <div className="rounded-2xl bg-slate-50 p-5 text-center">
+    <div className="text-3xl">💬</div>
+    <p className="mt-2 font-semibold">Persoonlijk advies</p>
+  </div>
+</div>
 
       </section>
       <section className="bg-slate-50 py-24">
