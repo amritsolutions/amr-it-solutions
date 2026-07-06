@@ -27,6 +27,30 @@ export const metadata: Metadata = {
     "AMR IT Solutions",
   ],
   authors: [{ name: "AMR IT Solutions" }],
+  openGraph: {
+    title: "AMR IT Solutions | IT Support in Breda",
+    description:
+      "Hulp nodig met IT, computerreparatie, websites of Microsoft 365? AMR IT Solutions helpt particulieren en bedrijven in Breda en omgeving.",
+    url: "https://www.amritsolutions.nl",
+    siteName: "AMR IT Solutions",
+    images: [
+      {
+        url: "https://www.amritsolutions.nl/images/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AMR IT Solutions",
+      },
+    ],
+    locale: "nl_NL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AMR IT Solutions | IT Support in Breda",
+    description:
+      "IT Support, computerreparatie, websites en Microsoft 365 voor Breda en omgeving.",
+    images: ["https://www.amritsolutions.nl/images/hero.jpg"],
+  },
 };
 
 export default function RootLayout({
