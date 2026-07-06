@@ -1,266 +1,97 @@
 export const metadata = {
-  title: "Computerreparatie Breda | Laptop & PC Reparatie | AMR IT Solutions",
+  title: "Website laten maken Breda | Moderne websites | AMR IT Solutions",
   description:
-    "Computer of laptop laten repareren in Breda? AMR IT Solutions helpt met computerreparatie, Windows-installaties, SSD-upgrades, virusverwijdering en IT-support voor particulieren en bedrijven.",
+    "Website laten maken in Breda? AMR IT Solutions bouwt moderne, snelle en responsive websites voor zzp'ers, starters en kleine bedrijven.",
 };
 import Breadcrumb from "@/components/Breadcrumb";
-export default function ComputerReparatiePage() {
+export default function WebsiteLatenMakenPage() {
   return (
     <main className="min-h-screen bg-white">
-
-      {/* HERO */}
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <Breadcrumb current="Computerreparatie" />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-        </p>
+  <Breadcrumb current="Website laten maken" />
 
-        <h1 className="mt-4 text-5xl font-bold text-slate-900">
-          Computer of laptop laten repareren in Breda?
-        </h1>
+  <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+    Website laten maken Breda
+  </p>
+
+  <h1 className="mt-4 text-5xl font-bold text-slate-900">
+    Een professionele website voor jouw bedrijf
+  </h1>
 
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          AMR IT Solutions helpt particulieren en kleine bedrijven met snelle
-          computerreparaties, laptopproblemen, Windows-installaties,
-          virusverwijdering en hardware-upgrades.
+          AMR IT Solutions bouwt moderne, snelle en mobiele websites voor
+          zzp&apos;ers, starters en kleine bedrijven in Breda en omgeving.
         </p>
 
         <a
           href="/#contact"
           className="mt-8 inline-block rounded-full bg-blue-600 px-7 py-4 font-semibold text-white transition hover:bg-blue-700"
         >
-          Vraag direct hulp aan
+          Website bespreken
         </a>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="text-3xl">⚡</div>
-            <p className="mt-2 font-semibold text-slate-900">
-              Snelle service
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="text-3xl">📍</div>
-            <p className="mt-2 font-semibold text-slate-900">
-              Breda & omgeving
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="text-3xl">💻</div>
-            <p className="mt-2 font-semibold text-slate-900">
-              Laptop & PC reparatie
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="text-3xl">💬</div>
-            <p className="mt-2 font-semibold text-slate-900">
-              Persoonlijk advies
-            </p>
-          </div>
-
-        </div>
-
       </section>
 
-      {/* Diensten */}
       <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-7xl px-6">
-
           <div className="text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-              Onze diensten
+              Wat wij bouwen
             </p>
 
             <h2 className="mt-3 text-4xl font-bold text-slate-900">
-              Waarmee kunnen wij helpen?
+              Websites die professioneel overkomen
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-              Wij lossen de meest voorkomende computer- en laptopproblemen snel en professioneel op.
+              Van eenvoudige bedrijfswebsites tot moderne portfolio&apos;s en
+              landingspagina&apos;s.
             </p>
           </div>
 
           <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">💻</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">Trage computer</h3>
-              <p className="mt-3 text-slate-600">
-                Wij maken je computer weer snel door opschoning en optimalisatie.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">🛡️</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">Virus verwijderen</h3>
-              <p className="mt-3 text-slate-600">
-                Last van virussen of malware? Wij maken je systeem weer veilig.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">⚙️</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">Windows installeren</h3>
-              <p className="mt-3 text-slate-600">
-                Schone installatie van Windows inclusief updates en drivers.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">💾</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">SSD upgrade</h3>
-              <p className="mt-3 text-slate-600">
-                Maak je laptop tot wel vijf keer sneller met een SSD-upgrade.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">📂</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">Data overzetten</h3>
-              <p className="mt-3 text-slate-600">
-                Veilig bestanden, foto's en documenten overzetten naar een nieuwe computer.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="text-4xl">🖨️</div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">Printer & WiFi</h3>
-              <p className="mt-3 text-slate-600">
-                Problemen met printers of WiFi? Wij zorgen dat alles weer werkt.
-              </p>
-            </div>
-
+            {[
+              ["🌐", "Bedrijfswebsite", "Een duidelijke website waarop klanten direct zien wie je bent en wat je aanbiedt."],
+              ["📱", "Responsive design", "Jouw website werkt netjes op mobiel, tablet en desktop."],
+              ["⚡", "Snelle laadtijd", "Een snelle website geeft een betere ervaring en helpt bij Google."],
+              ["🔍", "Basis SEO", "We richten titels, teksten en structuur goed in voor zoekmachines."],
+              ["📩", "Contactformulier", "Bezoekers kunnen eenvoudig contact opnemen via een werkend formulier."],
+              ["🚀", "Online zetten", "Wij helpen met domein, hosting, Vercel en publicatie."],
+            ].map(([icon, title, text]) => (
+              <div
+                key={title}
+                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
+              >
+                <div className="text-4xl">{icon}</div>
+                <h3 className="mt-4 text-xl font-bold text-slate-900">
+                  {title}
+                </h3>
+                <p className="mt-3 text-slate-600">{text}</p>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
 
-      {/* Waarom kiezen */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
-
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-              Waarom kiezen voor ons?
-            </p>
-
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">
-              Daarom kiezen klanten voor AMR IT Solutions
-            </h2>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
-
-            <div className="rounded-3xl bg-slate-50 p-8">
-              <h3 className="text-xl font-bold text-slate-900">⚡ Snelle hulp</h3>
-              <p className="mt-3 text-slate-600">
-                Vaak dezelfde dag geholpen bij computerproblemen.
-              </p>
-            </div>
-
-            <div className="rounded-3xl bg-slate-50 p-8">
-              <h3 className="text-xl font-bold text-slate-900">👨‍💻 Persoonlijk contact</h3>
-              <p className="mt-3 text-slate-600">
-                Geen helpdesk, maar direct contact met AMR IT Solutions.
-              </p>
-            </div>
-
-            <div className="rounded-3xl bg-slate-50 p-8">
-              <h3 className="text-xl font-bold text-slate-900">📍 Breda & omgeving</h3>
-              <p className="mt-3 text-slate-600">
-                Hulp aan huis, op locatie of op afstand.
-              </p>
-            </div>
-
-            <div className="rounded-3xl bg-slate-50 p-8">
-              <h3 className="text-xl font-bold text-slate-900">💬 Duidelijke uitleg</h3>
-              <p className="mt-3 text-slate-600">
-                Geen moeilijke IT-termen, maar heldere uitleg en eerlijk advies.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-slate-50 py-24">
-        <div className="mx-auto max-w-4xl px-6">
-
-          <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-600">
-            Veelgestelde vragen
-          </p>
-
-          <h2 className="mt-3 text-center text-4xl font-bold text-slate-900">
-            Veelgestelde vragen over computerreparatie
-          </h2>
-
-          <div className="mt-16 space-y-8">
-
-            <div className="rounded-2xl bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900">
-                Hoe snel kunnen jullie langskomen?
-              </h3>
-
-              <p className="mt-3 text-slate-600">
-                In veel gevallen kunnen wij dezelfde dag of de volgende werkdag helpen.
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900">
-                Repareren jullie ook laptops?
-              </h3>
-
-              <p className="mt-3 text-slate-600">
-                Ja. Wij repareren zowel laptops als desktopcomputers van vrijwel alle merken.
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900">
-                Komen jullie ook aan huis?
-              </h3>
-
-              <p className="mt-3 text-slate-600">
-                Ja. Wij helpen aan huis, op locatie of op afstand, afhankelijk van het probleem.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* CTA */}
       <section className="py-24">
         <div className="mx-auto max-w-5xl rounded-[2rem] bg-blue-600 px-8 py-16 text-center text-white shadow-2xl">
-
           <h2 className="text-4xl font-bold">
-            Hulp nodig met je computer of laptop?
+            Wil je een website laten maken?
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">
-            Neem vandaag nog contact op. Wij helpen particulieren en kleine bedrijven
-            snel met computerreparaties, Windows-problemen en IT-support in Breda en
-            omgeving.
+            Neem contact op en bespreek jouw idee. We denken mee over uitstraling,
+            structuur, techniek en vindbaarheid.
           </p>
 
           <a
             href="/#contact"
             className="mt-8 inline-block rounded-full bg-white px-8 py-4 font-semibold text-blue-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
-            Neem contact op
+            Vraag een website aan
           </a>
-
         </div>
       </section>
-
     </main>
   );
 }
