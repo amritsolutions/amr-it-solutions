@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://www.amritsolutions.nl/computerreparatie",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://www.amritsolutions.nl/privacy",
       lastModified: new Date(),
       changeFrequency: "yearly",
