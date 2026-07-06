@@ -29,7 +29,7 @@ const services = [
     icon: <Globe className="h-8 w-8 text-blue-600" />,
     title: "Website laten maken",
     text: "Moderne, snelle en mobiele websites voor zzp’ers, kleine bedrijven en portfolio’s. Inclusief domein, hostingadvies en basis-SEO.",
-    link: "#contact",
+    link: "/website-laten-maken",
   },
   {
     icon: <Cloud className="h-8 w-8 text-blue-600" />,
