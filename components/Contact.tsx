@@ -29,7 +29,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-gradient-to-b from-slate-50 to-white py-24"
+      className="bg-gradient-to-b from-slate-50 to-white py-28"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="rounded-[2rem] bg-slate-950 px-8 py-14 text-white shadow-2xl md:px-14">
@@ -86,7 +86,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+                className="w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
               >
                 Bericht verzenden
               </button>
