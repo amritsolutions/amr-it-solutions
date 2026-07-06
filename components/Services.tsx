@@ -5,40 +5,43 @@ const services = [
     icon: <Laptop className="h-8 w-8 text-blue-600" />,
     title: "IT Support Breda",
     text: "Snelle hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik voor particulieren en kleine bedrijven in Breda en omgeving.",
+    link: "/computerreparatie",
   },
   {
     icon: <Monitor className="h-8 w-8 text-blue-600" />,
     title: "Computerreparatie & Windows",
     text: "Windows installeren, opnieuw installeren, herstellen en computers gebruiksklaar maken. Ook hulp bij foutmeldingen, updates en trage systemen.",
+    link: "/computerreparatie",
   },
   {
     icon: <Zap className="h-8 w-8 text-blue-600" />,
     title: "Laptop sneller maken",
     text: "Trage laptops opschonen, optimaliseren en verbeteren met slimme instellingen, softwarecontrole en advies over SSD- of geheugenupgrades.",
+    link: "#contact",
   },
   {
     icon: <Printer className="h-8 w-8 text-blue-600" />,
     title: "Printer, WiFi & netwerk",
     text: "Hulp bij printers installeren, WiFi-problemen oplossen, netwerkverbindingen verbeteren en apparaten opnieuw verbinden.",
+    link: "#contact",
   },
   {
     icon: <Globe className="h-8 w-8 text-blue-600" />,
     title: "Website laten maken",
     text: "Moderne, snelle en mobiele websites voor zzp’ers, kleine bedrijven en portfolio’s. Inclusief domein, hostingadvies en basis-SEO.",
+    link: "#contact",
   },
   {
     icon: <Cloud className="h-8 w-8 text-blue-600" />,
     title: "Microsoft 365 hulp",
     text: "Ondersteuning bij Outlook, OneDrive, Teams, Exchange, e-mailinstellingen en Microsoft 365 voor particulieren en bedrijven.",
+    link: "#contact",
   },
 ];
 
 export default function Services() {
   return (
-    <section
-  id="diensten"
-  className="mx-auto max-w-7xl px-6 py-24"
->
+    <section id="diensten" className="mx-auto max-w-7xl px-6 py-24">
       <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
         Diensten
       </p>
@@ -70,10 +73,10 @@ export default function Services() {
             </p>
 
             <a
-              href="#contact"
+              href={service.link}
               className="mt-5 inline-block text-sm font-semibold text-blue-600 hover:text-blue-700"
             >
-              Vraag hulp aan →
+              Meer informatie →
             </a>
           </div>
         ))}
