@@ -41,10 +41,10 @@ export default function Portfolio() {
         {projects.map((project) => (
           <div
             key={project.title}
-            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-blue-300"
           >
-            <div className="flex h-48 items-center justify-center bg-gradient-to-br from-blue-600 to-slate-900 text-white">
-              <span className="text-sm font-semibold uppercase tracking-wide">
+            <div className="flex h-52 items-center justify-center bg-gradient-to-br from-blue-600 to-slate-900 text-white">
+              <span className="text-lg font-bold uppercase tracking-wider">
                 {project.category}
               </span>
             </div>
