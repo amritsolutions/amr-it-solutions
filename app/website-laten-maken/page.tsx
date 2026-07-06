@@ -3,11 +3,12 @@ export const metadata = {
   description:
     "Website laten maken in Breda? AMR IT Solutions bouwt moderne, snelle en responsive websites voor zzp'ers, starters en kleine bedrijven.",
 };
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function WebsiteLatenMakenPage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="mx-auto max-w-7xl px-6 py-24">
+        <Breadcrumb current="Website laten maken" />
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
           Website laten maken Breda
         </p>
