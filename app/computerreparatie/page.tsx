@@ -3,16 +3,16 @@ export const metadata = {
   description:
     "Computer of laptop laten repareren in Breda? AMR IT Solutions helpt met computerreparatie, Windows-installaties, SSD-upgrades, virusverwijdering en IT-support voor particulieren en bedrijven.",
 };
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function ComputerReparatiePage() {
   return (
     <main className="min-h-screen bg-white">
 
       {/* HERO */}
       <section className="mx-auto max-w-7xl px-6 py-24">
+        <Breadcrumb current="Computerreparatie" />
 
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-          Computerreparatie Breda
         </p>
 
         <h1 className="mt-4 text-5xl font-bold text-slate-900">
