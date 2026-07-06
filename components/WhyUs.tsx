@@ -34,10 +34,12 @@ const reasons = [
 export default function WhyUs() {
   return (
     <section
-      id="waarom"
-      className="mx-auto max-w-7xl px-6 py-24"
-    >
-      <div className="text-center">
+  id="waarom"
+  className="bg-slate-50 py-24"
+>
+  <div className="mx-auto max-w-7xl px-6">
+
+    <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
           Waarom kiezen voor AMR IT Solutions?
         </p>
@@ -70,7 +72,10 @@ export default function WhyUs() {
             </p>
           </div>
         ))}
-      </div>
-    </section>
+            </div>
+
+    </div>
+
+  </section>
   );
 }
