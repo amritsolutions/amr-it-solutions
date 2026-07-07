@@ -34,7 +34,7 @@ export default function ComputerCTA() {
               href="https://wa.me/31600000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition hover:bg-white hover:text-blue-700"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition hover:bg-green-500 hover:text-white-700"
             >
               <MessageCircle className="h-5 w-5" />
               WhatsApp
