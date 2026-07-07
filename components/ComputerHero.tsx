@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
+import {
+  Zap,
+  MapPin,
+  Laptop,
+  MessageCircle,
+} from "lucide-react";
 
 export default function ComputerHero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-32 lg:grid-cols-2">
         <div>
           <Breadcrumb current="Computerreparatie" />
 
@@ -38,17 +44,17 @@ export default function ComputerHero() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-4">
-            {[
-              ["⚡", "Snelle service"],
-              ["📍", "Breda & omgeving"],
-              ["💻", "Laptop & PC"],
-              ["💬", "Persoonlijk advies"],
-            ].map(([icon, text]) => (
-              <div key={text} className="text-slate-700">
-                <div className="text-3xl">{icon}</div>
-                <p className="mt-2 text-sm font-medium">{text}</p>
-              </div>
-            ))}
+            [
+  [Zap, "Snelle service"],
+  [MapPin, "Breda & omgeving"],
+  [Laptop, "Laptop & PC"],
+  [MessageCircle, "Persoonlijk advies"],
+].map(([Icon, text]) => (
+  <div key={text} className="flex items-center gap-3 text-slate-700">
+    <Icon className="h-6 w-6 text-blue-600" />
+    <span className="font-medium">{text}</span>
+  </div>
+))
           </div>
         </div>
 
@@ -58,9 +64,9 @@ export default function ComputerHero() {
           <Image
             src="/images/computerrepair.png"
             alt="Computerreparatie laptop en pc"
-            width={700}
-            height={520}
-            className="relative w-full rounded-[2rem] shadow-2xl"
+            width={820}
+            height={620}
+            className="relative w-full rounded-[2rem] shadow-[0_35px_80px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02]"
             priority
           />
         </div>
