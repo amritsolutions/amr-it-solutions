@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import {
-  Zap,
-  MapPin,
-  Laptop,
-  MessageCircle,
-} from "lucide-react";
+import { Zap, MapPin, Laptop, MessageCircle } from "lucide-react";
+
+const benefits = [
+  { Icon: Zap, text: "Snelle service" },
+  { Icon: MapPin, text: "Breda & omgeving" },
+  { Icon: Laptop, text: "Laptop & PC" },
+  { Icon: MessageCircle, text: "Persoonlijk advies" },
+];
 
 export default function ComputerHero() {
   return (
@@ -44,17 +46,12 @@ export default function ComputerHero() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-4">
-            [
-  [Zap, "Snelle service"],
-  [MapPin, "Breda & omgeving"],
-  [Laptop, "Laptop & PC"],
-  [MessageCircle, "Persoonlijk advies"],
-].map(([Icon, text]) => (
-  <div key={text} className="flex items-center gap-3 text-slate-700">
-    <Icon className="h-6 w-6 text-blue-600" />
-    <span className="font-medium">{text}</span>
-  </div>
-))
+            {benefits.map(({ Icon, text }) => (
+              <div key={text} className="flex items-center gap-3 text-slate-700">
+                <Icon className="h-6 w-6 text-blue-600" />
+                <span className="font-medium">{text}</span>
+              </div>
+            ))}
           </div>
         </div>
 
