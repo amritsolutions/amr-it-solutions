@@ -11,13 +11,13 @@ const benefits = [
 
 export default function ComputerHero() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Linkerkant */}
         <div className="relative z-20">
           <Breadcrumb current="Computerreparatie" />
 
-          <p className="mt-10 text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
+          <p className="mt-14 text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
             Computerreparatie Breda
           </p>
 
@@ -80,8 +80,8 @@ export default function ComputerHero() {
           <Image
             src="/images/computerrepair.png"
             alt="Computerreparatie laptop en pc"
-            width={900}
-            height={680}
+            width={980}
+            height={760}
             priority
             className="relative z-20 mt-8 w-full object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
           />
