@@ -41,11 +41,11 @@ export default function ComputerServices() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
           {services.map(({ Icon, title, text }) => (
             <div
               key={title}
-              className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="group rounded-3xl border border-slate-200 bg-white p-9 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 transition group-hover:bg-blue-600">
                 <Icon className="h-8 w-8 text-blue-600 transition group-hover:text-white" />

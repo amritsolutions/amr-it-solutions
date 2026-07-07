@@ -1,5 +1,6 @@
 import ComputerHero from "@/components/ComputerHero";
 import ComputerServices from "@/components/ComputerServices";
+import ComputerWhy from "@/components/ComputerWhy";
 
 export const metadata = {
   title: "Computerreparatie Breda | Laptop & PC Reparatie | AMR IT Solutions",
@@ -12,6 +13,7 @@ export default function ComputerReparatiePage() {
     <main className="min-h-screen bg-white">
       <ComputerHero />
       <ComputerServices />
+      <ComputerWhy />
     </main>
   );
 }
