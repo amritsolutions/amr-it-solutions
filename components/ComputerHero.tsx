@@ -61,10 +61,10 @@ export default function ComputerHero() {
         </div>
 
         {/* Rechterkant */}
-<div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
+<div className="relative mt-4 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
 
           {/* Grote subtiele achtergrond */}
-          <div className="absolute right-0 top-10 h-[520px] w-[620px] rounded-full bg-blue-50" />
+          <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-50 lg:left-auto lg:right-0 lg:top-10 lg:h-[520px] lg:w-[620px] lg:translate-x-0" />
 
           {/* Zachte gloed */}
           <div className="absolute right-16 top-32 h-[380px] w-[420px] rounded-full bg-blue-100/40 blur-3xl" />
@@ -78,12 +78,12 @@ export default function ComputerHero() {
 
           {/* Afbeelding */}
           <Image
-            src="/images/computerrepair.png"
-            alt="Computerreparatie laptop en pc"
-            width={980}
-            height={760}
-            priority
-            className="relative z-20 mt-8 w-full object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
+  src="/images/computerrepair.png"
+  alt="Computerreparatie laptop en pc"
+  width={900}
+  height={680}
+  priority
+  className="relative z-20 mx-auto w-[90%] max-w-[520px] object-contain lg:w-full drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
           />
         </div>
       </div>
