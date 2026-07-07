@@ -11,8 +11,9 @@ const benefits = [
 
 export default function ComputerHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
+    <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr]">
+        {/* Linkerkant */}
         <div className="relative z-20">
           <Breadcrumb current="Computerreparatie" />
 
@@ -33,7 +34,7 @@ export default function ComputerHero() {
           <div className="mt-8 flex flex-wrap gap-5">
             <a
               href="/#contact"
-              className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-5 font-bold text-white shadow-xl shadow-blue-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700"
+              className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-5 font-bold text-white shadow-xl shadow-blue-600/25 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700"
             >
               <Phone className="h-5 w-5" />
               Vraag direct hulp aan
@@ -41,7 +42,7 @@ export default function ComputerHero() {
 
             <a
               href="/#contact"
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               🟢 WhatsApp ons
             </a>
@@ -59,23 +60,30 @@ export default function ComputerHero() {
           </div>
         </div>
 
+        {/* Rechterkant */}
         <div className="relative hidden min-h-[610px] lg:block">
-          <div className="absolute left-[-70px] top-[20px] h-[600px] w-[760px] rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100" />
-          <div className="absolute left-[-35px] top-[80px] h-[520px] w-[700px] rounded-[55%_45%_58%_42%/45%_55%_45%_55%] bg-blue-200/40 blur-3xl" />
 
-          <div className="absolute right-8 top-10 z-10 grid grid-cols-6 gap-5 opacity-70">
-            {Array.from({ length: 36 }).map((_, i) => (
+          {/* Grote subtiele achtergrond */}
+          <div className="absolute right-0 top-10 h-[520px] w-[620px] rounded-full bg-blue-50" />
+
+          {/* Zachte gloed */}
+          <div className="absolute right-16 top-32 h-[380px] w-[420px] rounded-full bg-blue-100/40 blur-3xl" />
+
+          {/* Blauwe stipjes */}
+          <div className="absolute right-10 top-12 z-10 grid grid-cols-6 gap-5 opacity-60">
+            {Array.from({ length: 24 }).map((_, i) => (
               <span key={i} className="h-2 w-2 rounded-full bg-blue-300" />
             ))}
           </div>
 
+          {/* Afbeelding */}
           <Image
             src="/images/computerrepair.png"
             alt="Computerreparatie laptop en pc"
             width={900}
             height={680}
-            className="relative z-20 mt-10 w-full translate-x-4 translate-y-2 object-contain mix-blend-multiply drop-shadow-[0_35px_70px_rgba(15,23,42,0.16)] transition duration-500 hover:scale-[1.02]"
             priority
+            className="relative z-20 mt-8 w-full object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
           />
         </div>
       </div>
