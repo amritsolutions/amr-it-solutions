@@ -2,6 +2,7 @@ import ComputerHero from "@/components/ComputerHero";
 import ComputerServices from "@/components/ComputerServices";
 import ComputerWhy from "@/components/ComputerWhy";
 import ComputerFAQ from "@/components/ComputerFAQ";
+import ComputerCTA from "@/components/ComputerCTA";
 
 export const metadata = {
   title: "Computerreparatie Breda | Laptop & PC Reparatie | AMR IT Solutions",
@@ -16,6 +17,7 @@ export default function ComputerReparatiePage() {
       <ComputerServices />
       <ComputerWhy />
       <ComputerFAQ />
+      <ComputerCTA />
     </main>
   );
 }
