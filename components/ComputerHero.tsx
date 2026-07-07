@@ -61,29 +61,31 @@ export default function ComputerHero() {
         </div>
 
         {/* Rechterkant */}
-<div className="relative hidden min-h-[610px] lg:block">
-  {/* Blauwe achtergrond zoals voorbeeld */}
-  <div className="absolute left-[10px] top-[35px] h-[540px] w-[680px] rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/80" />
+        <div className="relative hidden min-h-[610px] lg:block">
 
-  {/* Zachte gloed */}
-  <div className="absolute left-[70px] top-[100px] h-[430px] w-[560px] rounded-full bg-blue-200/25 blur-3xl" />
+          {/* Grote subtiele achtergrond */}
+          <div className="absolute right-0 top-10 h-[520px] w-[620px] rounded-full bg-blue-50" />
 
-  {/* Blauwe stipjes */}
-  <div className="absolute right-6 top-10 z-10 grid grid-cols-6 gap-5 opacity-60">
-    {Array.from({ length: 36 }).map((_, i) => (
-      <span key={i} className="h-2 w-2 rounded-full bg-blue-300" />
-    ))}
-  </div>
+          {/* Zachte gloed */}
+          <div className="absolute right-16 top-32 h-[380px] w-[420px] rounded-full bg-blue-100/40 blur-3xl" />
 
-  <Image
-    src="/images/computerrepair.png"
-    alt="Computerreparatie laptop en pc"
-    width={950}
-    height={720}
-    priority
-    className="relative z-20 mt-2 w-[112%] max-w-none -translate-x-8 object-contain drop-shadow-[0_30px_60px_rgba(15,23,42,0.13)] transition duration-500 hover:scale-[1.02]"
-  />
-</div>
+          {/* Blauwe stipjes */}
+          <div className="absolute right-10 top-12 z-10 grid grid-cols-6 gap-5 opacity-60">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span key={i} className="h-2 w-2 rounded-full bg-blue-300" />
+            ))}
+          </div>
+
+          {/* Afbeelding */}
+          <Image
+            src="/images/computerrepair.png"
+            alt="Computerreparatie laptop en pc"
+            width={900}
+            height={680}
+            priority
+            className="relative z-20 mt-8 w-full object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
+          />
+        </div>
       </div>
     </section>
   );
