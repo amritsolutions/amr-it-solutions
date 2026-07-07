@@ -20,7 +20,7 @@ export default function ComputerHero() {
             Computerreparatie Breda
           </p>
 
-          <h1 className="mt-6 max-w-2xl text-5xl font-extrabold leading-[1.12] tracking-tight text-slate-950 lg:text-6xl">
+          <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.15] tracking-tight text-slate-950 sm:text-5xl lg:text-5xl">
             Computer of laptop laten repareren in Breda?
           </h1>
 
@@ -74,7 +74,7 @@ export default function ComputerHero() {
             alt="Computerreparatie laptop en pc"
             width={1050}
             height={780}
-            className="relative z-20 mt-8 w-[125%] max-w-none -translate-x-20 translate-y-8 object-contain mix-blend-multiply drop-shadow-[0_45px_90px_rgba(15,23,42,0.18)] transition duration-500 hover:scale-[1.03]"
+            className="relative z-20 mt-4 w-[118%] max-w-none -translate-x-10 translate-y-4 object-contain mix-blend-multiply drop-shadow-[0_45px_90px_rgba(15,23,42,0.18)] transition duration-500 hover:scale-[1.03]"
             priority
           />
         </div>
