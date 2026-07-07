@@ -75,7 +75,7 @@ export default function ComputerHero() {
             alt="Computerreparatie laptop en pc"
             width={1150}
             height={850}
-            className="relative z-20 mt-4 w-[128%] max-w-none -translate-x-24 translate-y-10 object-contain mix-blend-multiply drop-shadow-[0_45px_90px_rgba(15,23,42,0.18)] transition duration-500 hover:scale-[1.02]"
+            className="relative z-20 mt-6 w-[108%] max-w-none -translate-x-6 translate-y-2 object-contain mix-blend-multiply drop-shadow-[0_35px_70px_rgba(15,23,42,0.16)] transition duration-500 hover:scale-[1.02]"
             priority
           />
         </div>
