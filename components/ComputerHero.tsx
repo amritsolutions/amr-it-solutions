@@ -61,7 +61,7 @@ export default function ComputerHero() {
         </div>
 
         {/* Rechterkant */}
-        <div className="relative hidden min-h-[610px] lg:block">
+<div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
 
           {/* Grote subtiele achtergrond */}
           <div className="absolute right-0 top-10 h-[520px] w-[620px] rounded-full bg-blue-50" />
