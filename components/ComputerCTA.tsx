@@ -2,8 +2,8 @@ import { Phone, MessageCircle } from "lucide-react";
 
 export default function ComputerCTA() {
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="bg-white px-6 py-20">
+      <div className="mx-auto max-w-6xl">
         <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-blue-600 to-blue-700 px-10 py-20 text-center text-white shadow-2xl">
 
           <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue-100">
