@@ -17,7 +17,7 @@ const services = [
     icon: <Zap className="h-8 w-8 text-blue-600" />,
     title: "Laptop sneller maken",
     text: "Trage laptops opschonen, optimaliseren en verbeteren met slimme instellingen, softwarecontrole en advies over SSD- of geheugenupgrades.",
-    link: "#contact",
+    link: "/laptop-sneller-maken",
   },
   {
     icon: <Printer className="h-8 w-8 text-blue-600" />,
