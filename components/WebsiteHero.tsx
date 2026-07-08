@@ -55,23 +55,25 @@ export default function WebsiteHero() {
           </div>
         </div>
 
-        <div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
-          <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-100/70 lg:left-auto lg:right-0 lg:top-10 lg:h-[520px] lg:w-[620px] lg:translate-x-0" />
+        <div className="relative mt-10 min-h-[300px] lg:mt-0 lg:min-h-[610px]">
+          <div className="absolute left-1/2 top-4 h-[340px] w-[360px] -translate-x-1/2 rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/75 lg:left-[45px] lg:top-[35px] lg:h-[520px] lg:w-[640px] lg:translate-x-0" />
 
-          <div className="absolute right-10 top-12 z-10 hidden grid-cols-6 gap-5 opacity-60 lg:grid">
-            {Array.from({ length: 24 }).map((_, i) => (
+          <div className="absolute left-1/2 top-10 h-[280px] w-[300px] -translate-x-1/2 rounded-full bg-blue-200/25 blur-3xl lg:left-[110px] lg:top-[100px] lg:h-[420px] lg:w-[520px] lg:translate-x-0" />
+
+          <div className="absolute right-6 top-10 z-10 hidden grid-cols-6 gap-5 opacity-55 lg:grid">
+            {Array.from({ length: 36 }).map((_, i) => (
               <span key={i} className="h-2 w-2 rounded-full bg-blue-300" />
             ))}
           </div>
 
           <Image
-  src="/images/website-hero.png"
-  alt="Professionele website laten maken in Breda"
-  width={900}
-  height={680}
-  priority
-  className="relative z-20 mx-auto lg:ml-10 w-[100%] max-w-[560px] object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:w-[110%] lg:max-w-none"
-/>
+            src="/images/website-hero.png"
+            alt="Professionele website laten maken in Breda"
+            width={950}
+            height={720}
+            priority
+            className="relative z-20 mx-auto mt-2 w-[105%] max-w-[620px] object-contain drop-shadow-[0_30px_70px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:mt-4 lg:w-[118%] lg:max-w-none lg:-translate-x-10"
+          />
         </div>
       </div>
     </section>
