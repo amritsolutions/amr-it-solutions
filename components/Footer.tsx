@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Mail, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-300">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4">
         <div className="md:col-span-2">
+          <Image
+            src="/logos/logo.png"
+            alt="AMR IT Solutions logo"
+            width={170}
+            height={70}
+            className="mb-5 rounded-xl bg-white p-2"
+          />
+
           <h3 className="text-2xl font-extrabold text-white">
             AMR IT Solutions
           </h3>
@@ -18,14 +27,14 @@ export default function Footer() {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href="/#contact"
-              className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-blue-700"
+              className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
             >
               Contact opnemen
             </a>
 
             <a
               href="/#contact"
-              className="rounded-full border border-slate-700 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-1 hover:border-green-500 hover:text-green-400"
+              className="rounded-full border border-slate-700 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:text-green-400"
             >
               WhatsApp
             </a>
@@ -37,32 +46,32 @@ export default function Footer() {
 
           <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <Link href="/computerreparatie" className="hover:text-blue-400">
+              <Link href="/computerreparatie" className="transition hover:text-blue-400">
                 Computerreparatie
               </Link>
             </li>
             <li>
-              <a href="/#diensten" className="hover:text-blue-400">
+              <a href="/#diensten" className="transition hover:text-blue-400">
                 Laptop sneller maken
               </a>
             </li>
             <li>
-              <a href="/#diensten" className="hover:text-blue-400">
+              <a href="/#diensten" className="transition hover:text-blue-400">
                 Windows installeren
               </a>
             </li>
             <li>
-              <a href="/#diensten" className="hover:text-blue-400">
+              <a href="/#diensten" className="transition hover:text-blue-400">
                 Printer & WiFi
               </a>
             </li>
             <li>
-              <Link href="/website-laten-maken" className="hover:text-blue-400">
+              <Link href="/website-laten-maken" className="transition hover:text-blue-400">
                 Website laten maken
               </Link>
             </li>
             <li>
-              <a href="/#diensten" className="hover:text-blue-400">
+              <a href="/#diensten" className="transition hover:text-blue-400">
                 Microsoft 365
               </a>
             </li>
@@ -96,24 +105,12 @@ export default function Footer() {
           <p>© 2026 AMR IT Solutions. Alle rechten voorbehouden.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <a href="/#home" className="hover:text-white">
-              Home
-            </a>
-            <a href="/#diensten" className="hover:text-white">
-              Diensten
-            </a>
-            <a href="/#portfolio" className="hover:text-white">
-              Portfolio
-            </a>
-            <a href="/#contact" className="hover:text-white">
-              Contact
-            </a>
-            <Link href="/privacy" className="hover:text-white">
-              Privacy
-            </Link>
-            <Link href="/cookies" className="hover:text-white">
-              Cookies
-            </Link>
+            <a href="/#home" className="transition hover:text-white">Home</a>
+            <a href="/#diensten" className="transition hover:text-white">Diensten</a>
+            <a href="/#portfolio" className="transition hover:text-white">Portfolio</a>
+            <a href="/#contact" className="transition hover:text-white">Contact</a>
+            <Link href="/privacy" className="transition hover:text-white">Privacy</Link>
+            <Link href="/cookies" className="transition hover:text-white">Cookies</Link>
           </div>
         </div>
       </div>
