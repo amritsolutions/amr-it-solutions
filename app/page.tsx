@@ -5,7 +5,6 @@ import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import CookieBanner from "@/components/CookieBanner";
 import FadeIn from "@/components/FadeIn";
 export default function Home() {
   return (
@@ -34,7 +33,7 @@ export default function Home() {
 
 
   <WhatsAppButton />
-  <CookieBanner />
+
 </main>
   );
 }
