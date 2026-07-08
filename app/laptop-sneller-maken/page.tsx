@@ -1,5 +1,29 @@
-export const metadata = {
+import type { Metadata } from "next";
+import LaptopHero from "@/components/LaptopHero";
+
+export const metadata: Metadata = {
   title: "Laptop sneller maken Breda | SSD upgrade & optimalisatie | AMR IT Solutions",
   description:
-    "Is je laptop traag? AMR IT Solutions maakt laptops sneller met SSD-upgrades, geheugenuitbreiding, Windows-optimalisatie en onderhoud in Breda.",
+    "Is je laptop traag? AMR IT Solutions maakt laptops weer snel met Windows-optimalisatie, SSD-upgrades, geheugenuitbreiding en onderhoud in Breda.",
+  openGraph: {
+    title: "Laptop sneller maken Breda",
+    description:
+      "Laat je laptop sneller maken door AMR IT Solutions in Breda.",
+    url: "https://www.amritsolutions.nl/laptop-sneller-maken",
+    images: [
+      {
+        url: "/images/laptop-sneller.png",
+        width: 1200,
+        height: 630,
+        alt: "Laptop sneller maken Breda",
+      },
+    ],
+  },
 };
+export default function LaptopSnellerMakenPage() {
+  return (
+    <main className="min-h-screen bg-white">
+      <LaptopHero />
+    </main>
+  );
+}
