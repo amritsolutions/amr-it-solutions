@@ -56,7 +56,7 @@ export default function WebsiteHero() {
         </div>
 
         <div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
-          <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-50 lg:left-auto lg:right-0 lg:top-10 lg:h-[520px] lg:w-[620px] lg:translate-x-0" />
+          <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-100/70 lg:left-auto lg:right-0 lg:top-10 lg:h-[520px] lg:w-[620px] lg:translate-x-0" />
 
           <div className="absolute right-10 top-12 z-10 hidden grid-cols-6 gap-5 opacity-60 lg:grid">
             {Array.from({ length: 24 }).map((_, i) => (
@@ -70,7 +70,7 @@ export default function WebsiteHero() {
   width={900}
   height={680}
   priority
-  className="relative z-20 mx-auto w-[90%] max-w-[520px] object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02] lg:w-full lg:max-w-none"
+  className="relative z-20 mx-auto w-[100%] max-w-[560px] object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:w-[110%] lg:max-w-none"
 />
         </div>
       </div>
