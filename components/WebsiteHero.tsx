@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import { Globe, Smartphone, Search, Rocket } from "lucide-react";
+import { Globe, Smartphone, Search, Rocket, Phone } from "lucide-react";
 
 const benefits = [
-  { Icon: Globe, text: "Moderne website" },
+  { Icon: Globe, text: "Moderne\nwebsite" },
   { Icon: Smartphone, text: "Mobielvriendelijk" },
-  { Icon: Search, text: "Basis SEO" },
-  { Icon: Rocket, text: "Snel online" },
+  { Icon: Search, text: "Basis\nSEO" },
+  { Icon: Rocket, text: "Snel\nonline" },
 ];
 
 export default function WebsiteHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
+    <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="relative z-20">
           <Breadcrumb current="Website laten maken" />
@@ -34,6 +34,7 @@ export default function WebsiteHero() {
               href="/#contact"
               className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-5 font-bold text-white shadow-xl shadow-blue-600/25 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700"
             >
+              <Phone className="h-5 w-5" />
               Website bespreken
             </a>
 
@@ -49,18 +50,20 @@ export default function WebsiteHero() {
             {benefits.map(({ Icon, text }) => (
               <div key={text} className="text-center text-slate-800">
                 <Icon className="mx-auto mb-3 h-10 w-10 text-blue-600" />
-                <p className="text-sm font-medium leading-5">{text}</p>
+                <p className="whitespace-pre-line text-sm font-medium leading-5">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative mt-10 min-h-[300px] lg:mt-0 lg:min-h-[610px]">
-          <div className="absolute left-1/2 top-4 h-[340px] w-[360px] -translate-x-1/2 rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/75 lg:left-[20px] lg:top-[30px] lg:h-[560px] lg:w-[680px] lg:translate-x-0" />
+        <div className="relative hidden min-h-[610px] lg:block">
+          <div className="absolute left-[10px] top-[35px] h-[540px] w-[680px] rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/80" />
 
-          <div className="absolute left-1/2 top-10 h-[280px] w-[300px] -translate-x-1/2 rounded-full bg-blue-200/25 blur-3xl lg:left-[110px] lg:top-[100px] lg:h-[420px] lg:w-[520px] lg:translate-x-0" />
+          <div className="absolute left-[70px] top-[100px] h-[430px] w-[560px] rounded-full bg-blue-200/25 blur-3xl" />
 
-          <div className="absolute right-6 top-10 z-10 hidden grid-cols-6 gap-5 opacity-55 lg:grid">
+          <div className="absolute right-6 top-10 z-10 grid grid-cols-6 gap-5 opacity-60">
             {Array.from({ length: 36 }).map((_, i) => (
               <span key={i} className="h-2 w-2 rounded-full bg-blue-300" />
             ))}
@@ -68,11 +71,11 @@ export default function WebsiteHero() {
 
           <Image
             src="/images/website-hero.png"
-            alt="Professionele website laten maken in Breda"
+            alt="Website laten maken Breda"
             width={950}
             height={720}
             priority
-            className="relative z-20 mx-auto mt-2 w-[105%] max-w-[620px] object-contain drop-shadow-[0_30px_70px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:mt-4 lg:w-[110%] lg:max-w-none lg:-translate-x-6"
+            className="relative z-20 mt-2 w-[112%] max-w-none -translate-x-8 object-contain drop-shadow-[0_30px_60px_rgba(15,23,42,0.13)] transition duration-500 hover:scale-[1.02]"
           />
         </div>
       </div>
