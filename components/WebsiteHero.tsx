@@ -56,7 +56,7 @@ export default function WebsiteHero() {
         </div>
 
         <div className="relative mt-10 min-h-[300px] lg:mt-0 lg:min-h-[610px]">
-          <div className="absolute left-1/2 top-4 h-[340px] w-[360px] -translate-x-1/2 rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/75 lg:left-[45px] lg:top-[35px] lg:h-[520px] lg:w-[640px] lg:translate-x-0" />
+          <div className="absolute left-1/2 top-4 h-[340px] w-[360px] -translate-x-1/2 rounded-[48%_52%_45%_55%/42%_48%_52%_58%] bg-blue-100/75 lg:left-[20px] lg:top-[30px] lg:h-[560px] lg:w-[680px] lg:translate-x-0" />
 
           <div className="absolute left-1/2 top-10 h-[280px] w-[300px] -translate-x-1/2 rounded-full bg-blue-200/25 blur-3xl lg:left-[110px] lg:top-[100px] lg:h-[420px] lg:w-[520px] lg:translate-x-0" />
 
@@ -72,7 +72,7 @@ export default function WebsiteHero() {
             width={950}
             height={720}
             priority
-            className="relative z-20 mx-auto mt-2 w-[105%] max-w-[620px] object-contain drop-shadow-[0_30px_70px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:mt-4 lg:w-[118%] lg:max-w-none lg:-translate-x-10"
+            className="relative z-20 mx-auto mt-2 w-[105%] max-w-[620px] object-contain drop-shadow-[0_30px_70px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:mt-4 lg:w-[110%] lg:max-w-none lg:-translate-x-6"
           />
         </div>
       </div>
