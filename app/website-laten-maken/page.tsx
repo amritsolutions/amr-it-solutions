@@ -1,6 +1,7 @@
 import WebsiteHero from "@/components/WebsiteHero";
 import WebsiteServices from "@/components/WebsiteServices";
 import WebsiteWhy from "@/components/WebsiteWhy";
+import WebsiteFAQ from "@/components/WebsiteFAQ";
 
 export const metadata = {
   title: "Website laten maken Breda | Moderne websites | AMR IT Solutions",
@@ -14,6 +15,7 @@ export default function WebsiteLatenMakenPage() {
       <WebsiteHero />
       <WebsiteServices />
       <WebsiteWhy />
+      <WebsiteFAQ />
     </main>
   );
 }
