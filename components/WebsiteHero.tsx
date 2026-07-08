@@ -70,7 +70,7 @@ export default function WebsiteHero() {
   width={900}
   height={680}
   priority
-  className="relative z-20 mx-auto w-[100%] max-w-[560px] object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:w-[110%] lg:max-w-none"
+  className="relative z-20 mx-auto lg:ml-10 w-[100%] max-w-[560px] object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:w-[110%] lg:max-w-none"
 />
         </div>
       </div>
