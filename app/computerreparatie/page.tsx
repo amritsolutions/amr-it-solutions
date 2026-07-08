@@ -44,10 +44,41 @@ export const metadata = {
     ],
   },
 };
-
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "AMR IT Solutions",
+  url: "https://www.amritsolutions.nl/computerreparatie",
+  image: "https://www.amritsolutions.nl/images/computerrepair.png",
+  description:
+    "Computerreparatie, laptopreparatie, Windows-installaties, virusverwijdering en IT-support in Breda en omgeving.",
+  areaServed: {
+    "@type": "City",
+    name: "Breda",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Breda",
+    addressCountry: "NL",
+  },
+  serviceType: [
+    "Computerreparatie",
+    "Laptop reparatie",
+    "Windows installeren",
+    "Virus verwijderen",
+    "SSD upgrade",
+    "IT Support",
+  ],
+};
 export default function ComputerReparatiePage() {
   return (
     <main className="min-h-screen bg-white">
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(structuredData),
+  }}
+/>
       <ComputerHero />
       <ComputerServices />
       <ComputerWhy />
