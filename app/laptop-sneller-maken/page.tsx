@@ -3,6 +3,7 @@ import LaptopHero from "@/components/LaptopHero";
 import LaptopServices from "@/components/LaptopServices";
 import LaptopWhy from "@/components/LaptopWhy";
 import LaptopFAQ from "@/components/LaptopFAQ";
+import LaptopCTA from "@/components/LaptopCTA";
 export const metadata: Metadata = {
   title: "Laptop sneller maken Breda | SSD upgrade & optimalisatie | AMR IT Solutions",
   description:
@@ -29,6 +30,7 @@ export default function LaptopSnellerMakenPage() {
       <LaptopServices />
       <LaptopWhy />
       <LaptopFAQ />
+      <LaptopCTA />
     </main>
   );
 }
