@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LaptopHero from "@/components/LaptopHero";
 import LaptopServices from "@/components/LaptopServices";
+import LaptopWhy from "@/components/LaptopWhy";
 export const metadata: Metadata = {
   title: "Laptop sneller maken Breda | SSD upgrade & optimalisatie | AMR IT Solutions",
   description:
@@ -25,6 +26,7 @@ export default function LaptopSnellerMakenPage() {
     <main className="min-h-screen bg-white">
       <LaptopHero />
       <LaptopServices />
+      <LaptopWhy />
     </main>
   );
 }
