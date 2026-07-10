@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import WindowsHero from "@/components/WindowsHero";
 import WindowsServices from "@/components/WindowsServices";
 import WindowsWhy from "@/components/WindowsWhy";
+import WindowsFAQ from "@/components/WindowsFAQ";
 
 export const metadata: Metadata = {
   title:
@@ -39,6 +40,7 @@ export default function WindowsInstallerenPage() {
       <WindowsHero />
       <WindowsServices />
        <WindowsWhy />
+       <WindowsFAQ />
     </main>
   );
 }
