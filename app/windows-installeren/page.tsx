@@ -3,6 +3,7 @@ import WindowsHero from "@/components/WindowsHero";
 import WindowsServices from "@/components/WindowsServices";
 import WindowsWhy from "@/components/WindowsWhy";
 import WindowsFAQ from "@/components/WindowsFAQ";
+import WindowsCTA from "@/components/WindowsCTA";
 
 export const metadata: Metadata = {
   title:
@@ -41,6 +42,7 @@ export default function WindowsInstallerenPage() {
       <WindowsServices />
        <WindowsWhy />
        <WindowsFAQ />
+        <WindowsCTA />
     </main>
   );
 }
