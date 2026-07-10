@@ -5,21 +5,25 @@ const services = [
     Icon: Monitor,
     title: "Windows installeren",
     text: "Nieuwe Windows-installatie of opnieuw installeren zonder dataverlies.",
+    link: "/windows-installeren",
   },
   {
     Icon: ShieldCheck,
     title: "Virus verwijderen",
     text: "Virussen, malware en ongewenste programma’s veilig verwijderen.",
+    link: "/virus-verwijderen",
   },
   {
     Icon: Gauge,
     title: "Laptop sneller maken",
     text: "Optimalisatie, opschoning en advies over SSD- of geheugenupgrades.",
+    link: "/laptop-sneller-maken",
   },
   {
     Icon: Wrench,
     title: "Upgrades & reparaties",
     text: "Hardware-upgrades en reparaties voor laptops en desktopcomputers.",
+    link: "/#contact", // of later een eigen pagina
   },
 ];
 
@@ -42,7 +46,7 @@ export default function ComputerServices() {
         </div>
 
         <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ Icon, title, text }) => (
+          {services.map(({ Icon, title, text, link }) => (
             <div
               key={title}
               className="group rounded-3xl border border-slate-200 bg-white p-9 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
@@ -60,7 +64,7 @@ export default function ComputerServices() {
               </p>
 
               <a
-                href="/#contact"
+                href={link}
                 className="mt-6 inline-block font-semibold text-blue-600 hover:text-blue-700"
               >
                 Meer informatie →
