@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import VirusHero from "@/components/VirusHero";
+import VirusServices from "@/components/VirusServices";
 
 export const metadata: Metadata = {
   title:
@@ -29,6 +30,7 @@ export default function VirusVerwijderenPage() {
   return (
     <main className="min-h-screen bg-white">
       <VirusHero />
+      <VirusServices />
     </main>
   );
 }
