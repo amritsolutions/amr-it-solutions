@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import VirusHero from "@/components/VirusHero";
 import VirusServices from "@/components/VirusServices";
+import VirusHero from "@/components/VirusHero";
 import VirusWhy from "@/components/VirusWhy";
 import VirusFAQ from "@/components/VirusFAQ";
 import VirusCTA from "@/components/VirusCTA";
