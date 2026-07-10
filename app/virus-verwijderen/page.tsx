@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import VirusHero from "@/components/VirusHero";
 import VirusServices from "@/components/VirusServices";
 import VirusWhy from "@/components/VirusWhy";
+import VirusFAQ from "@/components/VirusFAQ";
 
 export const metadata: Metadata = {
   title:
@@ -33,6 +34,7 @@ export default function VirusVerwijderenPage() {
       <VirusHero />
       <VirusServices />
         <VirusWhy />
+         <VirusFAQ />
     </main>
   );
 }
