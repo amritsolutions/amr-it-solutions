@@ -1,4 +1,12 @@
-import { Laptop, Monitor, Zap, Printer, Globe, Cloud } from "lucide-react";
+import {
+  Laptop,
+  Monitor,
+  Zap,
+  Printer,
+  Globe,
+  Cloud,
+  HardDrive,
+} from "lucide-react";
 
 const services = [
   {
@@ -37,6 +45,12 @@ const services = [
     text: "Ondersteuning bij Outlook, OneDrive, Teams, Exchange, e-mailinstellingen en Microsoft 365 voor particulieren en bedrijven.",
     link: "/microsoft-365",
   },
+  {
+  icon: <HardDrive className="h-8 w-8 text-blue-600" />,
+  title: "Data overzetten & back-up",
+  text: "Bestanden, foto's, documenten, e-mail en instellingen veilig overzetten naar een nieuwe computer of een betrouwbare back-up maken.",
+  link: "/data-overzetten",
+},
 ];
 
 export default function Services() {
