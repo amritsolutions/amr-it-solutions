@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import MicrosoftHero from "@/components/MicrosoftHero";
 import MicrosoftServices from "@/components/MicrosoftServices";
 import MicrosoftWhy from "@/components/MicrosoftWhy";
+import MicrosoftFAQ from "@/components/MicrosoftFAQ";
 
 export const metadata: Metadata = {
   title: "Microsoft 365 hulp Breda | Outlook, Teams & OneDrive | AMR IT Solutions",
@@ -32,6 +33,7 @@ export default function Microsoft365Page() {
       <MicrosoftHero />
       <MicrosoftServices />
       <MicrosoftWhy />
+      <MicrosoftFAQ />
     </main>
   );
 }
