@@ -23,7 +23,7 @@ const services = [
     icon: <Printer className="h-8 w-8 text-blue-600" />,
     title: "Printer, WiFi & netwerk",
     text: "Hulp bij printers installeren, WiFi-problemen oplossen, netwerkverbindingen verbeteren en apparaten opnieuw verbinden.",
-    link: "#contact",
+    link: "/printer-wifi-netwerk",
   },
   {
     icon: <Globe className="h-8 w-8 text-blue-600" />,
