@@ -3,6 +3,7 @@ import DataHero from "@/components/DataHero";
 import DataServices from "@/components/DataServices";
 import DataWhy from "@/components/DataWhy";
 import DataFAQ from "@/components/DataFAQ";
+import DataCTA from "@/components/DataCTA";
 
 export const metadata: Metadata = {
   title:
@@ -35,6 +36,7 @@ export default function DataOverzettenPage() {
       <DataServices />
        <DataWhy />
        <DataFAQ />
+       <DataCTA />
     </main>
   );
 }
