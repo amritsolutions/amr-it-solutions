@@ -35,7 +35,7 @@ const services = [
     icon: <Cloud className="h-8 w-8 text-blue-600" />,
     title: "Microsoft 365 hulp",
     text: "Ondersteuning bij Outlook, OneDrive, Teams, Exchange, e-mailinstellingen en Microsoft 365 voor particulieren en bedrijven.",
-    link: "#contact",
+    link: "/Microsoft 365 hulp",
   },
 ];
 
