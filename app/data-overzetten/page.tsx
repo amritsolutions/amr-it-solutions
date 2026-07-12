@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import DataHero from "@/components/DataHero";
 import DataServices from "@/components/DataServices";
+import DataWhy from "@/components/DataWhy";
 
 export const metadata: Metadata = {
   title:
@@ -31,6 +32,7 @@ export default function DataOverzettenPage() {
     <main className="min-h-screen bg-white">
       <DataHero />
       <DataServices />
+       <DataWhy />
     </main>
   );
 }
