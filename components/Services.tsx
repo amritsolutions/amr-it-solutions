@@ -71,11 +71,13 @@ export default function Services() {
       </p>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <div
-            key={service.title}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-          >
+        {services.map((service, index) => (
+  <div
+    key={service.title}
+    className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${
+      index === services.length - 1 ? "lg:col-start-2" : ""
+    }`}
+  >
             <div className="mb-5">{service.icon}</div>
 
             <h3 className="text-xl font-semibold text-slate-950">
