@@ -46,11 +46,34 @@ export default function Contact() {
                 WiFi, printers of andere IT-vragen.
               </p>
 
-              <div className="mt-8 space-y-3 text-slate-300">
-                <p>📍 Breda en omgeving</p>
-                <p>📩 Neem contact op via het contactformulier</p>
-              </div>
-            </div>
+              <div className="mt-8 space-y-4 text-slate-300">
+
+  <div className="flex items-center gap-3">
+    <span className="text-xl">📍</span>
+    <span>Breda en omgeving</span>
+  </div>
+
+  <div className="flex items-center gap-3">
+    <span className="text-xl">📞</span>
+    <a
+      href="tel:+31649718684"
+      className="transition hover:text-blue-400"
+    >
+      06 49718684
+    </a>
+  </div>
+
+  <div className="flex items-center gap-3">
+    <span className="text-xl">✉️</span>
+    <a
+      href="mailto:info@amritsolutions.nl"
+      className="transition hover:text-blue-400"
+    >
+      info@amritsolutions.nl
+    </a>
+  </div>
+
+</div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {sent && (
