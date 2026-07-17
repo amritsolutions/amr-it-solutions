@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: "AMR IT Solutions <onboarding@resend.dev>",
-      to: "alimazhar.rezayee031@gmail.com",
+      to: "info@amritsolutions.nl",
       subject: "Nieuw bericht via AMR IT Solutions",
       html: `
         <h2>Nieuw contactbericht</h2>
