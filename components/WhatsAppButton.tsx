@@ -1,12 +1,10 @@
 import { MessageCircle } from "lucide-react";
-
-const whatsappUrl =
-  "https://wa.me/31649718684?text=Hallo%20AMR%20IT%20Solutions%2C%20ik%20heb%20een%20vraag%20over%20jullie%20diensten.";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export default function WhatsAppButton() {
   return (
     <a
-      href={whatsappUrl}
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat met AMR IT Solutions via WhatsApp"
