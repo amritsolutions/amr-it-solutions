@@ -7,16 +7,27 @@ export async function POST(request: Request) {
   try {
     const formData = await request.formData();
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
 
-    await resend.emails.send({
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, message: "Vul alle velden in." },
+        { status: 400 },
+      );
+    }
+
+    const { data, error } = await resend.emails.send({
       from: "AMR IT Solutions <onboarding@resend.dev>",
-      to: "info@amritsolutions.nl",
-      subject: "Nieuw bericht via AMR IT Solutions",
+
+      // Tijdelijk je Resend-accountadres gebruiken
+      to: "alimahzr.rezayee031@gmail.com",
+
+      replyTo: email,
+      subject: `Nieuw contactbericht van ${name}`,
       html: `
-        <h2>Nieuw contactbericht</h2>
+        <h2>Nieuw contactbericht via AMR IT Solutions</h2>
         <p><strong>Naam:</strong> ${name}</p>
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Bericht:</strong></p>
@@ -24,9 +35,31 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend-fout:", error);
+
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Het bericht kon niet worden verzonden.",
+        },
+        { status: 500 },
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      emailId: data?.id,
+    });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    console.error("Contactformulier-fout:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Er ging iets mis bij het verzenden.",
+      },
+      { status: 500 },
+    );
   }
 }
