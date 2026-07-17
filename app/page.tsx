@@ -4,7 +4,6 @@ import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import FadeIn from "@/components/FadeIn";
 export default function Home() {
   return (
@@ -32,7 +31,7 @@ export default function Home() {
 </FadeIn>
 
 
-  <WhatsAppButton />
+
 
 </main>
   );
