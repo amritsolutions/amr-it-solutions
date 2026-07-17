@@ -39,41 +39,42 @@ export default function Contact() {
                 Contact
               </p>
 
-              <h2 className="mt-3 text-4xl font-bold">Hulp nodig met IT?</h2>
+              <h2 className="mt-3 text-4xl font-bold">
+                Hulp nodig met IT?
+              </h2>
 
               <p className="mt-4 text-slate-300">
-                Neem contact op voor computerproblemen, websites, Microsoft 365,
-                WiFi, printers of andere IT-vragen.
+                Neem contact op voor computerproblemen, websites,
+                Microsoft 365, WiFi, printers of andere IT-vragen.
               </p>
 
               <div className="mt-8 space-y-4 text-slate-300">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">📍</span>
+                  <span>Breda en omgeving</span>
+                </div>
 
-  <div className="flex items-center gap-3">
-    <span className="text-xl">📍</span>
-    <span>Breda en omgeving</span>
-  </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">📞</span>
+                  <a
+                    href="tel:+31649718684"
+                    className="transition hover:text-blue-400"
+                  >
+                    06 49718684
+                  </a>
+                </div>
 
-  <div className="flex items-center gap-3">
-    <span className="text-xl">📞</span>
-    <a
-      href="tel:+31649718684"
-      className="transition hover:text-blue-400"
-    >
-      06 49718684
-    </a>
-  </div>
-
-  <div className="flex items-center gap-3">
-    <span className="text-xl">✉️</span>
-    <a
-      href="mailto:info@amritsolutions.nl"
-      className="transition hover:text-blue-400"
-    >
-      info@amritsolutions.nl
-    </a>
-  </div>
-
-</div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">✉️</span>
+                  <a
+                    href="mailto:info@amritsolutions.nl"
+                    className="transition hover:text-blue-400"
+                  >
+                    info@amritsolutions.nl
+                  </a>
+                </div>
+              </div>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {sent && (
@@ -113,6 +114,10 @@ export default function Contact() {
               >
                 Bericht verzenden
               </button>
+
+              <p className="text-center text-sm text-slate-400">
+                We reageren meestal binnen 24 uur.
+              </p>
             </form>
           </div>
         </div>
@@ -126,7 +131,7 @@ export default function Contact() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </div>
     </section>
