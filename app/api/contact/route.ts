@@ -19,10 +19,10 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "AMR IT Solutions <onboarding@resend.dev>",
+      from: "AMR IT Solutions <info@amritsolutions.nl>",
 
 
-      to: "alimazhar.rezayee031@gmail.com",
+      to: "info@amritsolutions.nl",
 
       replyTo: email,
       subject: `Nieuw contactbericht van ${name}`,
