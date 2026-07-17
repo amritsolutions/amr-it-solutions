@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Mail,
@@ -56,7 +57,7 @@ export default function MicrosoftHero() {
             </a>
 
             <a
-              href="/#contact"
+              href={WHATSAPP_URL}
               className="inline-flex items-center rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               WhatsApp ons

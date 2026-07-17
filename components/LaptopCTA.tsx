@@ -1,3 +1,4 @@
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 export default function LaptopCTA() {
   return (
     <section className="bg-white py-24">
@@ -26,7 +27,7 @@ export default function LaptopCTA() {
           </a>
 
           <a
-            href="/#contact"
+            href={WHATSAPP_URL}
             className="rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:bg-white hover:text-blue-600"
           >
             WhatsApp

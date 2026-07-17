@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Printer,
@@ -58,7 +59,7 @@ export default function PrinterHero() {
             </a>
 
             <a
-              href="/#contact"
+              href={WHATSAPP_URL}
               className="inline-flex items-center rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition hover:-translate-y-1 hover:shadow-lg"
             >
               WhatsApp ons
