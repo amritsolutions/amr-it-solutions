@@ -21,13 +21,13 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: "AMR IT Solutions <onboarding@resend.dev>",
 
-      // Tijdelijk je Resend-accountadres gebruiken
+
       to: "alimahzr.rezayee031@gmail.com",
 
       replyTo: email,
       subject: `Nieuw contactbericht van ${name}`,
       html: `
-        <h2>Nieuw contactbericht via AMR IT Solutions</h2>
+        <h2>Nieuw contactbericht</h2>
         <p><strong>Naam:</strong> ${name}</p>
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Bericht:</strong></p>
