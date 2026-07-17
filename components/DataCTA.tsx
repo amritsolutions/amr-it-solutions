@@ -1,4 +1,5 @@
 import { HardDrive, MessageCircle } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export default function DataCTA() {
   return (
@@ -28,7 +29,7 @@ export default function DataCTA() {
           </a>
 
           <a
-            href="/#contact"
+            href={WHATSAPP_URL}
             className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:border-green-500 hover:bg-green-500"
           >
             <MessageCircle className="h-5 w-5" />
