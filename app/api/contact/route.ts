@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       from: "AMR IT Solutions <onboarding@resend.dev>",
 
 
-      to: "alimahzr.rezayee031@gmail.com",
+      to: "alimazhar.rezayee031@gmail.com",
 
       replyTo: email,
       subject: `Nieuw contactbericht van ${name}`,
