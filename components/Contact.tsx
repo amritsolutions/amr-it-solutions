@@ -2,18 +2,22 @@
 
 import { useState } from "react";
 
-function LocationIcon() {
+function LocationIcon({
+  className = "h-6 w-6",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className="h-6 w-6"
+      className={className}
     >
       <path
         d="M12 22s7-6.1 7-13A7 7 0 1 0 5 9c0 6.9 7 13 7 13Z"
         fill="currentColor"
       />
-      <circle cx="12" cy="9" r="2.5" fill="#020617" />
+      <circle cx="12" cy="9" r="2.5" fill="white" />
     </svg>
   );
 }
@@ -54,6 +58,7 @@ function MailIcon() {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <path
         d="m5 7 7 5 7-5"
         stroke="currentColor"
@@ -80,6 +85,7 @@ function SendIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+
       <path
         d="m10.4 13.6 4.3-4.3"
         stroke="currentColor"
@@ -108,6 +114,42 @@ function CheckIcon() {
     </svg>
   );
 }
+
+function MonitorIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="h-6 w-6"
+    >
+      <rect
+        x="3"
+        y="4"
+        width="18"
+        height="12"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <path
+        d="M8 20h8M12 16v4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+const locations = [
+  "Breda",
+  "Oosterhout",
+  "Etten-Leur",
+  "Prinsenbeek",
+  "Teteringen",
+];
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -153,6 +195,7 @@ export default function Contact() {
       className="bg-gradient-to-b from-white to-slate-50 py-24 sm:py-28"
     >
       <div className="mx-auto max-w-7xl px-6">
+        {/* Contactblok */}
         <div className="overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-[0_25px_70px_rgba(15,23,42,0.22)]">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
             {/* Linkerkant */}
@@ -181,6 +224,7 @@ export default function Contact() {
 
                     <div>
                       <p className="text-sm text-slate-400">Werkgebied</p>
+
                       <p className="mt-0.5 font-semibold text-white">
                         Breda en omgeving
                       </p>
@@ -197,6 +241,7 @@ export default function Contact() {
 
                     <div>
                       <p className="text-sm text-slate-400">Telefoon</p>
+
                       <p className="mt-0.5 font-semibold text-white">
                         06 49718684
                       </p>
@@ -213,6 +258,7 @@ export default function Contact() {
 
                     <div className="min-w-0">
                       <p className="text-sm text-slate-400">E-mail</p>
+
                       <p className="mt-0.5 break-all font-semibold text-white">
                         info@amritsolutions.nl
                       </p>
@@ -337,6 +383,7 @@ export default function Contact() {
                   <span className="text-blue-400">
                     <CheckIcon />
                   </span>
+
                   Meestal binnen één werkdag antwoord
                 </p>
               </form>
@@ -345,93 +392,86 @@ export default function Contact() {
         </div>
 
         {/* Werkgebied */}
-<div className="mt-20">
-  <div className="mb-8 text-center">
-    <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-600">
-      📍 Werkgebied
-    </span>
+        <div className="mt-20">
+          <div className="mx-auto mb-9 max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-600">
+              <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+              Werkgebied
+            </span>
 
-    <h3 className="mt-5 text-4xl font-bold text-slate-900">
-      Actief in Breda en omgeving
-    </h3>
+            <h3 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Actief in Breda en omgeving
+            </h3>
 
-    <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-      Wij helpen particulieren en bedrijven aan huis, op locatie of op
-      afstand. Woont u in Breda of omgeving? Dan staan wij graag voor u klaar.
-    </p>
-  </div>
-
-  <div className="grid gap-8 lg:grid-cols-[1.6fr_0.8fr]">
-    {/* Google Maps */}
-    <div className="overflow-hidden rounded-[2rem] shadow-xl ring-1 ring-slate-200">
-      <iframe
-        title="Werkgebied AMR IT Solutions"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79374.54472286106!2d4.681941777056458!3d51.559900647613816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1b47e17d16d%3A0xe5057ea284d71b41!2sBreda!5e0!3m2!1snl!2snl!4v1782939734087!5m2!1snl!2snl"
-        width="100%"
-        height="420"
-        style={{ border: 0 }}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        allowFullScreen
-      />
-    </div>
-
-    {/* Werkgebied kaartje */}
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg">
-      <h4 className="text-2xl font-bold text-slate-900">
-        Wij werken in:
-      </h4>
-
-      <div className="mt-6 space-y-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            📍
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+              Wij helpen particulieren en bedrijven aan huis, op locatie of op
+              afstand. Woont u in Breda of omgeving? Dan staan wij graag voor u
+              klaar.
+            </p>
           </div>
-          <span className="font-medium text-slate-700">Breda</span>
-        </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            📍
+          <div className="grid items-stretch gap-7 lg:grid-cols-[1.65fr_0.85fr]">
+            {/* Google Maps */}
+            <div className="h-[420px] overflow-hidden rounded-[2rem] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.10)] ring-1 ring-slate-200">
+              <iframe
+                title="Werkgebied AMR IT Solutions in Breda"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79374.54472286106!2d4.681941777056458!3d51.559900647613816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1b47e17d16d%3A0xe5057ea284d71b41!2sBreda!5e0!3m2!1snl!2snl!4v1782939734087!5m2!1snl!2snl"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="block h-full w-full"
+              />
+            </div>
+
+            {/* Plaatsen en hulp op afstand */}
+            <div className="flex min-h-[420px] flex-col rounded-[2rem] bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.10)] ring-1 ring-slate-200 sm:p-8">
+              <h4 className="text-2xl font-bold tracking-tight text-slate-950">
+                Wij werken in:
+              </h4>
+
+              <div className="mt-6 space-y-3">
+                {locations.map((location) => (
+                  <div
+                    key={location}
+                    className="flex items-center gap-4"
+                  >
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                      <LocationIcon className="h-5 w-5" />
+                    </div>
+
+                    <span className="font-medium text-slate-700">
+                      {location}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-auto pt-7">
+                <div className="rounded-2xl bg-blue-50 p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-blue-100">
+                      <MonitorIcon />
+                    </div>
+
+                    <div>
+                      <p className="font-semibold text-blue-700">
+                        Ook hulp op afstand mogelijk
+                      </p>
+
+                      <p className="mt-1 text-sm leading-6 text-slate-600">
+                        Veel problemen kunnen wij direct online oplossen via
+                        veilige ondersteuning op afstand.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <span className="font-medium text-slate-700">Oosterhout</span>
         </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            📍
-          </div>
-          <span className="font-medium text-slate-700">Etten-Leur</span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            📍
-          </div>
-          <span className="font-medium text-slate-700">Prinsenbeek</span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            📍
-          </div>
-          <span className="font-medium text-slate-700">Teteringen</span>
-        </div>
-
-        <div className="mt-8 rounded-2xl bg-blue-50 p-5">
-          <p className="font-semibold text-blue-700">
-            💻 Ook hulp op afstand mogelijk
-          </p>
-
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            Veel problemen kunnen wij direct online oplossen via veilige
-            ondersteuning op afstand.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
       </div>
     </section>
   );
