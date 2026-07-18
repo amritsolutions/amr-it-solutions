@@ -1,4 +1,5 @@
-import { HardDrive, MessageCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { HardDrive } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export default function DataCTA() {
@@ -14,7 +15,7 @@ export default function DataCTA() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-blue-100">
-          Wij helpen met het veilig overzetten van bestanden, foto's,
+          Wij helpen met het veilig overzetten van bestanden, foto&apos;s,
           documenten, Outlook, instellingen en het instellen van een
           betrouwbare back-up.
         </p>
@@ -30,9 +31,12 @@ export default function DataCTA() {
 
           <a
             href={WHATSAPP_URL}
-            className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:border-green-500 hover:bg-green-500"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Neem contact op via WhatsApp"
+            className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-500 hover:shadow-xl"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-5 w-5" />
             WhatsApp
           </a>
         </div>
