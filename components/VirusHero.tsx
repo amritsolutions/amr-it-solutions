@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/Breadcrumb";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import {
   ShieldCheck,
   Bug,
@@ -59,9 +60,12 @@ export default function VirusHero() {
 
             <a
               href={WHATSAPP_URL}
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Neem contact op via WhatsApp"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-lg"
             >
-              <MessageCircle className="h-5 w-5" />
+              <WhatsAppIcon className="h-5 w-5" />
               WhatsApp ons
             </a>
           </div>
@@ -70,7 +74,6 @@ export default function VirusHero() {
             {benefits.map(({ Icon, text }) => (
               <div key={text} className="text-center text-slate-800">
                 <Icon className="mx-auto mb-3 h-10 w-10 text-blue-600" />
-
                 <p className="text-sm font-medium leading-5">{text}</p>
               </div>
             ))}

@@ -1,5 +1,6 @@
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
-import { ShieldCheck, MessageCircle } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export default function VirusCTA() {
   return (
@@ -30,9 +31,12 @@ export default function VirusCTA() {
 
           <a
             href={WHATSAPP_URL}
-            className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:border-green-500 hover:bg-green-500"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Neem contact op via WhatsApp"
+            className="inline-flex items-center gap-3 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-500 hover:shadow-xl"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-5 w-5" />
             WhatsApp
           </a>
         </div>
