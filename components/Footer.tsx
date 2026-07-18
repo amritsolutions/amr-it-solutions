@@ -1,166 +1,243 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Mail, MessageCircle, Phone } from "lucide-react";
+import {
+  Check,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
+
+const services = [
+  {
+    label: "Computerreparatie",
+    href: "/computerreparatie",
+    externalSection: false,
+  },
+  {
+    label: "Laptop sneller maken",
+    href: "/#diensten",
+    externalSection: true,
+  },
+  {
+    label: "Windows installeren",
+    href: "/#diensten",
+    externalSection: true,
+  },
+  {
+    label: "Printer & WiFi",
+    href: "/#diensten",
+    externalSection: true,
+  },
+  {
+    label: "Website laten maken",
+    href: "/website-laten-maken",
+    externalSection: false,
+  },
+  {
+    label: "Microsoft 365",
+    href: "/#diensten",
+    externalSection: true,
+  },
+];
+
+const highlights = [
+  "Computerreparatie",
+  "Microsoft 365",
+  "Websites",
+  "Persoonlijke IT-support",
+];
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-300">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <Image
-            src="/logos/logo.png"
-            alt="AMR IT Solutions logo"
-            width={185}
-            height={76}
-            className="mb-5 rounded-xl bg-white p-2"
-          />
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+        <div className="grid gap-14 lg:grid-cols-[1.35fr_0.75fr_1fr] lg:gap-20">
+          {/* Bedrijfsinformatie */}
+          <div>
+            <Image
+              src="/logos/logo.png"
+              alt="AMR IT Solutions logo"
+              width={150}
+              height={62}
+              className="rounded-2xl bg-white p-3 shadow-lg shadow-black/10"
+            />
 
-          <h3 className="text-2xl font-extrabold text-white">
-            AMR IT Solutions
-          </h3>
+            <h2 className="mt-6 text-2xl font-extrabold tracking-tight text-white">
+              AMR IT Solutions
+            </h2>
 
-          <p className="mt-4 max-w-md leading-7 text-slate-400">
-            AMR IT Solutions helpt particulieren, zzp'ers en bedrijven 
-            met snelle, betrouwbare en betaalbare IT-oplossingen. 
-            Van computerreparaties tot websites en Microsoft 365.
-            
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="/#contact"
-              className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
-            >
-              Contact opnemen
-            </a>
-
-            <a
-              href="https://wa.me/31649718684"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-slate-700 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:text-green-400"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold text-white">Diensten</h3>
-
-          <ul className="mt-5 space-y-3 text-sm">
-            <li>
-              <Link
-                href="/computerreparatie"
-                className="transition hover:text-blue-400"
-              >
-                Computerreparatie
-              </Link>
-            </li>
-
-            <li>
-              <a
-                href="/#diensten"
-                className="transition hover:text-blue-400"
-              >
-                Laptop sneller maken
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="/#diensten"
-                className="transition hover:text-blue-400"
-              >
-                Windows installeren
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="/#diensten"
-                className="transition hover:text-blue-400"
-              >
-                Printer & WiFi
-              </a>
-            </li>
-
-            <li>
-              <Link
-                href="/website-laten-maken"
-                className="transition hover:text-blue-400"
-              >
-                Website laten maken
-              </Link>
-            </li>
-
-            <li>
-              <a
-                href="/#diensten"
-                className="transition hover:text-blue-400"
-              >
-                Microsoft 365
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold text-white">Contact</h3>
-
-          <div className="mt-5 space-y-4 text-sm">
-            <p className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-              <span>Breda en omgeving</span>
+            <p className="mt-4 max-w-lg leading-7 text-slate-400">
+              AMR IT Solutions helpt particulieren, zzp&apos;ers en bedrijven
+              met snelle, betrouwbare en betaalbare IT-oplossingen. Van
+              computerreparaties tot websites en Microsoft 365.
             </p>
 
-            <a
-              href="tel:+31649718684"
-              className="flex items-start gap-3 transition hover:text-blue-400"
-            >
-              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-              <span>06 49718684</span>
-            </a>
+            <ul className="mt-6 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
+              {highlights.map((highlight) => (
+                <li key={highlight} className="flex items-center gap-2">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/15 text-blue-400">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
 
-            <a
-              href="mailto:info@amritsolutions.nl"
-              className="flex items-start gap-3 transition hover:text-blue-400"
-            >
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-              <span>info@amritsolutions.nl</span>
-            </a>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
 
-            <a
-              href="https://wa.me/31649718684"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-3 transition hover:text-green-400"
-            >
-              <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
-              <span>Chat via WhatsApp</span>
-            </a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/#contact"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+              >
+                Contact opnemen
+              </a>
+
+              <a
+                href="https://wa.me/31649718684"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/40 px-6 py-3 text-sm font-semibold text-green-400 transition duration-300 hover:-translate-y-0.5 hover:border-green-400 hover:bg-green-500/10 hover:text-green-300"
+              >
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
+              </a>
+            </div>
+          </div>
+
+          {/* Diensten */}
+          <div>
+            <h3 className="text-lg font-bold text-white">Diensten</h3>
+
+            <ul className="mt-6 space-y-3 text-sm">
+              {services.map((service) => (
+                <li key={service.label}>
+                  {service.externalSection ? (
+                    <a
+                      href={service.href}
+                      className="inline-flex transition duration-200 hover:translate-x-1 hover:text-blue-400"
+                    >
+                      {service.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={service.href}
+                      className="inline-flex transition duration-200 hover:translate-x-1 hover:text-blue-400"
+                    >
+                      {service.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-bold text-white">Contact</h3>
+
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+                  <MapPin className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">Werkgebied</p>
+                  <p className="mt-1 text-sm font-medium text-slate-200">
+                    Breda en omgeving
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="tel:+31649718684"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:border-blue-400/40 hover:bg-white/[0.06]"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 transition group-hover:bg-blue-500 group-hover:text-white">
+                  <Phone className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">Telefoon</p>
+                  <p className="mt-1 text-sm font-medium text-slate-200">
+                    06 49718684
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="mailto:info@amritsolutions.nl"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:border-blue-400/40 hover:bg-white/[0.06]"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 transition group-hover:bg-blue-500 group-hover:text-white">
+                  <Mail className="h-5 w-5" />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-xs text-slate-500">E-mail</p>
+                  <p className="mt-1 break-all text-sm font-medium text-slate-200">
+                    info@amritsolutions.nl
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="https://wa.me/31649718684"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-green-500/20 bg-green-500/[0.04] p-4 transition hover:border-green-400/40 hover:bg-green-500/[0.08]"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-500/15 text-green-400 transition group-hover:bg-green-500 group-hover:text-white">
+                  <MessageCircle className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">WhatsApp</p>
+                  <p className="mt-1 text-sm font-medium text-slate-200">
+                    Start direct een chat
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-slate-800">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-slate-500 md:flex-row">
+      {/* Onderste balk */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 py-6 text-sm text-slate-500 md:flex-row">
           <p>© 2026 AMR IT Solutions · Breda, Nederland</p>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <a href="/#home" className="transition hover:text-white">
+          <nav
+            aria-label="Footer navigatie"
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
+          >
+            <a
+              href="/#home"
+              className="transition hover:text-white"
+            >
               Home
             </a>
 
-            <a href="/#diensten" className="transition hover:text-white">
+            <a
+              href="/#diensten"
+              className="transition hover:text-white"
+            >
               Diensten
             </a>
 
-            <a href="/#portfolio" className="transition hover:text-white">
+            <a
+              href="/#portfolio"
+              className="transition hover:text-white"
+            >
               Portfolio
             </a>
 
-            <a href="/#contact" className="transition hover:text-white">
+            <a
+              href="/#contact"
+              className="transition hover:text-white"
+            >
               Contact
             </a>
 
@@ -171,7 +248,7 @@ export default function Footer() {
             <Link href="/cookies" className="transition hover:text-white">
               Cookies
             </Link>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>
