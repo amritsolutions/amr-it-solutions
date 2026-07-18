@@ -1,12 +1,7 @@
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Check,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-} from "lucide-react";
+import { Check, Mail, MapPin, Phone } from "lucide-react";
 
 const services = [
   {
@@ -97,9 +92,10 @@ export default function Footer() {
                 href="https://wa.me/31649718684"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Chat via WhatsApp"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/40 px-6 py-3 text-sm font-semibold text-green-400 transition duration-300 hover:-translate-y-0.5 hover:border-green-400 hover:bg-green-500/10 hover:text-green-300"
               >
-                <MessageCircle className="h-5 w-5" />
+                <WhatsAppIcon className="h-5 w-5" />
                 WhatsApp
               </a>
             </div>
@@ -186,10 +182,11 @@ export default function Footer() {
                 href="https://wa.me/31649718684"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Start direct een WhatsApp-chat"
                 className="group flex items-center gap-4 rounded-2xl border border-green-500/20 bg-green-500/[0.04] p-4 transition hover:border-green-400/40 hover:bg-green-500/[0.08]"
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-500/15 text-green-400 transition group-hover:bg-green-500 group-hover:text-white">
-                  <MessageCircle className="h-5 w-5" />
+                  <WhatsAppIcon className="h-5 w-5" />
                 </div>
 
                 <div>
@@ -213,31 +210,19 @@ export default function Footer() {
             aria-label="Footer navigatie"
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
           >
-            <a
-              href="/#home"
-              className="transition hover:text-white"
-            >
+            <a href="/#home" className="transition hover:text-white">
               Home
             </a>
 
-            <a
-              href="/#diensten"
-              className="transition hover:text-white"
-            >
+            <a href="/#diensten" className="transition hover:text-white">
               Diensten
             </a>
 
-            <a
-              href="/#portfolio"
-              className="transition hover:text-white"
-            >
+            <a href="/#portfolio" className="transition hover:text-white">
               Portfolio
             </a>
 
-            <a
-              href="/#contact"
-              className="transition hover:text-white"
-            >
+            <a href="/#contact" className="transition hover:text-white">
               Contact
             </a>
 
