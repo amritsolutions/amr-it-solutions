@@ -2,11 +2,7 @@ import Image from "next/image";
 
 function LightningIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
       <path
         d="M13 2 4.8 13.2h6.1L10 22l9.2-12.2h-6.4L13 2Z"
         fill="currentColor"
@@ -17,11 +13,7 @@ function LightningIcon() {
 
 function LocationIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
       <path
         d="M12 22s7-6.1 7-13A7 7 0 1 0 5 9c0 6.9 7 13 7 13Z"
         fill="currentColor"
@@ -33,16 +25,11 @@ function LocationIcon() {
 
 function ShieldIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
       <path
         d="M12 2.5 20 6v5.2c0 5.1-3.3 8.9-8 10.3-4.7-1.4-8-5.2-8-10.3V6l8-3.5Z"
         fill="currentColor"
       />
-
       <path
         d="m8.7 12 2.1 2.1 4.6-4.7"
         fill="none"
@@ -57,13 +44,8 @@ function ShieldIcon() {
 
 function PersonIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
       <circle cx="12" cy="8" r="4" fill="currentColor" />
-
       <path
         d="M4.5 21c.5-4.7 3.2-7 7.5-7s7 2.3 7.5 7h-15Z"
         fill="currentColor"
@@ -93,46 +75,11 @@ function MessageIcon() {
 
 function GridIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-5 w-5"
-    >
-      <rect
-        x="4"
-        y="4"
-        width="6"
-        height="6"
-        rx="1"
-        fill="currentColor"
-      />
-
-      <rect
-        x="14"
-        y="4"
-        width="6"
-        height="6"
-        rx="1"
-        fill="currentColor"
-      />
-
-      <rect
-        x="4"
-        y="14"
-        width="6"
-        height="6"
-        rx="1"
-        fill="currentColor"
-      />
-
-      <rect
-        x="14"
-        y="14"
-        width="6"
-        height="6"
-        rx="1"
-        fill="currentColor"
-      />
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5">
+      <rect x="4" y="4" width="6" height="6" rx="1" fill="currentColor" />
+      <rect x="14" y="4" width="6" height="6" rx="1" fill="currentColor" />
+      <rect x="4" y="14" width="6" height="6" rx="1" fill="currentColor" />
+      <rect x="14" y="14" width="6" height="6" rx="1" fill="currentColor" />
     </svg>
   );
 }
@@ -162,35 +109,30 @@ const features = [
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative w-full overflow-hidden bg-white"
-    >
+    <section id="home" className="relative w-full overflow-hidden bg-white">
       {/* Desktopachtergrond */}
-      <div className="absolute inset-0 hidden lg:block">
+      <div className="absolute inset-0 hidden bg-white lg:block">
         <Image
           src="/images/hero.jpg"
           alt="Moderne IT-werkplek met laptop en serverapparatuur"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_center]"
+          className="object-contain object-right"
         />
 
-        {/* Witte overgang van links naar rechts */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.99) 25%, rgba(255,255,255,0.96) 36%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.28) 62%, rgba(255,255,255,0) 78%)",
+              "linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,1) 27%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.72) 49%, rgba(255,255,255,0.24) 62%, rgba(255,255,255,0) 76%)",
           }}
         />
 
-        {/* Witte overgang onderaan */}
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/75 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/70 to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 pb-10 pt-10 sm:px-10 sm:pt-12 lg:min-h-[850px] lg:px-16 lg:pb-12 lg:pt-20 xl:px-20">
+      <div className="relative mx-auto max-w-[1440px] px-6 pb-14 pt-10 sm:px-10 sm:pt-12 lg:min-h-[930px] lg:px-16 lg:pb-16 lg:pt-20 xl:px-20">
         {/* Mobiele afbeelding */}
         <div className="relative mb-9 h-[260px] overflow-hidden rounded-[1.75rem] sm:h-[360px] lg:hidden">
           <Image
@@ -205,7 +147,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
         </div>
 
-        <div className="flex flex-col lg:min-h-[758px]">
+        <div className="flex flex-col lg:min-h-[834px]">
           <div className="max-w-[650px] animate-fade-up">
             <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-blue-50 px-5 py-3 text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">
               <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
@@ -246,7 +188,7 @@ export default function Hero() {
           </div>
 
           {/* Informatiekaarten */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-auto lg:grid-cols-4 lg:pt-14">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-auto lg:grid-cols-4 lg:pt-20">
             {features.map((feature) => {
               const Icon = feature.icon;
 
