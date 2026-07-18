@@ -1,35 +1,69 @@
 import Image from "next/image";
 
+const features = [
+  {
+    icon: "⚡",
+    title: "Snelle service",
+    description: "Snel geholpen, zonder lange wachttijden.",
+  },
+  {
+    icon: "📍",
+    title: "Breda & omgeving",
+    description: "Lokaal actief in Breda en omliggende plaatsen.",
+  },
+  {
+    icon: "🛡️",
+    title: "Betrouwbaar & veilig",
+    description: "Uw gegevens en systemen zijn in veilige handen.",
+  },
+  {
+    icon: "👤",
+    title: "Persoonlijk advies",
+    description: "Oplossingen die passen bij uw situatie.",
+  },
+];
+
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-50 via-white to-slate-100 px-6 py-20 lg:px-12"
+      className="relative min-h-[880px] overflow-hidden bg-white lg:min-h-[920px]"
     >
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
-      <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-slate-300/40 blur-3xl" />
+      {/* Grote achtergrondfoto */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero.jpg"
+          alt="Moderne IT-werkplek van AMR IT Solutions"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[68%_center]"
+        />
 
-      <div className="relative grid items-center gap-16 lg:grid-cols-2">
-        <div className="max-w-3xl animate-fade-up">
-          <div className="mb-6 flex flex-wrap gap-3">
-            <span className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm">
-              💻 IT Support Breda
-            </span>
+        {/* Witte overgang aan de linkerkant */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-[32%] to-transparent lg:via-white/85 lg:via-[40%]" />
 
-            <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200">
-              ⭐ Persoonlijke service
-            </span>
+        {/* Lichte onderlaag voor leesbaarheid */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/75 via-transparent to-transparent" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-[880px] max-w-[1440px] flex-col px-6 pb-10 pt-20 sm:px-10 lg:min-h-[920px] lg:px-16 lg:pb-12 lg:pt-24">
+        {/* Hoofdinhoud */}
+        <div className="max-w-[610px]">
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-blue-50 px-5 py-3 text-sm font-bold uppercase tracking-wide text-blue-600">
+            <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+            IT Support in Breda & omgeving
           </div>
 
-          <h1 className="text-5xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-7xl">
+          <h1 className="text-[3.4rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:text-6xl lg:text-[4.35rem]">
             IT-oplossingen
             <br />
             voor particulieren
             <br />
-            én bedrijven.
+            <span className="text-blue-600">én bedrijven.</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+          <p className="mt-8 max-w-[590px] text-lg leading-8 text-slate-600">
             AMR IT Solutions helpt met computerreparaties,
             Windows-installaties, Microsoft 365, websites, WiFi-problemen en
             betrouwbare IT-support in Breda en omgeving.
@@ -38,43 +72,41 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="rounded-full bg-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
             >
+              <span aria-hidden="true">◯</span>
               Vraag direct hulp
             </a>
 
             <a
               href="#diensten"
-              className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-slate-800 shadow-sm ring-1 ring-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-50"
             >
+              <span aria-hidden="true">▦</span>
               Bekijk diensten
             </a>
           </div>
-
-          <div className="mt-12 grid gap-4 text-sm font-medium text-slate-700 sm:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200">
-              ⚡ Snelle service
-            </div>
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200">
-              📍 Breda & omgeving
-            </div>
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200">
-              ✔ Persoonlijk advies
-            </div>
-          </div>
         </div>
 
-        <div className="relative flex justify-center animate-fade-up">
-          <div className="absolute inset-0 rounded-[2rem] bg-blue-600/20 blur-3xl" />
+        {/* Kaarten onderaan */}
+        <div className="mt-auto grid gap-4 pt-16 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="flex min-h-[126px] items-start gap-5 rounded-2xl bg-white/95 p-6 shadow-[0_10px_35px_rgba(15,23,42,0.10)] ring-1 ring-slate-200 backdrop-blur-sm"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-2xl">
+                {feature.icon}
+              </div>
 
-          <Image
-            src="/images/hero.jpg"
-            alt="AMR IT Solutions"
-            width={760}
-            height={760}
-            priority
-            className="relative rounded-[2rem] shadow-2xl ring-1 ring-slate-200 transition duration-500 hover:scale-[1.02]"
-          />
+              <div>
+                <h2 className="font-bold text-slate-950">{feature.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-500">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
