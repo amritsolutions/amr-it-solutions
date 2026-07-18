@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/Breadcrumb";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import {
   MonitorDown,
   Zap,
@@ -31,7 +32,6 @@ export default function WindowsHero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr]">
-        {/* Linkerkant */}
         <div className="relative z-20">
           <Breadcrumb current="Windows installeren" />
 
@@ -60,9 +60,12 @@ export default function WindowsHero() {
 
             <a
               href={WHATSAPP_URL}
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Neem contact op via WhatsApp"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-lg"
             >
-              <MessageCircle className="h-5 w-5" />
+              <WhatsAppIcon className="h-5 w-5" />
               WhatsApp ons
             </a>
           </div>
@@ -71,7 +74,6 @@ export default function WindowsHero() {
             {benefits.map(({ Icon, text }) => (
               <div key={text} className="text-center text-slate-800">
                 <Icon className="mx-auto mb-3 h-10 w-10 text-blue-600" />
-
                 <p className="text-sm font-medium leading-5">
                   {text}
                 </p>
@@ -80,7 +82,6 @@ export default function WindowsHero() {
           </div>
         </div>
 
-        {/* Rechterkant */}
         <div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
           <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-100/70 lg:left-[20px] lg:top-[30px] lg:h-[540px] lg:w-[660px] lg:translate-x-0" />
 
