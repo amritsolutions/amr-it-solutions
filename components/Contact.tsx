@@ -344,20 +344,94 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Google Maps */}
-        <div className="mt-14 overflow-hidden rounded-[2rem] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.10)] ring-1 ring-slate-200">
-          <iframe
-            title="Locatie AMR IT Solutions in Breda"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79374.54472286106!2d4.681941777056458!3d51.559900647613816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1b47e17d16d%3A0xe5057ea284d71b41!2sBreda!5e0!3m2!1snl!2snl!4v1782939734087!5m2!1snl!2snl"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-            className="block min-h-[340px] w-full"
-          />
+        {/* Werkgebied */}
+<div className="mt-20">
+  <div className="mb-8 text-center">
+    <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-600">
+      📍 Werkgebied
+    </span>
+
+    <h3 className="mt-5 text-4xl font-bold text-slate-900">
+      Actief in Breda en omgeving
+    </h3>
+
+    <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+      Wij helpen particulieren en bedrijven aan huis, op locatie of op
+      afstand. Woont u in Breda of omgeving? Dan staan wij graag voor u klaar.
+    </p>
+  </div>
+
+  <div className="grid gap-8 lg:grid-cols-[1.6fr_0.8fr]">
+    {/* Google Maps */}
+    <div className="overflow-hidden rounded-[2rem] shadow-xl ring-1 ring-slate-200">
+      <iframe
+        title="Werkgebied AMR IT Solutions"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79374.54472286106!2d4.681941777056458!3d51.559900647613816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1b47e17d16d%3A0xe5057ea284d71b41!2sBreda!5e0!3m2!1snl!2snl!4v1782939734087!5m2!1snl!2snl"
+        width="100%"
+        height="420"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        allowFullScreen
+      />
+    </div>
+
+    {/* Werkgebied kaartje */}
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg">
+      <h4 className="text-2xl font-bold text-slate-900">
+        Wij werken in:
+      </h4>
+
+      <div className="mt-6 space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            📍
+          </div>
+          <span className="font-medium text-slate-700">Breda</span>
         </div>
+
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            📍
+          </div>
+          <span className="font-medium text-slate-700">Oosterhout</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            📍
+          </div>
+          <span className="font-medium text-slate-700">Etten-Leur</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            📍
+          </div>
+          <span className="font-medium text-slate-700">Prinsenbeek</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            📍
+          </div>
+          <span className="font-medium text-slate-700">Teteringen</span>
+        </div>
+
+        <div className="mt-8 rounded-2xl bg-blue-50 p-5">
+          <p className="font-semibold text-blue-700">
+            💻 Ook hulp op afstand mogelijk
+          </p>
+
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Veel problemen kunnen wij direct online oplossen via veilige
+            ondersteuning op afstand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );
