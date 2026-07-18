@@ -2,7 +2,11 @@ import Image from "next/image";
 
 function LightningIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-7 w-7"
+    >
       <path
         d="M13 2 4.8 13.2h6.1L10 22l9.2-12.2h-6.4L13 2Z"
         fill="currentColor"
@@ -13,7 +17,11 @@ function LightningIcon() {
 
 function LocationIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-7 w-7"
+    >
       <path
         d="M12 22s7-6.1 7-13A7 7 0 1 0 5 9c0 6.9 7 13 7 13Z"
         fill="currentColor"
@@ -25,18 +33,23 @@ function LocationIcon() {
 
 function ShieldIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-7 w-7"
+    >
       <path
         d="M12 2.5 20 6v5.2c0 5.1-3.3 8.9-8 10.3-4.7-1.4-8-5.2-8-10.3V6l8-3.5Z"
         fill="currentColor"
       />
+
       <path
         d="m8.7 12 2.1 2.1 4.6-4.7"
+        fill="none"
         stroke="white"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill="none"
       />
     </svg>
   );
@@ -44,8 +57,13 @@ function ShieldIcon() {
 
 function PersonIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-7 w-7"
+    >
       <circle cx="12" cy="8" r="4" fill="currentColor" />
+
       <path
         d="M4.5 21c.5-4.7 3.2-7 7.5-7s7 2.3 7.5 7h-15Z"
         fill="currentColor"
@@ -75,11 +93,46 @@ function MessageIcon() {
 
 function GridIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5">
-      <rect x="4" y="4" width="6" height="6" rx="1" fill="currentColor" />
-      <rect x="14" y="4" width="6" height="6" rx="1" fill="currentColor" />
-      <rect x="4" y="14" width="6" height="6" rx="1" fill="currentColor" />
-      <rect x="14" y="14" width="6" height="6" rx="1" fill="currentColor" />
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-5 w-5"
+    >
+      <rect
+        x="4"
+        y="4"
+        width="6"
+        height="6"
+        rx="1"
+        fill="currentColor"
+      />
+
+      <rect
+        x="14"
+        y="4"
+        width="6"
+        height="6"
+        rx="1"
+        fill="currentColor"
+      />
+
+      <rect
+        x="4"
+        y="14"
+        width="6"
+        height="6"
+        rx="1"
+        fill="currentColor"
+      />
+
+      <rect
+        x="14"
+        y="14"
+        width="6"
+        height="6"
+        rx="1"
+        fill="currentColor"
+      />
     </svg>
   );
 }
@@ -109,111 +162,115 @@ const features = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-white">
-      <div className="relative">
-        {/* Desktopachtergrond */}
-        <div className="absolute inset-0 hidden lg:block">
+    <section
+      id="home"
+      className="relative w-full overflow-hidden bg-white"
+    >
+      {/* Desktopachtergrond */}
+      <div className="absolute inset-0 hidden lg:block">
+        <Image
+          src="/images/hero.jpg"
+          alt="Moderne IT-werkplek met laptop en serverapparatuur"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[70%_center]"
+        />
+
+        {/* Witte overgang van links naar rechts */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.99) 25%, rgba(255,255,255,0.96) 36%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.28) 62%, rgba(255,255,255,0) 78%)",
+          }}
+        />
+
+        {/* Witte overgang onderaan */}
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/75 to-transparent" />
+      </div>
+
+      <div className="relative mx-auto max-w-[1440px] px-6 pb-10 pt-10 sm:px-10 sm:pt-12 lg:min-h-[850px] lg:px-16 lg:pb-12 lg:pt-20 xl:px-20">
+        {/* Mobiele afbeelding */}
+        <div className="relative mb-9 h-[260px] overflow-hidden rounded-[1.75rem] sm:h-[360px] lg:hidden">
           <Image
             src="/images/hero.jpg"
             alt="Moderne IT-werkplek met laptop en serverapparatuur"
             fill
             priority
-            sizes="100vw"
-            className="object-cover object-[72%_center]"
+            sizes="(max-width: 1024px) 100vw, 0px"
+            className="object-cover object-[68%_center]"
           />
 
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.99) 27%, rgba(255,255,255,0.94) 38%, rgba(255,255,255,0.58) 52%, rgba(255,255,255,0.08) 72%, rgba(255,255,255,0) 83%)",
-            }}
-          />
-
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white via-white/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-12 sm:px-10 lg:min-h-[850px] lg:px-16 lg:pb-12 lg:pt-20 xl:px-20">
-          {/* Mobiele foto apart weergegeven */}
-          <div className="relative mb-8 h-[260px] overflow-hidden rounded-[1.75rem] sm:h-[340px] lg:hidden">
-            <Image
-              src="/images/hero.jpg"
-              alt="Moderne IT-werkplek met laptop en serverapparatuur"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-[72%_center]"
-            />
+        <div className="flex flex-col lg:min-h-[758px]">
+          <div className="max-w-[650px] animate-fade-up">
+            <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-blue-50 px-5 py-3 text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">
+              <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+              IT Support in Breda & omgeving
+            </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+            <h1 className="max-w-[670px] text-[2.65rem] font-extrabold leading-[1.07] tracking-[-0.045em] text-slate-950 sm:text-[3.6rem] lg:text-[4.15rem] xl:text-[4.4rem]">
+              IT-oplossingen
+              <br />
+              voor particulieren
+              <br />
+              <span className="text-blue-600">én bedrijven.</span>
+            </h1>
+
+            <p className="mt-7 max-w-[610px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+              AMR IT Solutions helpt met computerreparaties,
+              Windows-installaties, Microsoft 365, websites, WiFi-problemen en
+              betrouwbare IT-support in Breda en omgeving.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <a
+                href="#contact"
+                className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+              >
+                <MessageIcon />
+                Vraag direct hulp
+              </a>
+
+              <a
+                href="#diensten"
+                className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-50"
+              >
+                <GridIcon />
+                Bekijk diensten
+              </a>
+            </div>
           </div>
 
-          <div className="flex min-h-0 flex-col lg:min-h-[758px]">
-            <div className="max-w-[660px]">
-              <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-blue-50/95 px-5 py-3 text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
-                IT Support in Breda & omgeving
-              </div>
+          {/* Informatiekaarten */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-auto lg:grid-cols-4 lg:pt-14">
+            {features.map((feature) => {
+              const Icon = feature.icon;
 
-              <h1 className="max-w-[650px] text-[2.75rem] font-extrabold leading-[1.06] tracking-[-0.045em] text-slate-950 sm:text-[3.7rem] lg:text-[4.25rem] xl:text-[4.55rem]">
-                IT-oplossingen
-                <br />
-                voor particulieren
-                <br />
-                <span className="text-blue-600">én bedrijven.</span>
-              </h1>
-
-              <p className="mt-7 max-w-[610px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                AMR IT Solutions helpt met computerreparaties,
-                Windows-installaties, Microsoft 365, websites, WiFi-problemen
-                en betrouwbare IT-support in Breda en omgeving.
-              </p>
-
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <a
-                  href="#contact"
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+              return (
+                <article
+                  key={feature.title}
+                  className="flex min-h-[132px] items-start gap-4 rounded-2xl bg-white/95 p-5 shadow-[0_12px_35px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/90 backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.14)] sm:p-6"
                 >
-                  <MessageIcon />
-                  Vraag direct hulp
-                </a>
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                    <Icon />
+                  </div>
 
-                <a
-                  href="#diensten"
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-white/95 px-7 py-4 text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-50"
-                >
-                  <GridIcon />
-                  Bekijk diensten
-                </a>
-              </div>
-            </div>
+                  <div className="min-w-0 pt-0.5">
+                    <h2 className="font-bold leading-5 text-slate-950">
+                      {feature.title}
+                    </h2>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-auto lg:grid-cols-4 lg:pt-14">
-              {features.map((feature) => {
-                const Icon = feature.icon;
-
-                return (
-                  <article
-                    key={feature.title}
-                    className="flex min-h-[132px] items-start gap-4 rounded-2xl bg-white/95 p-6 shadow-[0_12px_35px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/90 backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.14)]"
-                  >
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
-                      <Icon />
-                    </div>
-
-                    <div className="pt-0.5">
-                      <h2 className="font-bold leading-5 text-slate-950">
-                        {feature.title}
-                      </h2>
-
-                      <p className="mt-2 text-sm leading-5 text-slate-500">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                    <p className="mt-2 text-sm leading-5 text-slate-500">
+                      {feature.description}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

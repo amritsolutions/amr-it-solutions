@@ -5,34 +5,29 @@ import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-slate-950">
-  <Navbar />
+    <main className="min-h-screen overflow-x-hidden bg-white text-slate-950">
+      <Navbar />
 
-  <section className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-8">
-    <Hero />
-  </section>
+      <Hero />
 
-  <FadeIn>
-  <Services />
-</FadeIn>
+      <FadeIn>
+        <Services />
+      </FadeIn>
 
-<FadeIn>
-  <Portfolio />
-</FadeIn>
+      <FadeIn>
+        <Portfolio />
+      </FadeIn>
 
-<FadeIn>
-  <WhyUs />
-</FadeIn>
+      <FadeIn>
+        <WhyUs />
+      </FadeIn>
 
-<FadeIn>
-  <Contact />
-</FadeIn>
-
-
-
-
-</main>
+      <FadeIn>
+        <Contact />
+      </FadeIn>
+    </main>
   );
 }
