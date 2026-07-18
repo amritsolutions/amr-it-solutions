@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Zap, MapPin, Laptop, MessageCircle, Phone } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 
@@ -43,9 +44,13 @@ export default function ComputerHero() {
 
             <a
               href={WHATSAPP_URL}
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Neem contact op via WhatsApp"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-lg"
             >
-              🟢 WhatsApp ons
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp ons
             </a>
           </div>
 
@@ -53,6 +58,7 @@ export default function ComputerHero() {
             {benefits.map(({ Icon, text }) => (
               <div key={text} className="text-center text-slate-800">
                 <Icon className="mx-auto mb-3 h-10 w-10 text-blue-600" />
+
                 <p className="whitespace-pre-line text-sm font-medium leading-5">
                   {text}
                 </p>
@@ -62,8 +68,7 @@ export default function ComputerHero() {
         </div>
 
         {/* Rechterkant */}
-<div className="relative mt-4 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
-
+        <div className="relative mt-4 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
           {/* Grote subtiele achtergrond */}
           <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-50 lg:left-auto lg:right-0 lg:top-10 lg:h-[520px] lg:w-[620px] lg:translate-x-0" />
 
@@ -79,12 +84,12 @@ export default function ComputerHero() {
 
           {/* Afbeelding */}
           <Image
-  src="/images/computerrepair.png"
-  alt="Computerreparatie laptop en pc"
-  width={900}
-  height={680}
-  priority
-  className="relative z-20 mx-auto w-[90%] max-w-[520px] object-contain lg:w-full drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02]"
+            src="/images/computerrepair.png"
+            alt="Computerreparatie laptop en pc"
+            width={900}
+            height={680}
+            priority
+            className="relative z-20 mx-auto w-[90%] max-w-[520px] object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02] lg:w-full"
           />
         </div>
       </div>
