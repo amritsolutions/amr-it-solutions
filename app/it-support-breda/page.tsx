@@ -3,7 +3,7 @@ import ITSupportHero from "@/components/ITSupportHero";
 import ITSupportServices from "@/components/ITSupportServices";
 import ITSupportWhy from "@/components/ITSupportWhy";
 import ITSupportFAQ from "@/components/ITSupportFAQ";
-
+import ITSupportCTA from "@/components/ITSupportCTA";
 export const metadata: Metadata = {
   title: "IT Support Breda | Computerhulp aan huis & op afstand | AMR IT Solutions",
   description:
@@ -17,6 +17,7 @@ export default function ITSupportBredaPage() {
       <ITSupportServices />
       <ITSupportWhy />
       <ITSupportFAQ />
+      <ITSupportCTA />
     </main>
   );
 }
