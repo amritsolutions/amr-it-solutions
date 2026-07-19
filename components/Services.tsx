@@ -13,7 +13,7 @@ const services = [
     icon: <Laptop className="h-8 w-8 text-blue-600" />,
     title: "IT Support Breda",
     text: "Snelle hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik voor particulieren en kleine bedrijven in Breda en omgeving.",
-    link: "/computerreparatie",
+    link: "/it-support-breda",
   },
   {
     icon: <Monitor className="h-8 w-8 text-blue-600" />,
