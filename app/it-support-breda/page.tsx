@@ -1,41 +1,16 @@
-import ServiceHero from "@/components/ServiceHero";
+import type { Metadata } from "next";
+import ITSupportHero from "@/components/ITSupportHero";
+
+export const metadata: Metadata = {
+  title: "IT Support Breda | Computerhulp aan huis & op afstand | AMR IT Solutions",
+  description:
+    "Professionele IT Support in Breda voor particulieren, zzp'ers en kleine bedrijven. Hulp bij computers, laptops, wifi, printers en Microsoft 365.",
+};
 
 export default function ITSupportBredaPage() {
   return (
-    <>
-      <ServiceHero
-        eyebrow="IT SUPPORT BREDA"
-        title="IT Support in Breda voor particulieren én bedrijven"
-        description="Heeft u problemen met uw computer, laptop, wifi, printer of Microsoft 365? AMR IT Solutions biedt snelle en persoonlijke IT Support in Breda en omgeving. Wij helpen particulieren, zzp'ers en kleine bedrijven op locatie of op afstand."
-
-        image="/images/services/it-support-breda.png"
-        imageAlt="IT Support Breda"
-
-        primaryButtonText="IT Support aanvragen"
-        primaryButtonHref="/contact"
-
-        secondaryButtonText="WhatsApp ons"
-        secondaryButtonHref="whatsapp"
-
-        features={[
-          {
-            icon: "monitor",
-            title: "Computerhulp",
-          },
-          {
-            icon: "wifi",
-            title: "Wifi & Netwerk",
-          },
-          {
-            icon: "shield",
-            title: "Veilig & Betrouwbaar",
-          },
-          {
-            icon: "message-circle",
-            title: "Persoonlijke hulp",
-          },
-        ]}
-      />
-    </>
+    <main className="min-h-screen bg-white">
+      <ITSupportHero />
+    </main>
   );
 }
