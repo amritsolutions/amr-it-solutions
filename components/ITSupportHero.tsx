@@ -1,3 +1,4 @@
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -60,13 +61,15 @@ export default function ITSupportHero() {
             </Link>
 
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-50 hover:shadow-lg"
-            >
-              WhatsApp ons
-            </a>
+  href={WHATSAPP_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Neem contact op via WhatsApp"
+  className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-500 hover:text-white hover:shadow-xl"
+>
+  <WhatsAppIcon className="h-5 w-5" />
+  WhatsApp ons
+</a>
           </div>
 
           <div className="mt-12 grid max-w-2xl grid-cols-2 gap-8 sm:grid-cols-4">

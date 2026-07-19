@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export default function ITSupportCTA() {
@@ -30,14 +31,15 @@ export default function ITSupportCTA() {
             </Link>
 
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-white/70 px-8 py-5 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-blue-600"
-            >
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp ons
-            </a>
+  href={WHATSAPP_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Neem contact op via WhatsApp"
+  className="inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-white/70 px-8 py-5 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-blue-600 hover:shadow-xl"
+>
+  <WhatsAppIcon className="h-5 w-5" />
+  WhatsApp ons
+</a>
           </div>
         </div>
       </div>
