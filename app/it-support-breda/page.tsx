@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ITSupportHero from "@/components/ITSupportHero";
 import ITSupportServices from "@/components/ITSupportServices";
+import ITSupportWhy from "@/components/ITSupportWhy";
 
 export const metadata: Metadata = {
   title: "IT Support Breda | Computerhulp aan huis & op afstand | AMR IT Solutions",
@@ -13,6 +14,7 @@ export default function ITSupportBredaPage() {
     <main className="min-h-screen bg-white">
       <ITSupportHero />
       <ITSupportServices />
+      <ITSupportWhy />
     </main>
   );
 }
