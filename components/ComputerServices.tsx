@@ -23,7 +23,7 @@ const services = [
     Icon: Wrench,
     title: "Upgrades & reparaties",
     text: "Hardware-upgrades en reparaties voor laptops en desktopcomputers.",
-    link: "/#computer-upgrade-reparatie",
+    link: "/computer-upgrade-reparatie",
   },
 ];
 
