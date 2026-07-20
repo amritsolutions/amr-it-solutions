@@ -112,7 +112,7 @@ export default function ComputerUpgradeHero() {
 
           <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-2xl">
             <Image
-              src="/images/upgrade-reparatie.png"
+              src="/images/upgrade-reparatie1.png"
               alt="Computer upgrade en reparatie door AMR IT Solutions"
               width={900}
               height={700}
