@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ComputerUpgradeHero from "@/components/ComputerUpgradeHero";
 import ComputerUpgradeServices from "@/components/ComputerUpgradeServices";
 import ComputerUpgradeWhy from "@/components/ComputerUpgradeWhy";
+import ComputerUpgradeFAQ from "@/components/ComputerUpgradeFAQ";
 
 export const metadata: Metadata = {
   title: "Computer Upgrade & Reparatie Breda | AMR IT Solutions",
@@ -15,6 +16,7 @@ export default function ComputerUpgradePage() {
       <ComputerUpgradeHero />
       <ComputerUpgradeServices />
       <ComputerUpgradeWhy />
+      <ComputerUpgradeFAQ />
     </main>
   );
 }
