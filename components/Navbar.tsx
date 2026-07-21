@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ArrowRight,
   Menu,
@@ -11,7 +11,6 @@ import {
   X,
 } from "lucide-react";
 import {
-  type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent,
   type ReactNode,
   useEffect,
@@ -26,18 +25,22 @@ const navigationLinks = [
   {
     label: "Home",
     sectionId: "home",
+    href: "/",
   },
   {
     label: "Diensten",
     sectionId: "diensten",
+    href: "/#diensten",
   },
   {
     label: "Portfolio",
     sectionId: "portfolio",
+    href: "/#portfolio",
   },
   {
     label: "Waarom",
     sectionId: "waarom",
+    href: "/#waarom",
   },
 ];
 
@@ -148,7 +151,7 @@ function HighlightedText({
 
     parts.push(
       <mark
-        key={`${matchIndex}-${text}`}
+        key={`${text}-${matchIndex}`}
         className="rounded bg-blue-100 px-0.5 text-blue-700"
       >
         {text.slice(matchIndex, matchIndex + normalizedQuery.length)}
@@ -156,6 +159,7 @@ function HighlightedText({
     );
 
     currentIndex = matchIndex + normalizedQuery.length;
+
     matchIndex = lowerCaseText.indexOf(
       lowerCaseQuery,
       currentIndex,
@@ -201,12 +205,17 @@ function getCategoryClasses(category: string) {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const router = useRouter();
+
+  const isHomepage = pathname === "/";
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState(
+    isHomepage ? "home" : "",
+  );
   const [selectedResultIndex, setSelectedResultIndex] =
     useState(0);
 
@@ -265,22 +274,95 @@ export default function Navbar() {
       );
   }, [searchQuery]);
 
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setSearchOpen(false);
-        setMobileMenuOpen(false);
-        setSearchQuery("");
-        setSelectedResultIndex(0);
+  function closeMenus() {
+    setMobileMenuOpen(false);
+    setSearchOpen(false);
+    setSearchQuery("");
+    setSelectedResultIndex(0);
+  }
+
+  function toggleSearch() {
+    setSearchOpen((current) => !current);
+    setMobileMenuOpen(false);
+    setSearchQuery("");
+    setSelectedResultIndex(0);
+  }
+
+  function scrollToElement(sectionId: string) {
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      return false;
+    }
+
+    const sectionTop =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: Math.max(sectionTop, 0),
+      behavior: "smooth",
+    });
+
+    setActiveSection(sectionId);
+
+    window.history.replaceState(
+      null,
+      "",
+      sectionId === "home" ? "/" : `/#${sectionId}`,
+    );
+
+    return true;
+  }
+
+  function handleNavigationClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) {
+    closeMenus();
+
+    if (!isHomepage) {
+      return;
+    }
+
+    event.preventDefault();
+
+    scrollToElement(sectionId);
+  }
+
+  function handleContactClick(
+    event: MouseEvent<HTMLAnchorElement>,
+  ) {
+    closeMenus();
+
+    if (!isHomepage) {
+      return;
+    }
+
+    event.preventDefault();
+
+    scrollToElement("contact");
+  }
+
+  function openSearchResult(href: string) {
+    closeMenus();
+
+    if (href.startsWith("/#") && isHomepage) {
+      const sectionId = href.replace("/#", "");
+
+      if (scrollToElement(sectionId)) {
+        return;
       }
     }
 
-    document.addEventListener("keydown", handleKeyDown);
+    router.push(href);
+  }
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  useEffect(() => {
+    setActiveSection(isHomepage ? "home" : "");
+    closeMenus();
+  }, [isHomepage, pathname]);
 
   useEffect(() => {
     if (!searchOpen) {
@@ -292,7 +374,7 @@ export default function Navbar() {
 
     const timeout = window.setTimeout(() => {
       searchInputRef.current?.focus();
-    }, 100);
+    }, 80);
 
     return () => {
       window.clearTimeout(timeout);
@@ -305,6 +387,10 @@ export default function Navbar() {
   }, [searchQuery]);
 
   useEffect(() => {
+    if (!searchOpen) {
+      return;
+    }
+
     const selectedResult =
       resultRefs.current[selectedResultIndex];
 
@@ -312,14 +398,80 @@ export default function Navbar() {
       block: "nearest",
       behavior: "smooth",
     });
-  }, [selectedResultIndex]);
+  }, [searchOpen, selectedResultIndex]);
 
   useEffect(() => {
+    function handleGlobalKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenus();
+        return;
+      }
+
+      if (!searchOpen || filteredSearchItems.length === 0) {
+        return;
+      }
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+
+        setSelectedResultIndex((currentIndex) =>
+          currentIndex >= filteredSearchItems.length - 1
+            ? 0
+            : currentIndex + 1,
+        );
+
+        return;
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+
+        setSelectedResultIndex((currentIndex) =>
+          currentIndex <= 0
+            ? filteredSearchItems.length - 1
+            : currentIndex - 1,
+        );
+
+        return;
+      }
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        const selectedItem =
+          filteredSearchItems[selectedResultIndex];
+
+        if (selectedItem) {
+          openSearchResult(selectedItem.href);
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+
+    return () => {
+      window.removeEventListener(
+        "keydown",
+        handleGlobalKeyDown,
+      );
+    };
+  }, [
+    filteredSearchItems,
+    isHomepage,
+    searchOpen,
+    selectedResultIndex,
+  ]);
+
+  useEffect(() => {
+    if (!isHomepage) {
+      return;
+    }
+
     let animationFrameId: number | null = null;
 
     function updateActiveSection() {
       const activationPoint = HEADER_HEIGHT + 80;
-
       let currentSection = "home";
 
       for (const link of navigationLinks) {
@@ -373,125 +525,7 @@ export default function Navbar() {
         window.cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
-
-  function closeMenus() {
-    setMobileMenuOpen(false);
-    setSearchOpen(false);
-    setSearchQuery("");
-    setSelectedResultIndex(0);
-  }
-
-  function toggleSearch() {
-    setSearchOpen((current) => !current);
-    setMobileMenuOpen(false);
-    setSearchQuery("");
-    setSelectedResultIndex(0);
-  }
-
-  function openSearchResult(href: string) {
-    closeMenus();
-    router.push(href);
-  }
-
-  function handleSearchKeyDown(
-    event: ReactKeyboardEvent<HTMLInputElement>,
-  ) {
-    if (filteredSearchItems.length === 0) {
-      return;
-    }
-
-    if (event.key === "ArrowDown") {
-      event.preventDefault();
-
-      setSelectedResultIndex((currentIndex) =>
-        currentIndex >= filteredSearchItems.length - 1
-          ? 0
-          : currentIndex + 1,
-      );
-    }
-
-    if (event.key === "ArrowUp") {
-      event.preventDefault();
-
-      setSelectedResultIndex((currentIndex) =>
-        currentIndex <= 0
-          ? filteredSearchItems.length - 1
-          : currentIndex - 1,
-      );
-    }
-
-    if (event.key === "Enter") {
-      event.preventDefault();
-
-      const selectedItem =
-        filteredSearchItems[selectedResultIndex];
-
-      if (selectedItem) {
-        openSearchResult(selectedItem.href);
-      }
-    }
-  }
-
-  function scrollToSection(
-    event: MouseEvent<HTMLAnchorElement>,
-    sectionId: string,
-  ) {
-    event.preventDefault();
-
-    const section = document.getElementById(sectionId);
-
-    if (!section) {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-
-    setActiveSection(sectionId);
-    closeMenus();
-
-    const sectionTop =
-      section.getBoundingClientRect().top +
-      window.scrollY -
-      HEADER_HEIGHT;
-
-    window.scrollTo({
-      top: Math.max(sectionTop, 0),
-      behavior: "smooth",
-    });
-
-    window.history.replaceState(
-      null,
-      "",
-      sectionId === "home" ? "/" : `/#${sectionId}`,
-    );
-  }
-
-  function scrollToContact(
-    event: MouseEvent<HTMLAnchorElement>,
-  ) {
-    event.preventDefault();
-
-    const contactSection = document.getElementById("contact");
-
-    if (!contactSection) {
-      window.location.href = "/#contact";
-      return;
-    }
-
-    closeMenus();
-
-    const sectionTop =
-      contactSection.getBoundingClientRect().top +
-      window.scrollY -
-      HEADER_HEIGHT;
-
-    window.scrollTo({
-      top: Math.max(sectionTop, 0),
-      behavior: "smooth",
-    });
-
-    window.history.replaceState(null, "", "/#contact");
-  }
+  }, [isHomepage]);
 
   return (
     <>
@@ -499,10 +533,10 @@ export default function Navbar() {
         <nav aria-label="Hoofdnavigatie">
           <div className="mx-auto flex min-h-[88px] max-w-7xl items-center justify-between gap-8 px-6">
             <a
-              href="#home"
+              href="/"
               aria-label="Ga naar de homepage"
               onClick={(event) =>
-                scrollToSection(event, "home")
+                handleNavigationClick(event, "home")
               }
               className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.03]"
             >
@@ -519,14 +553,15 @@ export default function Navbar() {
             <div className="hidden items-center gap-1 lg:flex">
               {navigationLinks.map((link) => {
                 const isActive =
+                  isHomepage &&
                   activeSection === link.sectionId;
 
                 return (
                   <a
                     key={link.sectionId}
-                    href={`#${link.sectionId}`}
+                    href={link.href}
                     onClick={(event) =>
-                      scrollToSection(
+                      handleNavigationClick(
                         event,
                         link.sectionId,
                       )
@@ -576,8 +611,8 @@ export default function Navbar() {
               </button>
 
               <a
-                href="#contact"
-                onClick={scrollToContact}
+                href="/#contact"
+                onClick={handleContactClick}
                 className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-600/35"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
@@ -647,14 +682,15 @@ export default function Navbar() {
               <div className="mx-auto flex max-w-7xl flex-col">
                 {navigationLinks.map((link) => {
                   const isActive =
+                    isHomepage &&
                     activeSection === link.sectionId;
 
                   return (
                     <a
                       key={link.sectionId}
-                      href={`#${link.sectionId}`}
+                      href={link.href}
                       onClick={(event) =>
-                        scrollToSection(
+                        handleNavigationClick(
                           event,
                           link.sectionId,
                         )
@@ -678,8 +714,8 @@ export default function Navbar() {
                 })}
 
                 <a
-                  href="#contact"
-                  onClick={scrollToContact}
+                  href="/#contact"
+                  onClick={handleContactClick}
                   className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/25"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
@@ -710,12 +746,11 @@ export default function Navbar() {
 
                 <input
                   ref={searchInputRef}
-                  type="search"
+                  type="text"
                   value={searchQuery}
                   onChange={(event) =>
                     setSearchQuery(event.target.value)
                   }
-                  onKeyDown={handleSearchKeyDown}
                   placeholder="Waar kunnen we je mee helpen?"
                   aria-label="Zoeken op de website"
                   aria-controls="website-search-results"
@@ -805,7 +840,10 @@ export default function Navbar() {
                       onFocus={() =>
                         setSelectedResultIndex(index)
                       }
-                      onClick={closeMenus}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        openSearchResult(item.href);
+                      }}
                       className={`group flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-3.5 outline-none transition-all last:border-b-0 sm:px-6 ${
                         isSelected
                           ? "bg-blue-50/80"
@@ -814,7 +852,7 @@ export default function Navbar() {
                     >
                       <div className="min-w-0">
                         <span
-                          className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] transition-colors ${
+                          className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors ${
                             isSelected
                               ? categoryClasses.selectedBadge
                               : categoryClasses.badge
@@ -873,17 +911,15 @@ export default function Navbar() {
                   </p>
 
                   <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-slate-500">
-                    Probeer bijvoorbeeld computer, laptop,
-                    wifi, website of Microsoft 365.
+                    Probeer bijvoorbeeld computer, laptop, wifi,
+                    website of Microsoft 365.
                   </p>
                 </div>
               )}
             </div>
 
             <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/80 px-5 py-3 text-xs text-slate-400 sm:px-6">
-              <span>
-                Klik buiten het venster om te sluiten
-              </span>
+              <span>Klik buiten het venster om te sluiten</span>
 
               <span className="hidden sm:inline">
                 ESC sluiten
