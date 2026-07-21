@@ -3,27 +3,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, MessageCircle, Search, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  MouseEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+const HEADER_HEIGHT = 88;
 
 const navigationLinks = [
   {
     label: "Home",
-    href: "/#home",
     sectionId: "home",
   },
   {
     label: "Diensten",
-    href: "/#diensten",
     sectionId: "diensten",
   },
   {
     label: "Portfolio",
-    href: "/#portfolio",
     sectionId: "portfolio",
   },
   {
     label: "Waarom",
-    href: "/#waarom",
     sectionId: "waarom",
   },
 ];
@@ -142,52 +146,76 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (searchOpen) {
-      window.setTimeout(() => {
-        searchInputRef.current?.focus();
-      }, 100);
+    if (!searchOpen) {
+      return;
     }
+
+    const timeout = window.setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 100);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
   }, [searchOpen]);
 
   useEffect(() => {
-    let ticking = false;
+    let animationFrameId: number | null = null;
 
-    function determineActiveSection() {
-      const sectionIds = navigationLinks.map((link) => link.sectionId);
-      const scrollPosition = window.scrollY + 150;
+    function updateActiveSection() {
+      const activationPoint = HEADER_HEIGHT + 80;
 
       let currentSection = "home";
 
-      sectionIds.forEach((sectionId) => {
-        const section = document.getElementById(sectionId);
+      for (const link of navigationLinks) {
+        const section = document.getElementById(link.sectionId);
 
-        if (section && section.offsetTop <= scrollPosition) {
-          currentSection = sectionId;
+        if (!section) {
+          continue;
         }
-      });
+
+        const rectangle = section.getBoundingClientRect();
+
+        if (
+          rectangle.top <= activationPoint &&
+          rectangle.bottom > activationPoint
+        ) {
+          currentSection = link.sectionId;
+          break;
+        }
+
+        if (rectangle.top <= activationPoint) {
+          currentSection = link.sectionId;
+        }
+      }
 
       setActiveSection(currentSection);
-      ticking = false;
+      animationFrameId = null;
     }
 
     function handleScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(determineActiveSection);
-        ticking = true;
+      if (animationFrameId !== null) {
+        return;
       }
+
+      animationFrameId = window.requestAnimationFrame(updateActiveSection);
     }
 
-    determineActiveSection();
+    updateActiveSection();
 
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
 
-    window.addEventListener("resize", determineActiveSection);
+    window.addEventListener("resize", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", determineActiveSection);
+      window.removeEventListener("resize", handleScroll);
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
@@ -200,11 +228,65 @@ export default function Navbar() {
   function toggleSearch() {
     setSearchOpen((current) => !current);
     setMobileMenuOpen(false);
+    setSearchQuery("");
   }
 
-  function handleNavigationClick(sectionId: string) {
+  function scrollToSection(
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) {
+    event.preventDefault();
+
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
     setActiveSection(sectionId);
     closeMenus();
+
+    const sectionTop =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: Math.max(sectionTop, 0),
+      behavior: "smooth",
+    });
+
+    window.history.replaceState(
+      null,
+      "",
+      sectionId === "home" ? "/" : `/#${sectionId}`,
+    );
+  }
+
+  function scrollToContact(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+
+    const contactSection = document.getElementById("contact");
+
+    if (!contactSection) {
+      window.location.href = "/#contact";
+      return;
+    }
+
+    closeMenus();
+
+    const sectionTop =
+      contactSection.getBoundingClientRect().top +
+      window.scrollY -
+      HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: Math.max(sectionTop, 0),
+      behavior: "smooth",
+    });
+
+    window.history.replaceState(null, "", "/#contact");
   }
 
   return (
@@ -212,11 +294,11 @@ export default function Navbar() {
       <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/70 bg-white/95 shadow-sm backdrop-blur-xl">
         <nav aria-label="Hoofdnavigatie">
           <div className="mx-auto flex min-h-[88px] max-w-7xl items-center justify-between gap-8 px-6">
-            <Link
-              href="/#home"
+            <a
+              href="#home"
               aria-label="Ga naar de homepage"
+              onClick={(event) => scrollToSection(event, "home")}
               className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
-              onClick={() => handleNavigationClick("home")}
             >
               <Image
                 src="/logos/logo.png"
@@ -226,18 +308,18 @@ export default function Navbar() {
                 priority
                 className="h-auto w-[145px] sm:w-[160px] lg:w-[170px]"
               />
-            </Link>
+            </a>
 
             <div className="hidden items-center gap-1 lg:flex">
               {navigationLinks.map((link) => {
                 const isActive = activeSection === link.sectionId;
 
                 return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() =>
-                      handleNavigationClick(link.sectionId)
+                  <a
+                    key={link.sectionId}
+                    href={`#${link.sectionId}`}
+                    onClick={(event) =>
+                      scrollToSection(event, link.sectionId)
                     }
                     aria-current={isActive ? "page" : undefined}
                     className={`relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 ${
@@ -253,7 +335,7 @@ export default function Navbar() {
                         isActive ? "w-6 opacity-100" : "w-0 opacity-0"
                       }`}
                     />
-                  </Link>
+                  </a>
                 );
               })}
 
@@ -261,7 +343,9 @@ export default function Navbar() {
                 type="button"
                 onClick={toggleSearch}
                 aria-label={
-                  searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
+                  searchOpen
+                    ? "Zoekvenster sluiten"
+                    : "Website doorzoeken"
                 }
                 aria-expanded={searchOpen}
                 className={`ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 ${
@@ -277,9 +361,9 @@ export default function Navbar() {
                 )}
               </button>
 
-              <Link
-                href="/#contact"
-                onClick={closeMenus}
+              <a
+                href="#contact"
+                onClick={scrollToContact}
                 className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
@@ -287,7 +371,7 @@ export default function Navbar() {
                 </span>
 
                 Contact
-              </Link>
+              </a>
             </div>
 
             <div className="flex items-center gap-2 lg:hidden">
@@ -295,7 +379,9 @@ export default function Navbar() {
                 type="button"
                 onClick={toggleSearch}
                 aria-label={
-                  searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
+                  searchOpen
+                    ? "Zoekvenster sluiten"
+                    : "Website doorzoeken"
                 }
                 aria-expanded={searchOpen}
                 className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
@@ -318,7 +404,9 @@ export default function Navbar() {
                   setSearchOpen(false);
                   setSearchQuery("");
                 }}
-                aria-label={mobileMenuOpen ? "Menu sluiten" : "Menu openen"}
+                aria-label={
+                  mobileMenuOpen ? "Menu sluiten" : "Menu openen"
+                }
                 aria-expanded={mobileMenuOpen}
                 className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
                   mobileMenuOpen
@@ -345,7 +433,9 @@ export default function Navbar() {
                     ref={searchInputRef}
                     type="search"
                     value={searchQuery}
-                    onChange={(event) => setSearchQuery(event.target.value)}
+                    onChange={(event) =>
+                      setSearchQuery(event.target.value)
+                    }
                     placeholder="Waar kunnen we je mee helpen?"
                     aria-label="Zoeken op de website"
                     className="h-14 w-full rounded-2xl border border-slate-300 bg-slate-50 pl-14 pr-14 text-base text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
@@ -392,8 +482,8 @@ export default function Navbar() {
                       </p>
 
                       <p className="mt-2 text-sm text-slate-500">
-                        Probeer bijvoorbeeld computer, laptop, wifi of Microsoft
-                        365.
+                        Probeer bijvoorbeeld computer, laptop, wifi of
+                        Microsoft 365.
                       </p>
                     </div>
                   )}
@@ -406,14 +496,15 @@ export default function Navbar() {
             <div className="max-h-[calc(100vh-88px)] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 shadow-xl lg:hidden">
               <div className="mx-auto flex max-w-7xl flex-col">
                 {navigationLinks.map((link) => {
-                  const isActive = activeSection === link.sectionId;
+                  const isActive =
+                    activeSection === link.sectionId;
 
                   return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() =>
-                        handleNavigationClick(link.sectionId)
+                    <a
+                      key={link.sectionId}
+                      href={`#${link.sectionId}`}
+                      onClick={(event) =>
+                        scrollToSection(event, link.sectionId)
                       }
                       aria-current={isActive ? "page" : undefined}
                       className={`flex items-center justify-between border-b border-slate-100 px-3 py-4 text-base font-bold transition-all ${
@@ -427,13 +518,13 @@ export default function Navbar() {
                       {isActive && (
                         <span className="h-2 w-2 rounded-full bg-blue-600" />
                       )}
-                    </Link>
+                    </a>
                   );
                 })}
 
-                <Link
-                  href="/#contact"
-                  onClick={closeMenus}
+                <a
+                  href="#contact"
+                  onClick={scrollToContact}
                   className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
@@ -441,7 +532,7 @@ export default function Navbar() {
                   </span>
 
                   Contact opnemen
-                </Link>
+                </a>
               </div>
             </div>
           )}
