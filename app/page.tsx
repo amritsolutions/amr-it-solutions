@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
@@ -9,7 +8,7 @@ import FadeIn from "@/components/FadeIn";
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-clip bg-white text-slate-950">
-      <Navbar />
+
 
       <Hero />
 
