@@ -2,14 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ChevronDown,
-  Globe2,
-  Menu,
-  MessageCircle,
-  Search,
-  X,
-} from "lucide-react";
+import { Menu, MessageCircle, Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const navigationLinks = [
@@ -103,10 +96,8 @@ const searchItems = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [languageOpen, setLanguageOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const languageMenuRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const filteredSearchItems = useMemo(() => {
@@ -130,28 +121,17 @@ export default function Navbar() {
   }, [searchQuery]);
 
   useEffect(() => {
-    function handleOutsideClick(event: MouseEvent) {
-      if (
-        languageMenuRef.current &&
-        !languageMenuRef.current.contains(event.target as Node)
-      ) {
-        setLanguageOpen(false);
-      }
-    }
-
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setSearchOpen(false);
-        setLanguageOpen(false);
         setMobileMenuOpen(false);
+        setSearchQuery("");
       }
     }
 
-    document.addEventListener("mousedown", handleOutsideClick);
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
@@ -167,13 +147,11 @@ export default function Navbar() {
   function closeMenus() {
     setMobileMenuOpen(false);
     setSearchOpen(false);
-    setLanguageOpen(false);
     setSearchQuery("");
   }
 
   function toggleSearch() {
     setSearchOpen((current) => !current);
-    setLanguageOpen(false);
     setMobileMenuOpen(false);
   }
 
@@ -208,59 +186,6 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <div
-              ref={languageMenuRef}
-              className="relative ml-2"
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  setLanguageOpen((current) => !current);
-                  setSearchOpen(false);
-                }}
-                aria-expanded={languageOpen}
-                aria-haspopup="menu"
-                aria-label="Taal selecteren"
-                className="inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-bold text-slate-700 transition-colors duration-200 hover:bg-blue-50 hover:text-blue-600"
-              >
-                <Globe2 className="h-5 w-5" />
-                <span>NL</span>
-
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    languageOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {languageOpen && (
-                <div
-                  role="menu"
-                  className="absolute right-0 top-full mt-3 w-48 overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-900/10"
-                >
-                  <Link
-                    href="/"
-                    role="menuitem"
-                    onClick={closeMenus}
-                    className="flex items-center justify-between rounded-xl bg-blue-50 px-4 py-3 text-sm font-bold text-blue-600"
-                  >
-                    <span>Nederlands</span>
-                    <span className="text-xs">NL</span>
-                  </Link>
-
-                  <Link
-                    href="/en"
-                    role="menuitem"
-                    onClick={closeMenus}
-                    className="mt-1 flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600"
-                  >
-                    <span>English</span>
-                    <span className="text-xs text-slate-400">EN</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <button
               type="button"
               onClick={toggleSearch}
@@ -268,7 +193,7 @@ export default function Navbar() {
                 searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
               }
               aria-expanded={searchOpen}
-              className="ml-1 inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
+              className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
             >
               {searchOpen ? (
                 <X className="h-5 w-5" />
@@ -296,6 +221,7 @@ export default function Navbar() {
               aria-label={
                 searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
               }
+              aria-expanded={searchOpen}
               className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
             >
               {searchOpen ? (
@@ -310,7 +236,7 @@ export default function Navbar() {
               onClick={() => {
                 setMobileMenuOpen((current) => !current);
                 setSearchOpen(false);
-                setLanguageOpen(false);
+                setSearchQuery("");
               }}
               aria-label={
                 mobileMenuOpen ? "Menu sluiten" : "Menu openen"
@@ -407,32 +333,6 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-
-              <div className="mt-6">
-                <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400">
-                  Taal
-                </p>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <Link
-                    href="/"
-                    onClick={closeMenus}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-bold text-blue-600"
-                  >
-                    <Globe2 className="h-4 w-4" />
-                    NL
-                  </Link>
-
-                  <Link
-                    href="/en"
-                    onClick={closeMenus}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 font-bold text-slate-700 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
-                  >
-                    <Globe2 className="h-4 w-4" />
-                    EN
-                  </Link>
-                </div>
-              </div>
 
               <Link
                 href="/#contact"
