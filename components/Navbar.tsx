@@ -9,18 +9,22 @@ const navigationLinks = [
   {
     label: "Home",
     href: "/#home",
+    sectionId: "home",
   },
   {
     label: "Diensten",
     href: "/#diensten",
+    sectionId: "diensten",
   },
   {
     label: "Portfolio",
     href: "/#portfolio",
+    sectionId: "portfolio",
   },
   {
     label: "Waarom",
     href: "/#waarom",
+    sectionId: "waarom",
   },
 ];
 
@@ -97,6 +101,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeSection, setActiveSection] = useState("home");
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -144,6 +149,48 @@ export default function Navbar() {
     }
   }, [searchOpen]);
 
+  useEffect(() => {
+    let ticking = false;
+
+    function determineActiveSection() {
+      const sectionIds = navigationLinks.map((link) => link.sectionId);
+      const scrollPosition = window.scrollY + 150;
+
+      let currentSection = "home";
+
+      sectionIds.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+
+        if (section && section.offsetTop <= scrollPosition) {
+          currentSection = sectionId;
+        }
+      });
+
+      setActiveSection(currentSection);
+      ticking = false;
+    }
+
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(determineActiveSection);
+        ticking = true;
+      }
+    }
+
+    determineActiveSection();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", determineActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", determineActiveSection);
+    };
+  }, []);
+
   function closeMenus() {
     setMobileMenuOpen(false);
     setSearchOpen(false);
@@ -155,6 +202,11 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }
 
+  function handleNavigationClick(sectionId: string) {
+    setActiveSection(sectionId);
+    closeMenus();
+  }
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/70 bg-white/95 shadow-sm backdrop-blur-xl">
@@ -163,8 +215,8 @@ export default function Navbar() {
             <Link
               href="/#home"
               aria-label="Ga naar de homepage"
-              className="relative z-10 flex shrink-0 items-center"
-              onClick={closeMenus}
+              className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
+              onClick={() => handleNavigationClick("home")}
             >
               <Image
                 src="/logos/logo.png"
@@ -177,15 +229,33 @@ export default function Navbar() {
             </Link>
 
             <div className="hidden items-center gap-1 lg:flex">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:bg-blue-50 hover:text-blue-600"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navigationLinks.map((link) => {
+                const isActive = activeSection === link.sectionId;
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() =>
+                      handleNavigationClick(link.sectionId)
+                    }
+                    aria-current={isActive ? "page" : undefined}
+                    className={`relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 ${
+                      isActive
+                        ? "bg-blue-50 text-blue-600"
+                        : "text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                    }`}
+                  >
+                    {link.label}
+
+                    <span
+                      className={`absolute bottom-1.5 left-1/2 h-0.5 -translate-x-1/2 rounded-full bg-blue-600 transition-all duration-300 ${
+                        isActive ? "w-6 opacity-100" : "w-0 opacity-0"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
 
               <button
                 type="button"
@@ -194,7 +264,11 @@ export default function Navbar() {
                   searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
                 }
                 aria-expanded={searchOpen}
-                className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
+                className={`ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 ${
+                  searchOpen
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                }`}
               >
                 {searchOpen ? (
                   <X className="h-5 w-5" />
@@ -205,6 +279,7 @@ export default function Navbar() {
 
               <Link
                 href="/#contact"
+                onClick={closeMenus}
                 className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
@@ -223,7 +298,11 @@ export default function Navbar() {
                   searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
                 }
                 aria-expanded={searchOpen}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
+                  searchOpen
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                }`}
               >
                 {searchOpen ? (
                   <X className="h-5 w-5" />
@@ -241,7 +320,11 @@ export default function Navbar() {
                 }}
                 aria-label={mobileMenuOpen ? "Menu sluiten" : "Menu openen"}
                 aria-expanded={mobileMenuOpen}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
+                  mobileMenuOpen
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                }`}
               >
                 {mobileMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -287,7 +370,7 @@ export default function Navbar() {
                         key={item.href}
                         href={item.href}
                         onClick={closeMenus}
-                        className="group flex items-center justify-between gap-5 border-b border-slate-100 px-5 py-4 last:border-b-0 hover:bg-blue-50"
+                        className="group flex items-center justify-between gap-5 border-b border-slate-100 px-5 py-4 transition-colors last:border-b-0 hover:bg-blue-50"
                       >
                         <div>
                           <p className="font-bold text-slate-900 transition-colors group-hover:text-blue-600">
@@ -322,16 +405,31 @@ export default function Navbar() {
           {mobileMenuOpen && (
             <div className="max-h-[calc(100vh-88px)] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 shadow-xl lg:hidden">
               <div className="mx-auto flex max-w-7xl flex-col">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeMenus}
-                    className="border-b border-slate-100 py-4 text-base font-bold text-slate-800 transition-colors hover:text-blue-600"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navigationLinks.map((link) => {
+                  const isActive = activeSection === link.sectionId;
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() =>
+                        handleNavigationClick(link.sectionId)
+                      }
+                      aria-current={isActive ? "page" : undefined}
+                      className={`flex items-center justify-between border-b border-slate-100 px-3 py-4 text-base font-bold transition-all ${
+                        isActive
+                          ? "rounded-xl border-transparent bg-blue-50 text-blue-600"
+                          : "text-slate-800 hover:text-blue-600"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-blue-600" />
+                      )}
+                    </Link>
+                  );
+                })}
 
                 <Link
                   href="/#contact"
