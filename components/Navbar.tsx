@@ -156,199 +156,201 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/70 bg-white/95 shadow-sm backdrop-blur-xl">
-      <nav aria-label="Hoofdnavigatie">
-        <div className="mx-auto flex min-h-[88px] max-w-7xl items-center justify-between gap-8 px-6">
-          <Link
-            href="/#home"
-            aria-label="Ga naar de homepage"
-            className="relative z-10 flex shrink-0 items-center"
-            onClick={closeMenus}
-          >
-            <Image
-              src="/logos/logo.png"
-              alt="AMR IT Solutions"
-              width={170}
-              height={55}
-              priority
-              className="h-auto w-[145px] sm:w-[160px] lg:w-[170px]"
-            />
-          </Link>
-
-          <div className="hidden items-center gap-1 lg:flex">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:bg-blue-50 hover:text-blue-600"
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <button
-              type="button"
-              onClick={toggleSearch}
-              aria-label={
-                searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
-              }
-              aria-expanded={searchOpen}
-              className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
-            >
-              {searchOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Search className="h-5 w-5" />
-              )}
-            </button>
-
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-slate-200/70 bg-white/95 shadow-sm backdrop-blur-xl">
+        <nav aria-label="Hoofdnavigatie">
+          <div className="mx-auto flex min-h-[88px] max-w-7xl items-center justify-between gap-8 px-6">
             <Link
-              href="/#contact"
-              className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
+              href="/#home"
+              aria-label="Ga naar de homepage"
+              className="relative z-10 flex shrink-0 items-center"
+              onClick={closeMenus}
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
-                <MessageCircle className="h-4 w-4" />
-              </span>
-
-              Contact
+              <Image
+                src="/logos/logo.png"
+                alt="AMR IT Solutions"
+                width={170}
+                height={55}
+                priority
+                className="h-auto w-[145px] sm:w-[160px] lg:w-[170px]"
+              />
             </Link>
-          </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              type="button"
-              onClick={toggleSearch}
-              aria-label={
-                searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
-              }
-              aria-expanded={searchOpen}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
-            >
-              {searchOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Search className="h-5 w-5" />
-              )}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen((current) => !current);
-                setSearchOpen(false);
-                setSearchQuery("");
-              }}
-              aria-label={
-                mobileMenuOpen ? "Menu sluiten" : "Menu openen"
-              }
-              aria-expanded={mobileMenuOpen}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {searchOpen && (
-          <div className="border-t border-slate-200 bg-white shadow-xl">
-            <div className="mx-auto max-w-4xl px-6 py-6">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-
-                <input
-                  ref={searchInputRef}
-                  type="search"
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  placeholder="Waar kunnen we je mee helpen?"
-                  aria-label="Zoeken op de website"
-                  className="h-14 w-full rounded-2xl border border-slate-300 bg-slate-50 pl-14 pr-14 text-base text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                />
-
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery("")}
-                    aria-label="Zoekopdracht wissen"
-                    className="absolute right-4 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-700"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
-
-              <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200">
-                {filteredSearchItems.length > 0 ? (
-                  filteredSearchItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeMenus}
-                      className="group flex items-center justify-between gap-5 border-b border-slate-100 px-5 py-4 last:border-b-0 hover:bg-blue-50"
-                    >
-                      <div>
-                        <p className="font-bold text-slate-900 transition-colors group-hover:text-blue-600">
-                          {item.title}
-                        </p>
-
-                        <p className="mt-1 text-sm text-slate-500">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      <Search className="h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-blue-600" />
-                    </Link>
-                  ))
-                ) : (
-                  <div className="px-5 py-8 text-center">
-                    <p className="font-bold text-slate-900">
-                      Geen resultaten gevonden
-                    </p>
-
-                    <p className="mt-2 text-sm text-slate-500">
-                      Probeer bijvoorbeeld computer, laptop, wifi of Microsoft
-                      365.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {mobileMenuOpen && (
-          <div className="border-t border-slate-200 bg-white px-6 py-6 shadow-xl lg:hidden">
-            <div className="mx-auto flex max-w-7xl flex-col">
+            <div className="hidden items-center gap-1 lg:flex">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={closeMenus}
-                  className="border-b border-slate-100 py-4 text-base font-bold text-slate-800 transition-colors hover:text-blue-600"
+                  className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:bg-blue-50 hover:text-blue-600"
                 >
                   {link.label}
                 </Link>
               ))}
 
+              <button
+                type="button"
+                onClick={toggleSearch}
+                aria-label={
+                  searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
+                }
+                aria-expanded={searchOpen}
+                className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
+              >
+                {searchOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Search className="h-5 w-5" />
+                )}
+              </button>
+
               <Link
                 href="/#contact"
-                onClick={closeMenus}
-                className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700"
+                className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
                   <MessageCircle className="h-4 w-4" />
                 </span>
 
-                Contact opnemen
+                Contact
               </Link>
             </div>
+
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                type="button"
+                onClick={toggleSearch}
+                aria-label={
+                  searchOpen ? "Zoekvenster sluiten" : "Website doorzoeken"
+                }
+                aria-expanded={searchOpen}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+              >
+                {searchOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Search className="h-5 w-5" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen((current) => !current);
+                  setSearchOpen(false);
+                  setSearchQuery("");
+                }}
+                aria-label={mobileMenuOpen ? "Menu sluiten" : "Menu openen"}
+                aria-expanded={mobileMenuOpen}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
-        )}
-      </nav>
-    </header>
+
+          {searchOpen && (
+            <div className="border-t border-slate-200 bg-white shadow-xl">
+              <div className="mx-auto max-w-4xl px-6 py-6">
+                <div className="relative">
+                  <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+
+                  <input
+                    ref={searchInputRef}
+                    type="search"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    placeholder="Waar kunnen we je mee helpen?"
+                    aria-label="Zoeken op de website"
+                    className="h-14 w-full rounded-2xl border border-slate-300 bg-slate-50 pl-14 pr-14 text-base text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                  />
+
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      aria-label="Zoekopdracht wissen"
+                      className="absolute right-4 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-700"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="mt-4 max-h-[60vh] overflow-y-auto rounded-2xl border border-slate-200">
+                  {filteredSearchItems.length > 0 ? (
+                    filteredSearchItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={closeMenus}
+                        className="group flex items-center justify-between gap-5 border-b border-slate-100 px-5 py-4 last:border-b-0 hover:bg-blue-50"
+                      >
+                        <div>
+                          <p className="font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                            {item.title}
+                          </p>
+
+                          <p className="mt-1 text-sm text-slate-500">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        <Search className="h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-blue-600" />
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-5 py-8 text-center">
+                      <p className="font-bold text-slate-900">
+                        Geen resultaten gevonden
+                      </p>
+
+                      <p className="mt-2 text-sm text-slate-500">
+                        Probeer bijvoorbeeld computer, laptop, wifi of Microsoft
+                        365.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {mobileMenuOpen && (
+            <div className="max-h-[calc(100vh-88px)] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 shadow-xl lg:hidden">
+              <div className="mx-auto flex max-w-7xl flex-col">
+                {navigationLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenus}
+                    className="border-b border-slate-100 py-4 text-base font-bold text-slate-800 transition-colors hover:text-blue-600"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                <Link
+                  href="/#contact"
+                  onClick={closeMenus}
+                  className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700"
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
+                    <MessageCircle className="h-4 w-4" />
+                  </span>
+
+                  Contact opnemen
+                </Link>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
+
+      <div aria-hidden="true" className="h-[88px]" />
+    </>
   );
 }
