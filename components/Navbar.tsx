@@ -3,7 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Menu, MessageCircle, Search, X } from "lucide-react";
+import {
+  ArrowRight,
+  Menu,
+  MessageCircle,
+  Search,
+  X,
+} from "lucide-react";
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent,
@@ -150,7 +156,10 @@ function HighlightedText({
     );
 
     currentIndex = matchIndex + normalizedQuery.length;
-    matchIndex = lowerCaseText.indexOf(lowerCaseQuery, currentIndex);
+    matchIndex = lowerCaseText.indexOf(
+      lowerCaseQuery,
+      currentIndex,
+    );
   }
 
   if (currentIndex < text.length) {
@@ -160,6 +169,37 @@ function HighlightedText({
   return <>{parts}</>;
 }
 
+function getCategoryClasses(category: string) {
+  switch (category) {
+    case "Website":
+      return {
+        badge: "bg-violet-100 text-violet-700",
+        selectedBadge: "bg-violet-600 text-white",
+        icon: "bg-violet-100 text-violet-600",
+        selectedIcon:
+          "bg-violet-600 text-white shadow-md shadow-violet-600/20",
+      };
+
+    case "Contact":
+      return {
+        badge: "bg-emerald-100 text-emerald-700",
+        selectedBadge: "bg-emerald-600 text-white",
+        icon: "bg-emerald-100 text-emerald-600",
+        selectedIcon:
+          "bg-emerald-600 text-white shadow-md shadow-emerald-600/20",
+      };
+
+    default:
+      return {
+        badge: "bg-blue-100 text-blue-700",
+        selectedBadge: "bg-blue-600 text-white",
+        icon: "bg-blue-100 text-blue-600",
+        selectedIcon:
+          "bg-blue-600 text-white shadow-md shadow-blue-600/20",
+      };
+  }
+}
+
 export default function Navbar() {
   const router = useRouter();
 
@@ -167,7 +207,8 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeSection, setActiveSection] = useState("home");
-  const [selectedResultIndex, setSelectedResultIndex] = useState(0);
+  const [selectedResultIndex, setSelectedResultIndex] =
+    useState(0);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
@@ -176,7 +217,7 @@ export default function Navbar() {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
     if (!normalizedQuery) {
-      return searchItems.slice(0, 5);
+      return searchItems.slice(0, 6);
     }
 
     return searchItems
@@ -218,9 +259,10 @@ export default function Navbar() {
         };
       })
       .filter((item) => item.relevance > 0)
-      .sort((firstItem, secondItem) => {
-        return secondItem.relevance - firstItem.relevance;
-      });
+      .sort(
+        (firstItem, secondItem) =>
+          secondItem.relevance - firstItem.relevance,
+      );
   }, [searchQuery]);
 
   useEffect(() => {
@@ -242,8 +284,11 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!searchOpen) {
+      document.body.style.overflow = "";
       return;
     }
+
+    document.body.style.overflow = "hidden";
 
     const timeout = window.setTimeout(() => {
       searchInputRef.current?.focus();
@@ -251,6 +296,7 @@ export default function Navbar() {
 
     return () => {
       window.clearTimeout(timeout);
+      document.body.style.overflow = "";
     };
   }, [searchOpen]);
 
@@ -259,7 +305,8 @@ export default function Navbar() {
   }, [searchQuery]);
 
   useEffect(() => {
-    const selectedResult = resultRefs.current[selectedResultIndex];
+    const selectedResult =
+      resultRefs.current[selectedResultIndex];
 
     selectedResult?.scrollIntoView({
       block: "nearest",
@@ -306,7 +353,8 @@ export default function Navbar() {
         return;
       }
 
-      animationFrameId = window.requestAnimationFrame(updateActiveSection);
+      animationFrameId =
+        window.requestAnimationFrame(updateActiveSection);
     }
 
     updateActiveSection();
@@ -356,27 +404,28 @@ export default function Navbar() {
     if (event.key === "ArrowDown") {
       event.preventDefault();
 
-      setSelectedResultIndex((currentIndex) => {
-        return currentIndex >= filteredSearchItems.length - 1
+      setSelectedResultIndex((currentIndex) =>
+        currentIndex >= filteredSearchItems.length - 1
           ? 0
-          : currentIndex + 1;
-      });
+          : currentIndex + 1,
+      );
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
 
-      setSelectedResultIndex((currentIndex) => {
-        return currentIndex <= 0
+      setSelectedResultIndex((currentIndex) =>
+        currentIndex <= 0
           ? filteredSearchItems.length - 1
-          : currentIndex - 1;
-      });
+          : currentIndex - 1,
+      );
     }
 
     if (event.key === "Enter") {
       event.preventDefault();
 
-      const selectedItem = filteredSearchItems[selectedResultIndex];
+      const selectedItem =
+        filteredSearchItems[selectedResultIndex];
 
       if (selectedItem) {
         openSearchResult(selectedItem.href);
@@ -417,7 +466,9 @@ export default function Navbar() {
     );
   }
 
-  function scrollToContact(event: MouseEvent<HTMLAnchorElement>) {
+  function scrollToContact(
+    event: MouseEvent<HTMLAnchorElement>,
+  ) {
     event.preventDefault();
 
     const contactSection = document.getElementById("contact");
@@ -450,8 +501,10 @@ export default function Navbar() {
             <a
               href="#home"
               aria-label="Ga naar de homepage"
-              onClick={(event) => scrollToSection(event, "home")}
-              className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
+              onClick={(event) =>
+                scrollToSection(event, "home")
+              }
+              className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.03]"
             >
               <Image
                 src="/logos/logo.png"
@@ -465,16 +518,22 @@ export default function Navbar() {
 
             <div className="hidden items-center gap-1 lg:flex">
               {navigationLinks.map((link) => {
-                const isActive = activeSection === link.sectionId;
+                const isActive =
+                  activeSection === link.sectionId;
 
                 return (
                   <a
                     key={link.sectionId}
                     href={`#${link.sectionId}`}
                     onClick={(event) =>
-                      scrollToSection(event, link.sectionId)
+                      scrollToSection(
+                        event,
+                        link.sectionId,
+                      )
                     }
-                    aria-current={isActive ? "page" : undefined}
+                    aria-current={
+                      isActive ? "page" : undefined
+                    }
                     className={`relative rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 ${
                       isActive
                         ? "bg-blue-50 text-blue-600"
@@ -485,7 +544,9 @@ export default function Navbar() {
 
                     <span
                       className={`absolute bottom-1.5 left-1/2 h-0.5 -translate-x-1/2 rounded-full bg-blue-600 transition-all duration-300 ${
-                        isActive ? "w-6 opacity-100" : "w-0 opacity-0"
+                        isActive
+                          ? "w-6 opacity-100"
+                          : "w-0 opacity-0"
                       }`}
                     />
                   </a>
@@ -517,7 +578,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
+                className="ml-3 inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-600/35"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
                   <MessageCircle className="h-4 w-4" />
@@ -553,13 +614,17 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => {
-                  setMobileMenuOpen((current) => !current);
+                  setMobileMenuOpen(
+                    (current) => !current,
+                  );
                   setSearchOpen(false);
                   setSearchQuery("");
                   setSelectedResultIndex(0);
                 }}
                 aria-label={
-                  mobileMenuOpen ? "Menu sluiten" : "Menu openen"
+                  mobileMenuOpen
+                    ? "Menu sluiten"
+                    : "Menu openen"
                 }
                 aria-expanded={mobileMenuOpen}
                 className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
@@ -577,171 +642,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {searchOpen && (
-            <div className="border-t border-slate-200 bg-white shadow-xl">
-              <div className="mx-auto max-w-4xl px-6 py-6">
-                <div className="relative">
-                  <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-
-                  <input
-                    ref={searchInputRef}
-                    type="search"
-                    value={searchQuery}
-                    onChange={(event) =>
-                      setSearchQuery(event.target.value)
-                    }
-                    onKeyDown={handleSearchKeyDown}
-                    placeholder="Waar kunnen we je mee helpen?"
-                    aria-label="Zoeken op de website"
-                    aria-controls="website-search-results"
-                    aria-activedescendant={
-                      filteredSearchItems.length > 0
-                        ? `search-result-${selectedResultIndex}`
-                        : undefined
-                    }
-                    autoComplete="off"
-                    className="h-14 w-full rounded-2xl border border-slate-300 bg-slate-50 pl-14 pr-14 text-base text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                  />
-
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSearchQuery("");
-                        setSelectedResultIndex(0);
-                        searchInputRef.current?.focus();
-                      }}
-                      aria-label="Zoekopdracht wissen"
-                      className="absolute right-4 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-700"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-                </div>
-
-                <div className="mt-3 flex items-center justify-between gap-4 px-1 text-xs text-slate-400">
-                  <span>
-                    {searchQuery
-                      ? `${filteredSearchItems.length} resultaat${
-                          filteredSearchItems.length === 1 ? "" : "en"
-                        }`
-                      : "Populaire zoekopdrachten"}
-                  </span>
-
-                  <span className="hidden items-center gap-2 sm:flex">
-                    <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                      ↑
-                    </kbd>
-                    <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                      ↓
-                    </kbd>
-                    navigeren
-                    <kbd className="ml-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                      Enter
-                    </kbd>
-                    openen
-                  </span>
-                </div>
-
-                <div
-                  id="website-search-results"
-                  role="listbox"
-                  aria-label="Zoekresultaten"
-                  className="mt-4 max-h-[60vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white"
-                >
-                  {filteredSearchItems.length > 0 ? (
-                    filteredSearchItems.map((item, index) => {
-                      const isSelected =
-                        selectedResultIndex === index;
-
-                      return (
-                        <Link
-                          key={item.href}
-                          ref={(element) => {
-                            resultRefs.current[index] = element;
-                          }}
-                          id={`search-result-${index}`}
-                          role="option"
-                          aria-selected={isSelected}
-                          href={item.href}
-                          onMouseEnter={() =>
-                            setSelectedResultIndex(index)
-                          }
-                          onFocus={() =>
-                            setSelectedResultIndex(index)
-                          }
-                          onClick={closeMenus}
-                          className={`group flex items-center justify-between gap-5 border-b border-slate-100 px-5 py-4 outline-none transition-all last:border-b-0 ${
-                            isSelected
-                              ? "bg-blue-50 ring-1 ring-inset ring-blue-100"
-                              : "hover:bg-slate-50"
-                          }`}
-                        >
-                          <div className="min-w-0">
-                            <span
-                              className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide ${
-                                isSelected
-                                  ? "bg-blue-600 text-white"
-                                  : "bg-slate-100 text-slate-500"
-                              }`}
-                            >
-                              {item.category}
-                            </span>
-
-                            <p
-                              className={`mt-2 font-bold transition-colors ${
-                                isSelected
-                                  ? "text-blue-700"
-                                  : "text-slate-900 group-hover:text-blue-600"
-                              }`}
-                            >
-                              <HighlightedText
-                                text={item.title}
-                                query={searchQuery}
-                              />
-                            </p>
-
-                            <p className="mt-1 text-sm leading-6 text-slate-500">
-                              <HighlightedText
-                                text={item.description}
-                                query={searchQuery}
-                              />
-                            </p>
-                          </div>
-
-                          <span
-                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all ${
-                              isSelected
-                                ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                                : "bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600"
-                            }`}
-                          >
-                            <Search className="h-4 w-4" />
-                          </span>
-                        </Link>
-                      );
-                    })
-                  ) : (
-                    <div className="px-5 py-10 text-center">
-                      <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
-                        <Search className="h-5 w-5" />
-                      </span>
-
-                      <p className="mt-4 font-bold text-slate-900">
-                        Geen resultaten gevonden
-                      </p>
-
-                      <p className="mt-2 text-sm text-slate-500">
-                        Probeer bijvoorbeeld computer, laptop, wifi,
-                        website of Microsoft 365.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
           {mobileMenuOpen && (
             <div className="max-h-[calc(100vh-88px)] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 shadow-xl lg:hidden">
               <div className="mx-auto flex max-w-7xl flex-col">
@@ -754,9 +654,14 @@ export default function Navbar() {
                       key={link.sectionId}
                       href={`#${link.sectionId}`}
                       onClick={(event) =>
-                        scrollToSection(event, link.sectionId)
+                        scrollToSection(
+                          event,
+                          link.sectionId,
+                        )
                       }
-                      aria-current={isActive ? "page" : undefined}
+                      aria-current={
+                        isActive ? "page" : undefined
+                      }
                       className={`flex items-center justify-between border-b border-slate-100 px-3 py-4 text-base font-bold transition-all ${
                         isActive
                           ? "rounded-xl border-transparent bg-blue-50 text-blue-600"
@@ -775,7 +680,7 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={scrollToContact}
-                  className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700"
+                  className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/25"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
                     <MessageCircle className="h-4 w-4" />
@@ -788,6 +693,205 @@ export default function Navbar() {
           )}
         </nav>
       </header>
+
+      {searchOpen && (
+        <div
+          className="fixed inset-x-0 bottom-0 top-[88px] z-40 overflow-y-auto bg-slate-950/25 px-4 py-5 backdrop-blur-[3px] sm:px-6 sm:py-8"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeMenus();
+            }
+          }}
+        >
+          <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-white/70 bg-white shadow-2xl shadow-slate-950/20">
+            <div className="border-b border-slate-100 p-4 sm:p-5">
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) =>
+                    setSearchQuery(event.target.value)
+                  }
+                  onKeyDown={handleSearchKeyDown}
+                  placeholder="Waar kunnen we je mee helpen?"
+                  aria-label="Zoeken op de website"
+                  aria-controls="website-search-results"
+                  aria-activedescendant={
+                    filteredSearchItems.length > 0
+                      ? `search-result-${selectedResultIndex}`
+                      : undefined
+                  }
+                  autoComplete="off"
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-14 pr-14 text-base text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                />
+
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSelectedResultIndex(0);
+                      searchInputRef.current?.focus();
+                    }}
+                    aria-label="Zoekopdracht wissen"
+                    className="absolute right-4 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-700"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+
+              <div className="mt-3 flex items-center justify-between gap-4 px-1 text-xs text-slate-400">
+                <span>
+                  {searchQuery
+                    ? `${filteredSearchItems.length} resultaat${
+                        filteredSearchItems.length === 1
+                          ? ""
+                          : "en"
+                      }`
+                    : "Populaire zoekopdrachten"}
+                </span>
+
+                <span className="hidden items-center gap-1.5 sm:flex">
+                  <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
+                    ↑
+                  </kbd>
+
+                  <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
+                    ↓
+                  </kbd>
+
+                  <span>navigeren</span>
+
+                  <kbd className="ml-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
+                    Enter
+                  </kbd>
+
+                  <span>openen</span>
+                </span>
+              </div>
+            </div>
+
+            <div
+              id="website-search-results"
+              role="listbox"
+              aria-label="Zoekresultaten"
+              className="max-h-[min(58vh,520px)] overflow-y-auto"
+            >
+              {filteredSearchItems.length > 0 ? (
+                filteredSearchItems.map((item, index) => {
+                  const isSelected =
+                    selectedResultIndex === index;
+
+                  const categoryClasses =
+                    getCategoryClasses(item.category);
+
+                  return (
+                    <Link
+                      key={item.href}
+                      ref={(element) => {
+                        resultRefs.current[index] = element;
+                      }}
+                      id={`search-result-${index}`}
+                      role="option"
+                      aria-selected={isSelected}
+                      href={item.href}
+                      onMouseEnter={() =>
+                        setSelectedResultIndex(index)
+                      }
+                      onFocus={() =>
+                        setSelectedResultIndex(index)
+                      }
+                      onClick={closeMenus}
+                      className={`group flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-3.5 outline-none transition-all last:border-b-0 sm:px-6 ${
+                        isSelected
+                          ? "bg-blue-50/80"
+                          : "bg-white hover:bg-slate-50"
+                      }`}
+                    >
+                      <div className="min-w-0">
+                        <span
+                          className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] transition-colors ${
+                            isSelected
+                              ? categoryClasses.selectedBadge
+                              : categoryClasses.badge
+                          }`}
+                        >
+                          {item.category}
+                        </span>
+
+                        <p
+                          className={`mt-1.5 truncate text-sm font-bold transition-colors sm:text-base ${
+                            isSelected
+                              ? "text-blue-700"
+                              : "text-slate-900 group-hover:text-blue-600"
+                          }`}
+                        >
+                          <HighlightedText
+                            text={item.title}
+                            query={searchQuery}
+                          />
+                        </p>
+
+                        <p className="mt-0.5 line-clamp-1 text-sm text-slate-500">
+                          <HighlightedText
+                            text={item.description}
+                            query={searchQuery}
+                          />
+                        </p>
+                      </div>
+
+                      <span
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                          isSelected
+                            ? categoryClasses.selectedIcon
+                            : categoryClasses.icon
+                        }`}
+                      >
+                        <ArrowRight
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            isSelected
+                              ? "translate-x-0.5"
+                              : "group-hover:translate-x-0.5"
+                          }`}
+                        />
+                      </span>
+                    </Link>
+                  );
+                })
+              ) : (
+                <div className="px-6 py-12 text-center">
+                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
+                    <Search className="h-5 w-5" />
+                  </span>
+
+                  <p className="mt-4 font-bold text-slate-900">
+                    Geen resultaten gevonden
+                  </p>
+
+                  <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-slate-500">
+                    Probeer bijvoorbeeld computer, laptop,
+                    wifi, website of Microsoft 365.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/80 px-5 py-3 text-xs text-slate-400 sm:px-6">
+              <span>
+                Klik buiten het venster om te sluiten
+              </span>
+
+              <span className="hidden sm:inline">
+                ESC sluiten
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div aria-hidden="true" className="h-[88px]" />
     </>
