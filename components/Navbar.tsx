@@ -359,6 +359,25 @@ export default function Navbar() {
     router.push(href);
   }
 
+  function moveSearchSelection(direction: "up" | "down") {
+    if (filteredSearchItems.length === 0) return;
+
+    setSelectedResultIndex((currentIndex) => {
+      if (direction === "down") {
+        return currentIndex >= filteredSearchItems.length - 1 ? 0 : currentIndex + 1;
+      }
+
+      return currentIndex <= 0 ? filteredSearchItems.length - 1 : currentIndex - 1;
+    });
+
+    searchInputRef.current?.focus();
+  }
+
+  function openSelectedSearchResult() {
+    const selectedItem = filteredSearchItems[selectedResultIndex];
+    if (selectedItem) openSearchResult(selectedItem.href);
+  }
+
   useEffect(() => {
     setActiveSection(isHomepage ? "home" : "");
     closeMenus();
@@ -384,7 +403,19 @@ export default function Navbar() {
 
   useEffect(() => {
     setSelectedResultIndex(0);
+    resultRefs.current = [];
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (filteredSearchItems.length === 0) {
+      setSelectedResultIndex(0);
+      return;
+    }
+
+    setSelectedResultIndex((currentIndex) =>
+      Math.min(currentIndex, filteredSearchItems.length - 1),
+    );
+  }, [filteredSearchItems.length]);
 
   useEffect(() => {
     if (!searchOpen) {
@@ -414,37 +445,19 @@ export default function Navbar() {
 
       if (event.key === "ArrowDown") {
         event.preventDefault();
-
-        setSelectedResultIndex((currentIndex) =>
-          currentIndex >= filteredSearchItems.length - 1
-            ? 0
-            : currentIndex + 1,
-        );
-
+        moveSearchSelection("down");
         return;
       }
 
       if (event.key === "ArrowUp") {
         event.preventDefault();
-
-        setSelectedResultIndex((currentIndex) =>
-          currentIndex <= 0
-            ? filteredSearchItems.length - 1
-            : currentIndex - 1,
-        );
-
+        moveSearchSelection("up");
         return;
       }
 
       if (event.key === "Enter") {
         event.preventDefault();
-
-        const selectedItem =
-          filteredSearchItems[selectedResultIndex];
-
-        if (selectedItem) {
-          openSearchResult(selectedItem.href);
-        }
+        openSelectedSearchResult();
       }
     }
 
@@ -732,14 +745,14 @@ export default function Navbar() {
 
       {searchOpen && (
         <div
-          className="fixed inset-x-0 bottom-0 top-[88px] z-40 overflow-y-auto bg-slate-950/25 px-4 py-5 backdrop-blur-[3px] sm:px-6 sm:py-8"
+          className="search-backdrop fixed inset-x-0 bottom-0 top-[88px] z-40 overflow-y-auto bg-slate-950/30 px-4 py-5 backdrop-blur-[4px] sm:px-6 sm:py-8"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
               closeMenus();
             }
           }}
         >
-          <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-white/70 bg-white shadow-2xl shadow-slate-950/20">
+          <div className="search-dialog mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-white/70 bg-white shadow-2xl shadow-slate-950/25">
             <div className="border-b border-slate-100 p-4 sm:p-5">
               <div className="relative">
                 <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
@@ -790,23 +803,13 @@ export default function Navbar() {
                     : "Populaire zoekopdrachten"}
                 </span>
 
-                <span className="hidden items-center gap-1.5 sm:flex">
-                  <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                    ↑
-                  </kbd>
-
-                  <kbd className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                    ↓
-                  </kbd>
-
+                <div className="hidden items-center gap-1.5 sm:flex">
+                  <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={() => moveSearchSelection("up")} aria-label="Vorig zoekresultaat selecteren" disabled={filteredSearchItems.length === 0} className="inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-slate-200 bg-slate-50 px-2 font-semibold text-slate-500 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40">↑</button>
+                  <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={() => moveSearchSelection("down")} aria-label="Volgend zoekresultaat selecteren" disabled={filteredSearchItems.length === 0} className="inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-slate-200 bg-slate-50 px-2 font-semibold text-slate-500 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40">↓</button>
                   <span>navigeren</span>
-
-                  <kbd className="ml-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 font-sans">
-                    Enter
-                  </kbd>
-
+                  <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={openSelectedSearchResult} aria-label="Geselecteerd zoekresultaat openen" disabled={filteredSearchItems.length === 0} className="ml-1 inline-flex h-7 items-center justify-center rounded-md border border-slate-200 bg-slate-50 px-2 font-semibold text-slate-500 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40">Enter</button>
                   <span>openen</span>
-                </span>
+                </div>
               </div>
             </div>
 
@@ -921,15 +924,31 @@ export default function Navbar() {
             <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/80 px-5 py-3 text-xs text-slate-400 sm:px-6">
               <span>Klik buiten het venster om te sluiten</span>
 
-              <span className="hidden sm:inline">
+              <button type="button" onMouseDown={(event) => event.preventDefault()} onClick={closeMenus} className="hidden rounded-md px-2 py-1 font-medium transition-colors hover:bg-slate-200 hover:text-slate-700 sm:inline-flex">
                 ESC sluiten
-              </span>
+              </button>
             </div>
           </div>
         </div>
       )}
 
       <div aria-hidden="true" className="h-[88px]" />
+
+      <style jsx global>{`
+        @keyframes search-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes search-dialog-in {
+          from { opacity: 0; transform: translateY(-10px) scale(0.985); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .search-backdrop { animation: search-backdrop-in 180ms ease-out both; }
+        .search-dialog {
+          animation: search-dialog-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          transform-origin: top center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .search-backdrop, .search-dialog { animation: none; }
+        }
+      `}</style>
     </>
   );
 }
