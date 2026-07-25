@@ -52,7 +52,7 @@ const benefits = [
 ];
 
 const inputClass =
-  "min-h-[64px] w-full rounded-[1.15rem] border border-slate-700/75 bg-[#111827]/85 px-5 py-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] outline-none transition duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-[#131c2e] focus:border-blue-400 focus:bg-[#131c2e] focus:ring-4 focus:ring-blue-500/15";
+  "min-h-[66px] w-full rounded-[1.15rem] border border-slate-700/75 bg-[#121a2b]/95 px-5 py-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] outline-none transition duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-[#152036] focus:border-blue-400 focus:bg-[#152036] focus:ring-4 focus:ring-blue-500/15";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -120,18 +120,18 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white py-24 sm:py-28"
+      className="overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[2.35rem] border border-blue-500/25 bg-[#020817] text-white shadow-[0_38px_110px_rgba(15,23,42,0.34)] ring-1 ring-white/[0.025]">
-          <div className="pointer-events-none absolute -left-40 -top-44 h-[34rem] w-[34rem] rounded-full bg-blue-600/20 blur-[110px]" />
-          <div className="pointer-events-none absolute -bottom-64 -left-44 h-[38rem] w-[38rem] rounded-full border border-blue-500/30 bg-blue-600/[0.07] shadow-[0_0_90px_rgba(37,99,235,0.20)]" />
-          <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-bl-full border-b border-l border-blue-400/35 bg-blue-500/[0.08] shadow-[0_0_80px_rgba(59,130,246,0.42)]" />
+      <div className="mx-auto max-w-[1536px] px-3 sm:px-5 lg:px-6">
+        <div className="relative overflow-hidden rounded-[2.4rem] border border-blue-500/30 bg-[#020817] text-white shadow-[0_42px_120px_rgba(15,23,42,0.38)] ring-1 ring-white/[0.025]">
+          <div className="pointer-events-none absolute -left-44 -top-48 h-[38rem] w-[38rem] rounded-full bg-blue-600/25 blur-[120px]" />
+          <div className="pointer-events-none absolute -bottom-64 -left-40 h-[42rem] w-[42rem] rounded-full border border-blue-500/35 bg-blue-600/[0.08] shadow-[0_0_115px_rgba(37,99,235,0.26)]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-44 w-44 rounded-bl-full border-b border-l border-blue-400/35 bg-blue-500/[0.08] shadow-[0_0_95px_rgba(59,130,246,0.48)]" />
 
-          <div className="relative grid lg:grid-cols-[0.76fr_1.24fr]">
-            <aside className="relative border-b border-white/10 px-7 py-12 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-16 xl:px-14">
-              <div className="pointer-events-none absolute -left-2 top-[42%] grid grid-cols-4 gap-3 opacity-35">
-                {Array.from({ length: 16 }).map((_, index) => (
+          <div className="relative grid lg:grid-cols-[0.68fr_1.32fr]">
+            <aside className="relative border-b border-white/10 px-7 py-12 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-16 xl:px-16 xl:py-18">
+              <div className="pointer-events-none absolute -left-1 top-[42%] grid grid-cols-4 gap-3 opacity-45">
+                {Array.from({ length: 20 }).map((_, index) => (
                   <span
                     key={index}
                     className="h-1 w-1 rounded-full bg-blue-400"
@@ -139,11 +139,13 @@ export default function Contact() {
                 ))}
               </div>
 
+              <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-blue-600/15 blur-[70px]" />
+
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-400">
                 Contact
               </p>
 
-              <h2 className="mt-5 max-w-sm text-4xl font-extrabold tracking-[-0.035em] sm:text-5xl xl:text-[3.45rem] xl:leading-[1.02]">
+              <h2 className="mt-5 max-w-md text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl xl:text-[3.75rem] xl:leading-[1.02]">
                 Hulp nodig
                 <br />
                 met IT?
@@ -154,7 +156,7 @@ export default function Contact() {
                 één werkdag contact met je op.
               </p>
 
-              <div className="mt-9 grid grid-cols-3 overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
+              <div className="mt-9 grid grid-cols-3 overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
                 {[
                   [Zap, "Snelle reactie"],
                   [MapPin, "Breda & omgeving"],
@@ -165,7 +167,7 @@ export default function Contact() {
                   return (
                     <div
                       key={String(label)}
-                      className={`flex min-h-24 flex-col items-center justify-center gap-2.5 px-2 text-center transition hover:bg-white/[0.025] ${
+                      className={`flex min-h-[112px] flex-col items-center justify-center gap-2.5 px-3 text-center transition hover:bg-white/[0.025] ${
                         index > 0 ? "border-l border-white/10" : ""
                       }`}
                     >
@@ -200,7 +202,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="mt-6 rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
+              <div className="mt-6 rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
                 <div className="flex items-center gap-3">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
                     <ShieldCheck className="h-6 w-6" />
@@ -224,18 +226,18 @@ export default function Contact() {
               </div>
             </aside>
 
-            <div className="relative px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-7">
+            <div className="relative px-4 py-4 sm:px-5 sm:py-5 lg:px-6 lg:py-6">
               <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
-                className="space-y-7 rounded-[1.8rem] border border-white/10 bg-gradient-to-br from-white/[0.035] via-white/[0.018] to-blue-500/[0.025] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.16),inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-8 lg:p-9"
+                className="space-y-8 rounded-[1.85rem] border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-blue-500/[0.035] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.035)] sm:p-9 lg:p-10 xl:p-11"
               >
                 <div className="flex items-center gap-5">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border border-blue-400/35 bg-blue-500/15 text-blue-300 shadow-[0_0_34px_rgba(37,99,235,0.32)]">
+                  <span className="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-[1.4rem] border border-blue-400/35 bg-blue-500/15 text-blue-300 shadow-[0_0_40px_rgba(37,99,235,0.36)]">
                     <MessageSquare className="h-7 w-7" />
                   </span>
                   <div>
-                    <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-[1.8rem]">
+                    <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-[1.9rem]">
                       Stuur ons een bericht
                     </h3>
                     <p className="mt-1 text-slate-400">
@@ -265,7 +267,7 @@ export default function Contact() {
                   </div>
                 )}
 
-                <div className="grid gap-x-6 gap-y-6 md:grid-cols-2">
+                <div className="grid gap-x-7 gap-y-7 md:grid-cols-2">
                   <Field label="Naam" required>
                     <User className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
                     <input
@@ -333,7 +335,7 @@ export default function Contact() {
                     placeholder="Omschrijf zo duidelijk mogelijk waar we u mee kunnen helpen..."
                     rows={6}
                     required
-                    className={`${inputClass} min-h-[170px] resize-y pl-14`}
+                    className={`${inputClass} min-h-[182px] resize-y pl-14`}
                   />
                 </Field>
 
@@ -343,7 +345,7 @@ export default function Contact() {
                     <span className="text-slate-400">(optioneel)</span>
                   </p>
 
-                  <div className="rounded-[1.2rem] border border-dashed border-slate-700/90 bg-[#0d1526]/75 p-5 transition duration-300 hover:border-blue-400/55 hover:bg-[#101a2d]">
+                  <div className="rounded-[1.25rem] border border-dashed border-slate-700/90 bg-[#0d1526]/80 p-5 transition duration-300 hover:border-blue-400/55 hover:bg-[#101a2d]">
                     <input
                       ref={fileRef}
                       type="file"
@@ -356,7 +358,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={() => fileRef.current?.click()}
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/[0.045] px-4 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-500/10"
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/[0.045] px-5 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-500/10"
                     >
                       <Upload className="h-5 w-5" />
                       Bestand kiezen
@@ -432,13 +434,13 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group inline-flex min-h-[68px] w-full items-center justify-center gap-3 rounded-[1.2rem] border border-blue-300/50 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-[length:230%_100%] px-6 py-4 text-base font-extrabold text-white shadow-[0_22px_58px_rgba(37,99,235,0.38)] transition duration-300 hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_30px_72px_rgba(37,99,235,0.50)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="group inline-flex min-h-[72px] w-full items-center justify-center gap-3 rounded-[1.2rem] border border-blue-300/55 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-[length:235%_100%] px-6 py-4 text-lg font-extrabold text-white shadow-[0_24px_65px_rgba(37,99,235,0.42)] transition duration-300 hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_34px_82px_rgba(37,99,235,0.56)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   <Send className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   {submitting ? "Bericht verzenden..." : "Bericht verzenden"}
                 </button>
 
-                <div className="grid gap-5 border-t border-white/10 pt-6 text-sm leading-5 text-slate-300 sm:grid-cols-3 lg:text-[15px]">
+                <div className="grid gap-6 border-t border-white/10 pt-7 text-sm leading-5 text-slate-300 sm:grid-cols-3 lg:text-[15px]">
                   <TrustLine
                     icon={<Clock3 className="h-5 w-5" />}
                     text="We reageren meestal binnen één werkdag"
@@ -548,11 +550,11 @@ function ContactCard({
   value: string;
 }) {
   const className =
-    "group flex items-center gap-4 rounded-[1.2rem] border border-white/10 bg-white/[0.03] p-4.5 transition duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:bg-white/[0.06] hover:shadow-[0_18px_38px_rgba(0,0,0,0.16)]";
+    "group flex min-h-[84px] items-center gap-4 rounded-[1.2rem] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:bg-white/[0.06] hover:shadow-[0_20px_42px_rgba(0,0,0,0.18)]";
 
   const content = (
     <>
-      <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-500/15 text-blue-400 shadow-[0_0_28px_rgba(59,130,246,0.18)] transition duration-300 group-hover:scale-105 group-hover:bg-blue-500 group-hover:text-white">
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-500/15 text-blue-400 shadow-[0_0_32px_rgba(59,130,246,0.20)] transition duration-300 group-hover:scale-105 group-hover:bg-blue-500 group-hover:text-white">
         {icon}
       </span>
       <span className="min-w-0">
@@ -610,7 +612,7 @@ function PreferenceOption({
 }) {
   return (
     <label
-      className={`flex min-h-[60px] cursor-pointer items-center gap-3 rounded-[1.1rem] border px-4 py-4 transition duration-300 ${
+      className={`flex min-h-[64px] cursor-pointer items-center gap-3 rounded-[1.1rem] border px-5 py-4 transition duration-300 ${
         selected
           ? "border-blue-500 bg-blue-500/10 shadow-[0_0_22px_rgba(37,99,235,0.12)]"
           : "border-slate-700 bg-white/[0.025] hover:border-slate-600 hover:bg-white/[0.05]"
@@ -649,8 +651,8 @@ function TrustLine({
 }) {
   return (
     <div
-      className={`flex items-start gap-3.5 ${
-        bordered ? "sm:border-l sm:border-white/10 sm:pl-5" : ""
+      className={`flex items-start gap-4 ${
+        bordered ? "sm:border-l sm:border-white/10 sm:pl-6" : ""
       }`}
     >
       <span className="mt-0.5 shrink-0 text-blue-400">{icon}</span>
