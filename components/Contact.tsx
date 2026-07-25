@@ -52,7 +52,7 @@ const benefits = [
 ];
 
 const inputClass =
-  "min-h-[66px] w-full rounded-[18px] border border-slate-700/80 bg-[#111827]/90 px-5 py-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] outline-none transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-[#131d31] focus:border-blue-400 focus:bg-[#131d31] focus:ring-4 focus:ring-blue-500/15";
+  "min-h-[66px] w-full rounded-[18px] border border-slate-700/80 bg-[#111827]/90 px-5 py-4 text-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] outline-none transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-[#131d31] focus:border-blue-400 focus:bg-[#131d31] focus:ring-4 focus:ring-blue-500/15";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -123,7 +123,7 @@ export default function Contact() {
       className="overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white py-20 sm:py-24"
     >
       <div className="mx-auto max-w-[1500px] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[38px] border border-blue-500/30 bg-[#020817] text-white shadow-[0_40px_120px_rgba(2,8,23,0.42)] ring-1 ring-white/[0.03]">
+        <div className="relative overflow-hidden rounded-[38px] border border-blue-500/30 bg-[#020817] text-slate-50 shadow-[0_40px_120px_rgba(2,8,23,0.42)] ring-1 ring-white/[0.03]">
           <div className="pointer-events-none absolute -left-48 -top-48 h-[620px] w-[620px] rounded-full bg-blue-600/25 blur-[120px]" />
           <div className="pointer-events-none absolute -bottom-[360px] -left-[250px] h-[720px] w-[720px] rounded-full border border-blue-500/35 bg-blue-600/[0.08] shadow-[0_0_120px_rgba(37,99,235,0.28)]" />
           <div className="pointer-events-none absolute right-0 top-0 h-[190px] w-[190px] rounded-bl-full border-b border-l border-blue-400/35 bg-blue-500/[0.08] shadow-[0_0_100px_rgba(59,130,246,0.50)]" />
