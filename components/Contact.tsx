@@ -142,7 +142,7 @@ export default function Contact() {
                 Contact
               </p>
 
-              <h2 className="mt-5 max-w-md text-4xl font-extrabold tracking-[-0.045em] sm:text-5xl xl:text-[58px] xl:leading-[1.03]">
+              <h2 className="mt-5 max-w-md text-4xl font-bold tracking-[-0.03em] text-slate-50 sm:text-5xl xl:text-[54px] xl:leading-[1.04]">
                 Hulp nodig
                 <br />
                 met IT?
@@ -227,14 +227,17 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
-                className="space-y-8 rounded-[30px] border border-white/10 bg-gradient-to-br from-white/[0.045] via-white/[0.02] to-blue-500/[0.035] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.20),inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-9 lg:p-10 xl:p-11"
+                className="relative space-y-8 overflow-hidden rounded-[30px] border border-blue-300/15 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.018)_45%,rgba(37,99,235,0.04))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.045)] sm:p-9 lg:p-10 xl:p-11"
               >
-                <div className="flex items-center gap-4">
-                  <span className="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-[22px] border border-blue-400/35 bg-blue-500/15 text-blue-300 shadow-[0_0_42px_rgba(37,99,235,0.38)]">
+                <div className="pointer-events-none absolute -right-28 -top-28 h-72 w-72 rounded-full bg-blue-500/10 blur-[72px]" />
+                <div className="pointer-events-none absolute -bottom-32 left-1/3 h-64 w-64 rounded-full bg-blue-600/[0.045] blur-[80px]" />
+
+                <div className="relative flex items-center gap-4">
+                  <span className="relative flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-[22px] border border-blue-300/40 bg-gradient-to-br from-blue-400/20 to-blue-700/20 text-blue-200 shadow-[0_0_26px_rgba(59,130,246,0.55),0_0_60px_rgba(37,99,235,0.24)] before:absolute before:inset-2 before:rounded-[16px] before:border before:border-blue-300/10">
                     <MessageSquare className="h-7 w-7" />
                   </span>
                   <div>
-                    <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-[30px]">
+                    <h3 className="text-2xl font-bold tracking-[-0.02em] text-slate-50 sm:text-[28px]">
                       Stuur ons een bericht
                     </h3>
                     <p className="mt-1 text-slate-400">
@@ -243,6 +246,7 @@ export default function Contact() {
                   </div>
                 </div>
 
+                <div className="relative contents">
                 {sent && (
                   <div
                     role="status"
@@ -431,13 +435,13 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group inline-flex min-h-[72px] w-full items-center justify-center gap-3 rounded-[20px] border border-blue-300/55 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-[length:235%_100%] px-6 py-4 text-lg font-extrabold text-white shadow-[0_26px_70px_rgba(37,99,235,0.44)] transition-all duration-300 hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_36px_90px_rgba(37,99,235,0.58)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="group relative inline-flex min-h-[72px] w-full items-center justify-center gap-3 overflow-hidden rounded-[20px] border border-blue-200/55 bg-[linear-gradient(110deg,#1d4ed8_0%,#2563eb_42%,#3b82f6_62%,#1d4ed8_100%)] bg-[length:220%_100%] px-6 py-4 text-lg font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.32),0_0_36px_rgba(59,130,246,0.18)] transition-all duration-300 before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_26px_58px_rgba(37,99,235,0.44),0_0_48px_rgba(59,130,246,0.24)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   <Send className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   {submitting ? "Bericht verzenden..." : "Bericht verzenden"}
                 </button>
 
-                <div className="grid gap-6 border-t border-white/10 pt-7 text-sm leading-5 text-slate-300 sm:grid-cols-3 lg:text-[15px]">
+                <div className="grid gap-6 border-t border-white/10 pt-7 text-sm leading-5 text-slate-300 sm:grid-cols-3 lg:text-[15px] lg:leading-6">
                   <TrustLine
                     icon={<Clock3 className="h-5 w-5" />}
                     text="We reageren meestal binnen één werkdag"
@@ -452,6 +456,7 @@ export default function Contact() {
                     text="Vrijblijvend advies • Geen verborgen kosten"
                     bordered
                   />
+                </div>
                 </div>
               </form>
             </div>
@@ -547,11 +552,11 @@ function ContactCard({
   value: string;
 }) {
   const className =
-    "group flex min-h-[86px] items-center gap-4 rounded-[20px] border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:bg-white/[0.06] hover:shadow-[0_20px_46px_rgba(0,0,0,0.20)]";
+    "group flex min-h-[86px] items-center gap-4 rounded-[20px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.035),rgba(37,99,235,0.025))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(37,99,235,0.055))] hover:shadow-[0_20px_46px_rgba(0,0,0,0.20),0_0_28px_rgba(37,99,235,0.10)]";
 
   const content = (
     <>
-      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-500/15 text-blue-400 shadow-[0_0_34px_rgba(59,130,246,0.22)] transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-500 group-hover:text-white">
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-blue-300/20 bg-gradient-to-br from-blue-500/20 to-blue-700/15 text-blue-300 shadow-[0_0_22px_rgba(59,130,246,0.24)] transition-all duration-300 group-hover:scale-105 group-hover:border-blue-300/45 group-hover:bg-blue-500 group-hover:text-white group-hover:shadow-[0_0_32px_rgba(59,130,246,0.36)]">
         {icon}
       </span>
       <span className="min-w-0">
