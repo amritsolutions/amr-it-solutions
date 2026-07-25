@@ -52,7 +52,7 @@ const benefits = [
 ];
 
 const inputClass =
-  "min-h-[62px] w-full rounded-2xl border border-slate-700/80 bg-slate-900/55 px-5 py-4 text-white shadow-inner shadow-black/10 outline-none transition duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-slate-900/70 focus:border-blue-400 focus:bg-slate-900/80 focus:ring-4 focus:ring-blue-500/15";
+  "min-h-[64px] w-full rounded-[1.15rem] border border-slate-700/75 bg-[#111827]/85 px-5 py-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] outline-none transition duration-300 placeholder:text-slate-500 hover:border-slate-600 hover:bg-[#131c2e] focus:border-blue-400 focus:bg-[#131c2e] focus:ring-4 focus:ring-blue-500/15";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -120,32 +120,41 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="overflow-hidden bg-gradient-to-b from-white via-slate-50/60 to-white py-24 sm:py-28"
+      className="overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-[2.25rem] border border-blue-500/25 bg-[#020817] text-white shadow-[0_34px_100px_rgba(15,23,42,0.32)]">
-          <div className="pointer-events-none absolute -left-36 -top-40 h-[30rem] w-[30rem] rounded-full bg-blue-600/20 blur-[90px]" />
-          <div className="pointer-events-none absolute -bottom-56 -left-24 h-[34rem] w-[34rem] rounded-full border border-blue-500/25 bg-blue-600/10 blur-[1px] shadow-[0_0_85px_rgba(37,99,235,0.18)]" />
-          <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-bl-full border-b border-l border-blue-400/40 bg-blue-500/10 shadow-[0_0_70px_rgba(59,130,246,0.42)]" />
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-[2.35rem] border border-blue-500/25 bg-[#020817] text-white shadow-[0_38px_110px_rgba(15,23,42,0.34)] ring-1 ring-white/[0.025]">
+          <div className="pointer-events-none absolute -left-40 -top-44 h-[34rem] w-[34rem] rounded-full bg-blue-600/20 blur-[110px]" />
+          <div className="pointer-events-none absolute -bottom-64 -left-44 h-[38rem] w-[38rem] rounded-full border border-blue-500/30 bg-blue-600/[0.07] shadow-[0_0_90px_rgba(37,99,235,0.20)]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-bl-full border-b border-l border-blue-400/35 bg-blue-500/[0.08] shadow-[0_0_80px_rgba(59,130,246,0.42)]" />
 
-          <div className="relative grid lg:grid-cols-[0.78fr_1.22fr]">
+          <div className="relative grid lg:grid-cols-[0.76fr_1.24fr]">
             <aside className="relative border-b border-white/10 px-7 py-12 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-16 xl:px-14">
+              <div className="pointer-events-none absolute -left-2 top-[42%] grid grid-cols-4 gap-3 opacity-35">
+                {Array.from({ length: 16 }).map((_, index) => (
+                  <span
+                    key={index}
+                    className="h-1 w-1 rounded-full bg-blue-400"
+                  />
+                ))}
+              </div>
+
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-400">
                 Contact
               </p>
 
-              <h2 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">
+              <h2 className="mt-5 max-w-sm text-4xl font-extrabold tracking-[-0.035em] sm:text-5xl xl:text-[3.45rem] xl:leading-[1.02]">
                 Hulp nodig
                 <br />
                 met IT?
               </h2>
 
-              <p className="mt-5 max-w-sm text-base leading-7 text-slate-300 sm:text-lg">
+              <p className="mt-6 max-w-sm text-base leading-7 text-slate-300 sm:text-lg">
                 Vertel ons waar je hulp bij nodig hebt. We nemen meestal binnen
                 één werkdag contact met je op.
               </p>
 
-              <div className="mt-8 grid grid-cols-3 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035]">
+              <div className="mt-9 grid grid-cols-3 overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
                 {[
                   [Zap, "Snelle reactie"],
                   [MapPin, "Breda & omgeving"],
@@ -156,7 +165,7 @@ export default function Contact() {
                   return (
                     <div
                       key={String(label)}
-                      className={`flex min-h-24 flex-col items-center justify-center gap-2 px-2 text-center ${
+                      className={`flex min-h-24 flex-col items-center justify-center gap-2.5 px-2 text-center transition hover:bg-white/[0.025] ${
                         index > 0 ? "border-l border-white/10" : ""
                       }`}
                     >
@@ -169,7 +178,7 @@ export default function Contact() {
                 })}
               </div>
 
-              <div className="mt-5 space-y-4">
+              <div className="mt-6 space-y-4">
                 <ContactCard
                   icon={<MapPin className="h-6 w-6" />}
                   label="Werkgebied"
@@ -191,7 +200,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+              <div className="mt-6 rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
                 <div className="flex items-center gap-3">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
                     <ShieldCheck className="h-6 w-6" />
@@ -215,18 +224,18 @@ export default function Contact() {
               </div>
             </aside>
 
-            <div className="relative bg-white/[0.02] px-7 py-12 sm:px-10 lg:m-4 lg:rounded-[1.75rem] lg:border lg:border-white/10 lg:bg-white/[0.025] lg:px-12 lg:py-14 xl:px-14">
+            <div className="relative px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-7">
               <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
-                className="space-y-7"
+                className="space-y-7 rounded-[1.8rem] border border-white/10 bg-gradient-to-br from-white/[0.035] via-white/[0.018] to-blue-500/[0.025] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.16),inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-8 lg:p-9"
               >
                 <div className="flex items-center gap-5">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-400/35 bg-blue-500/15 text-blue-300 shadow-[0_0_34px_rgba(37,99,235,0.30)]">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border border-blue-400/35 bg-blue-500/15 text-blue-300 shadow-[0_0_34px_rgba(37,99,235,0.32)]">
                     <MessageSquare className="h-7 w-7" />
                   </span>
                   <div>
-                    <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-[1.7rem]">
+                    <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-[1.8rem]">
                       Stuur ons een bericht
                     </h3>
                     <p className="mt-1 text-slate-400">
@@ -334,7 +343,7 @@ export default function Contact() {
                     <span className="text-slate-400">(optioneel)</span>
                   </p>
 
-                  <div className="rounded-2xl border border-dashed border-slate-700/90 bg-slate-900/35 p-5 transition duration-300 hover:border-blue-400/55 hover:bg-slate-900/55">
+                  <div className="rounded-[1.2rem] border border-dashed border-slate-700/90 bg-[#0d1526]/75 p-5 transition duration-300 hover:border-blue-400/55 hover:bg-[#101a2d]">
                     <input
                       ref={fileRef}
                       type="file"
@@ -347,7 +356,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={() => fileRef.current?.click()}
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/[0.055] px-4 py-3 text-sm font-semibold text-white transition hover:border-blue-400 hover:bg-blue-500/10"
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/[0.045] px-4 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-500/10"
                     >
                       <Upload className="h-5 w-5" />
                       Bestand kiezen
@@ -423,7 +432,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group inline-flex min-h-[66px] w-full items-center justify-center gap-3 rounded-2xl border border-blue-300/50 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-[length:220%_100%] px-6 py-4 text-base font-extrabold text-white shadow-[0_20px_52px_rgba(37,99,235,0.34)] transition duration-300 hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_28px_65px_rgba(37,99,235,0.46)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="group inline-flex min-h-[68px] w-full items-center justify-center gap-3 rounded-[1.2rem] border border-blue-300/50 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-[length:230%_100%] px-6 py-4 text-base font-extrabold text-white shadow-[0_22px_58px_rgba(37,99,235,0.38)] transition duration-300 hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_30px_72px_rgba(37,99,235,0.50)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   <Send className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   {submitting ? "Bericht verzenden..." : "Bericht verzenden"}
@@ -539,11 +548,11 @@ function ContactCard({
   value: string;
 }) {
   const className =
-    "group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-white/[0.065]";
+    "group flex items-center gap-4 rounded-[1.2rem] border border-white/10 bg-white/[0.03] p-4.5 transition duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:bg-white/[0.06] hover:shadow-[0_18px_38px_rgba(0,0,0,0.16)]";
 
   const content = (
     <>
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.12)] transition group-hover:bg-blue-500 group-hover:text-white">
+      <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-xl border border-blue-400/15 bg-blue-500/15 text-blue-400 shadow-[0_0_28px_rgba(59,130,246,0.18)] transition duration-300 group-hover:scale-105 group-hover:bg-blue-500 group-hover:text-white">
         {icon}
       </span>
       <span className="min-w-0">
@@ -601,7 +610,7 @@ function PreferenceOption({
 }) {
   return (
     <label
-      className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-4 transition duration-300 ${
+      className={`flex min-h-[60px] cursor-pointer items-center gap-3 rounded-[1.1rem] border px-4 py-4 transition duration-300 ${
         selected
           ? "border-blue-500 bg-blue-500/10 shadow-[0_0_22px_rgba(37,99,235,0.12)]"
           : "border-slate-700 bg-white/[0.025] hover:border-slate-600 hover:bg-white/[0.05]"
