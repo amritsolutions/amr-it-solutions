@@ -51,7 +51,7 @@ export default function Footer() {
           {/* Bedrijfsinformatie */}
           <div>
             <Image
-              src="/logos/logo1.png"
+              src="/logos/logo.png"
               alt="AMR IT Solutions logo"
               width={150}
               height={62}
