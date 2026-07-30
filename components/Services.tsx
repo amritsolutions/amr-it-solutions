@@ -184,7 +184,7 @@ export default function Services() {
         {/* Onderste CTA */}
         <div className="mt-12 flex justify-center">
           <Link
-            href="/contact"
+            href="/#contact"
             className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-7 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-[0_20px_45px_rgba(37,99,235,0.38)]"
           >
             Vraag vrijblijvend advies aan
