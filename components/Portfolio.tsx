@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -14,6 +15,8 @@ type Project = {
   tags: string[];
   icon: LucideIcon;
   href: string;
+  image: string;
+  imageAlt: string;
 };
 
 const projects: Project[] = [
@@ -24,6 +27,8 @@ const projects: Project[] = [
     tags: ["Responsive", "SEO", "Next.js"],
     icon: Globe2,
     href: "/website-laten-maken",
+    image: "/portfolio/webdesign.webp",
+    imageAlt: "Voorbeeld van een moderne professionele bedrijfswebsite",
   },
   {
     category: "IT Support",
@@ -32,6 +37,8 @@ const projects: Project[] = [
     tags: ["Windows", "Optimalisatie", "Support"],
     icon: Gauge,
     href: "/laptop-sneller-maken",
+    image: "/portfolio/laptop-optimalisatie.webp",
+    imageAlt: "Laptop waarop een optimalisatie en snelheidsverbetering wordt getoond",
   },
   {
     category: "Microsoft 365",
@@ -40,6 +47,8 @@ const projects: Project[] = [
     tags: ["Outlook", "OneDrive", "Teams"],
     icon: Cloud,
     href: "/microsoft-365",
+    image: "/portfolio/microsoft-365.webp",
+    imageAlt: "Microsoft 365 met Outlook OneDrive en Teams op een laptop",
   },
 ];
 
@@ -49,7 +58,6 @@ export default function Portfolio() {
       id="portfolio"
       className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
     >
-      {/* Subtiele achtergrondglow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-10 -z-10 h-[420px] w-[420px] rounded-full bg-blue-100/50 blur-3xl"
@@ -77,7 +85,7 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-7 md:grid-cols-3">
+        <div className="mt-16 grid gap-7 md:grid-cols-3">
           {projects.map((project) => {
             const Icon = project.icon;
 
@@ -86,26 +94,20 @@ export default function Portfolio() {
                 key={project.title}
                 className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_14px_40px_rgba(15,23,42,0.07)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_28px_65px_rgba(37,99,235,0.16)]"
               >
-                {/* Compactere blauwe header */}
-                <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900">
-                  <div
-                    aria-hidden="true"
-                    className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-cyan-400/20 blur-2xl transition-transform duration-500 group-hover:scale-125"
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    sizes="(max-width: 767px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
 
-                  <div
-                    aria-hidden="true"
-                    className="absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-blue-300/20 blur-2xl"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
 
-                  <div className="relative flex flex-col items-center gap-3 text-white">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white/15 group-hover:shadow-[0_12px_35px_rgba(59,130,246,0.38)]">
-                      <Icon className="h-8 w-8" aria-hidden="true" />
-                    </div>
-
-                    <span className="text-sm font-bold uppercase tracking-[0.16em]">
-                      {project.category}
-                    </span>
+                  <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-slate-950/75 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-lg backdrop-blur-md">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {project.category}
                   </div>
                 </div>
 
@@ -131,11 +133,11 @@ export default function Portfolio() {
 
                   <Link
                     href={project.href}
-                    aria-label={`Bekijk ${project.title}`}
+                    aria-label={`Bekijk voorbeeld van ${project.title}`}
                     className="mt-auto flex items-center justify-between pt-8 text-sm font-bold text-blue-600"
                   >
                     <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      Project bekijken
+                      Bekijk voorbeeld
                     </span>
 
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(37,99,235,0.28)]">
@@ -151,7 +153,7 @@ export default function Portfolio() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/#contact"
-            className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-[0_20px_45px_rgba(37,99,235,0.38)]"
+            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-9 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_45px_rgba(37,99,235,0.38)]"
           >
             Ook een project starten?
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
