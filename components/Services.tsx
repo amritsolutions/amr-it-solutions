@@ -63,21 +63,27 @@ const services: Service[] = [
   },
 ];
 
+const benefits = [
+  "Persoonlijke service",
+  "Snelle ondersteuning",
+  "Transparante tarieven",
+];
+
 export default function Services() {
   return (
     <section
       id="diensten"
-      className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-white pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36"
     >
-      {/* Subtiele achtergronddecoratie */}
+      {/* Subtiele achtergrond */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-0 -z-10 h-[420px] w-[420px] rounded-full bg-blue-100/50 blur-3xl"
+        className="pointer-events-none absolute -right-44 top-0 -z-10 h-[430px] w-[430px] rounded-full bg-blue-100/50 blur-3xl"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-4 top-1/2 -z-10 grid grid-cols-6 gap-3 opacity-40"
+        className="pointer-events-none absolute left-4 top-1/2 -z-10 grid grid-cols-6 gap-3 opacity-30"
       >
         {Array.from({ length: 24 }).map((_, index) => (
           <span
@@ -95,7 +101,7 @@ export default function Services() {
             Diensten
           </div>
 
-          <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
             IT support, computerreparatie en websites{" "}
             <span className="text-blue-600">in Breda</span>
           </h2>
@@ -107,22 +113,18 @@ export default function Services() {
           </p>
 
           <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-slate-700">
-            {[
-              "Persoonlijke service",
-              "Snelle ondersteuning",
-              "Transparante tarieven",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2">
+            {benefits.map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600">
                   ✓
                 </span>
-                {item}
+                {benefit}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Dienstenkaarten */}
+        {/* Kaarten */}
         <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -132,7 +134,7 @@ export default function Services() {
               <article
                 key={service.title}
                 className={[
-                  "group relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-[26px]",
+                  "group relative flex h-full min-h-[250px] flex-col overflow-hidden rounded-[26px]",
                   "border border-slate-200/90 bg-white p-7",
                   "shadow-[0_12px_40px_rgba(15,23,42,0.06)]",
                   "transition-all duration-300 ease-out",
@@ -140,19 +142,21 @@ export default function Services() {
                   "before:bg-gradient-to-r before:from-blue-500 before:via-blue-600 before:to-cyan-400",
                   "hover:-translate-y-2 hover:border-blue-200",
                   "hover:shadow-[0_24px_60px_rgba(37,99,235,0.16)]",
-                  isLast ? "md:col-span-2 md:mx-auto md:w-1/2 lg:col-span-1 lg:col-start-2 lg:w-full" : "",
+                  isLast
+                    ? "md:col-span-2 md:mx-auto md:w-2/3 lg:col-span-2 lg:col-start-1 lg:w-2/3"
+                    : "",
                 ].join(" ")}
               >
                 <div className="flex items-start gap-5">
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 ring-1 ring-blue-100 transition duration-300 group-hover:scale-110 group-hover:shadow-[0_10px_30px_rgba(37,99,235,0.22)]">
                     <Icon
                       aria-hidden="true"
-                      className="h-8 w-8 text-blue-600 transition-transform duration-300 group-hover:rotate-[-3deg]"
+                      className="h-8 w-8 text-blue-600 transition-transform duration-300 group-hover:-rotate-3"
                       strokeWidth={2}
                     />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-xl font-bold leading-snug text-slate-950">
                       {service.title}
                     </h3>
@@ -181,7 +185,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Onderste CTA */}
+        {/* CTA */}
         <div className="mt-12 flex justify-center">
           <Link
             href="/#contact"
