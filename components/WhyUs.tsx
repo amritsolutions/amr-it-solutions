@@ -1,10 +1,9 @@
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+
 function LightningIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-9 w-9">
       <path
         d="M13 2 4.8 13.2h6.1L10 22l9.2-12.2h-6.4L13 2Z"
         fill="currentColor"
@@ -15,11 +14,7 @@ function LightningIcon() {
 
 function PersonIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-9 w-9">
       <circle cx="12" cy="8" r="4" fill="currentColor" />
       <path
         d="M4.5 21c.5-4.7 3.2-7 7.5-7s7 2.3 7.5 7h-15Z"
@@ -31,11 +26,7 @@ function PersonIcon() {
 
 function LocationIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-9 w-9">
       <path
         d="M12 22s7-6.1 7-13A7 7 0 1 0 5 9c0 6.9 7 13 7 13Z"
         fill="currentColor"
@@ -51,7 +42,7 @@ function MonitorIcon() {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className="h-7 w-7"
+      className="h-9 w-9"
     >
       <rect
         x="3"
@@ -74,11 +65,7 @@ function MonitorIcon() {
 
 function ShieldIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-7 w-7"
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-9 w-9">
       <path
         d="M12 2.5 20 6v5.2c0 5.1-3.3 8.9-8 10.3-4.7-1.4-8-5.2-8-10.3V6l8-3.5Z"
         fill="currentColor"
@@ -101,7 +88,7 @@ function ChatIcon() {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className="h-7 w-7"
+      className="h-9 w-9"
     >
       <path
         d="M20 12a8 8 0 0 1-8 8 8.5 8.5 0 0 1-3-.6L4 20l1-4a8 8 0 1 1 15-4Z"
@@ -123,79 +110,143 @@ function ChatIcon() {
 const reasons = [
   {
     title: "Snelle service",
-    text: "Vaak dezelfde dag geholpen bij computerproblemen, WiFi-storingen en softwareproblemen.",
+    text: "Vaak dezelfde dag geholpen bij computerproblemen en software.",
+    highlight: "Zelfde dag reactie",
     icon: LightningIcon,
   },
   {
     title: "Persoonlijke aanpak",
-    text: "Je hebt direct contact met één persoon die met je meedenkt en duidelijke oplossingen biedt.",
+    text: "Direct contact met één persoon die meedenkt en de juiste oplossing biedt.",
+    highlight: "Persoonlijk en betrokken",
     icon: PersonIcon,
   },
   {
     title: "Breda & omgeving",
     text: "IT-hulp aan huis, op locatie of op afstand voor particulieren en kleine bedrijven.",
+    highlight: "Breda en omgeving",
     icon: LocationIcon,
   },
   {
     title: "IT & Webdesign",
-    text: "Van computerreparaties en Microsoft 365 tot professionele websites en cloudoplossingen.",
+    text: "Van computerreparaties tot professionele websites en cloudoplossingen.",
+    highlight: "Alles onder één dak",
     icon: MonitorIcon,
   },
   {
     title: "Betrouwbare oplossingen",
     text: "Veilige, stabiele en toekomstbestendige IT-oplossingen waar je op kunt vertrouwen.",
+    highlight: "Veilig en betrouwbaar",
     icon: ShieldIcon,
   },
   {
     title: "Duidelijke communicatie",
-    text: "Geen moeilijke IT-taal, maar eerlijk advies en heldere uitleg zodat je precies weet waar je aan toe bent.",
+    text: "Geen moeilijke IT-taal, maar eerlijk advies en heldere uitleg.",
+    highlight: "Duidelijk en transparant",
     icon: ChatIcon,
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section id="waarom" className="bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-            Waarom kiezen voor AMR IT Solutions?
-          </p>
+    <section
+      id="waarom"
+      className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
+    >
+      {/* Achtergrondglows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-0 -z-10 h-[440px] w-[440px] rounded-full bg-blue-100/50 blur-3xl"
+      />
 
-          <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 bottom-0 -z-10 h-[420px] w-[420px] rounded-full bg-cyan-100/35 blur-3xl"
+      />
+
+      {/* Stippen rechtsboven */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-10 top-20 -z-10 grid grid-cols-6 gap-3 opacity-25"
+      >
+        {Array.from({ length: 30 }).map((_, index) => (
+          <span
+            key={index}
+            className="h-1.5 w-1.5 rounded-full bg-blue-400"
+          />
+        ))}
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Intro */}
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-bold uppercase tracking-[0.14em] text-blue-600">
+            <span className="h-2 w-2 rounded-full bg-blue-600" />
+            Waarom kiezen voor AMR IT Solutions?
+          </div>
+
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             Betrouwbare IT-oplossingen met persoonlijke service
           </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
             AMR IT Solutions helpt particulieren, zzp&apos;ers en kleine
             bedrijven met betrouwbare IT-oplossingen. Persoonlijk contact,
             duidelijke communicatie en snelle service staan altijd centraal.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+        {/* Kaarten */}
+        <div className="mt-16 grid items-stretch gap-7 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason) => {
             const Icon = reason.icon;
 
             return (
               <article
                 key={reason.title}
-                className="group rounded-3xl bg-white p-8 shadow-[0_12px_35px_rgba(15,23,42,0.08)] ring-1 ring-slate-200 transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(15,23,42,0.14)]"
+                className={[
+                  "group relative flex min-h-[285px] flex-col overflow-hidden rounded-[30px]",
+                  "border border-slate-200/80 bg-white/90 p-8 backdrop-blur-sm",
+                  "shadow-[0_14px_40px_rgba(15,23,42,0.06)]",
+                  "transition-all duration-300 ease-out",
+                  "before:absolute before:inset-x-0 before:top-0 before:h-[3px]",
+                  "before:bg-gradient-to-r before:from-blue-500 before:via-blue-600 before:to-cyan-400",
+                  "hover:-translate-y-2 hover:border-blue-200",
+                  "hover:shadow-[0_26px_60px_rgba(37,99,235,0.16)]",
+                ].join(" ")}
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                <div className="flex h-[72px] w-[72px] items-center justify-center rounded-[22px] bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_12px_32px_rgba(37,99,235,0.24)]">
                   <Icon />
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-950">
+                <h3 className="mt-6 text-2xl font-bold tracking-tight text-slate-950">
                   {reason.title}
                 </h3>
 
-                <p className="mt-3 leading-7 text-slate-600">
+                <p className="mt-3 text-[15px] leading-7 text-slate-600">
                   {reason.text}
                 </p>
+
+                <div className="mt-auto flex items-center gap-3 pt-7 text-sm font-semibold text-slate-700">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm">
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  </span>
+
+                  <span>{reason.highlight}</span>
+                </div>
               </article>
             );
           })}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/#contact"
+            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-9 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_45px_rgba(37,99,235,0.38)]"
+          >
+            Vrijblijvend advies aanvragen
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>
