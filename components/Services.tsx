@@ -125,7 +125,7 @@ export default function Services() {
         </div>
 
         {/* Kaarten */}
-<div className="mt-16 grid items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div className="mt-14 grid items-stretch gap-7 md:grid-cols-2 lg:grid-cols-3">
   {services.map((service, index) => {
     const Icon = service.icon;
     const isLast = index === services.length - 1;
@@ -134,34 +134,34 @@ export default function Services() {
       <article
         key={service.title}
         className={[
-          "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-[28px]",
-          "border border-slate-200/90 bg-white p-7",
-          "shadow-[0_16px_45px_rgba(15,23,42,0.07)]",
+          "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-[30px]",
+          "border border-slate-200/80 bg-white/90 p-7 backdrop-blur-sm",
+          "shadow-[0_14px_40px_rgba(15,23,42,0.06)]",
           "transition-all duration-300 ease-out",
           "before:absolute before:inset-x-0 before:top-0 before:h-[3px]",
           "before:bg-gradient-to-r before:from-blue-500 before:via-blue-600 before:to-cyan-400",
-          "hover:-translate-y-2 hover:border-blue-200",
-          "hover:shadow-[0_28px_70px_rgba(37,99,235,0.18)]",
+          "hover:-translate-y-1.5 hover:border-blue-200",
+          "hover:shadow-[0_24px_55px_rgba(37,99,235,0.14)]",
           isLast
-            ? "md:col-span-2 md:mx-auto md:w-[calc(50%-16px)] lg:col-span-1 lg:col-start-2 lg:w-full"
+            ? "md:col-span-2 md:mx-auto md:w-[calc(50%-14px)] lg:col-span-1 lg:col-start-2 lg:w-full"
             : "",
         ].join(" ")}
       >
-        <div className="flex items-start gap-6">
-          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-blue-50 to-blue-100 ring-1 ring-blue-100 transition duration-300 group-hover:scale-110 group-hover:shadow-[0_12px_34px_rgba(37,99,235,0.24)]">
+        <div className="flex items-start gap-5">
+          <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 ring-1 ring-blue-100/80 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_10px_28px_rgba(37,99,235,0.18)]">
             <Icon
               aria-hidden="true"
-              className="h-10 w-10 text-blue-600 transition-transform duration-300 group-hover:-rotate-3"
+              className="h-9 w-9 text-blue-600 transition-transform duration-300 group-hover:-rotate-3"
               strokeWidth={2}
             />
           </div>
 
           <div className="min-w-0">
-            <h3 className="text-xl font-bold leading-snug text-slate-950">
+            <h3 className="text-xl font-bold leading-snug tracking-tight text-slate-950">
               {service.title}
             </h3>
 
-            <p className="mt-4 text-base leading-8 text-slate-600">
+            <p className="mt-3 text-[15px] leading-7 text-slate-600">
               {service.text}
             </p>
           </div>
@@ -170,14 +170,14 @@ export default function Services() {
         <Link
           href={service.link}
           aria-label={`Meer informatie over ${service.title}`}
-          className="mt-auto flex items-center justify-between pt-8 text-sm font-bold text-blue-600"
+          className="mt-auto flex items-center justify-between pt-7 text-sm font-bold text-blue-600"
         >
-          <span className="transition-colors group-hover:text-blue-700">
+          <span className="transition-colors duration-300 group-hover:text-blue-700">
             Meer informatie
           </span>
 
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg">
-            <ArrowRight className="h-5 w-5" aria-hidden="true" />
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(37,99,235,0.28)]">
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </Link>
       </article>
