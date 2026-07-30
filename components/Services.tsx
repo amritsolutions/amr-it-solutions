@@ -134,8 +134,8 @@ export default function Services() {
       <article
         key={service.title}
         className={[
-          "group relative flex h-full min-h-[320px] flex-col overflow-hidden rounded-[28px]",
-          "border border-slate-200/90 bg-white p-8",
+          "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-[28px]",
+          "border border-slate-200/90 bg-white p-7",
           "shadow-[0_16px_45px_rgba(15,23,42,0.07)]",
           "transition-all duration-300 ease-out",
           "before:absolute before:inset-x-0 before:top-0 before:h-[3px]",
@@ -157,7 +157,7 @@ export default function Services() {
           </div>
 
           <div className="min-w-0">
-            <h3 className="text-2xl font-bold leading-snug text-slate-950">
+            <h3 className="text-xl font-bold leading-snug text-slate-950">
               {service.title}
             </h3>
 
