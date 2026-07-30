@@ -227,7 +227,7 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
-                className="relative space-y-8 overflow-hidden rounded-[30px] border border-blue-300/15 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.018)_45%,rgba(37,99,235,0.04))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.045)] sm:p-9 lg:p-10 xl:p-11"
+                className="relative space-y-7 overflow-hidden rounded-[30px] border border-blue-300/15 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.018)_45%,rgba(37,99,235,0.04))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.045)] sm:p-9 lg:p-10 xl:p-11"
               >
                 <div className="pointer-events-none absolute -right-28 -top-28 h-72 w-72 rounded-full bg-blue-500/10 blur-[72px]" />
                 <div className="pointer-events-none absolute -bottom-32 left-1/3 h-64 w-64 rounded-full bg-blue-600/[0.045] blur-[80px]" />
@@ -275,7 +275,7 @@ export default function Contact() {
                       type="text"
                       name="name"
                       autoComplete="name"
-                      placeholder="Uw naam"
+                      placeholder="Bijv. Ahmed"
                       required
                       className={`${inputClass} pl-14`}
                     />
@@ -287,7 +287,7 @@ export default function Contact() {
                       type="email"
                       name="email"
                       autoComplete="email"
-                      placeholder="Uw e-mailadres"
+                      placeholder="Bijv. ahmed@email.nl"
                       required
                       className={`${inputClass} pl-14`}
                     />
@@ -299,7 +299,7 @@ export default function Contact() {
                       type="tel"
                       name="phone"
                       autoComplete="tel"
-                      placeholder="06 12345678"
+                      placeholder="Bijv. 06 12345678"
                       className={`${inputClass} pl-14`}
                     />
                   </Field>
@@ -333,7 +333,7 @@ export default function Contact() {
                   <MessageSquare className="pointer-events-none absolute left-5 top-5 h-5 w-5 text-slate-500" />
                   <textarea
                     name="message"
-                    placeholder="Omschrijf zo duidelijk mogelijk waar we u mee kunnen helpen..."
+                    placeholder="Vertel zo duidelijk mogelijk waar we u mee kunnen helpen..."
                     rows={6}
                     required
                     className={`${inputClass} min-h-[180px] resize-y pl-14`}
@@ -435,10 +435,15 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group relative inline-flex min-h-[72px] w-full items-center justify-center gap-3 overflow-hidden rounded-[20px] border border-blue-200/55 bg-[linear-gradient(110deg,#1d4ed8_0%,#2563eb_42%,#3b82f6_62%,#1d4ed8_100%)] bg-[length:220%_100%] px-6 py-4 text-lg font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.32),0_0_36px_rgba(59,130,246,0.18)] transition-all duration-300 before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_26px_58px_rgba(37,99,235,0.44),0_0_48px_rgba(59,130,246,0.24)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="group relative inline-flex min-h-[72px] w-full items-center justify-center overflow-hidden rounded-[20px] border border-blue-200/55 bg-[linear-gradient(110deg,#1d4ed8_0%,#2563eb_42%,#3b82f6_62%,#1d4ed8_100%)] bg-[length:220%_100%] px-16 py-4 text-lg font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.32),0_0_36px_rgba(59,130,246,0.18)] transition-all duration-300 before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/80 before:to-transparent hover:-translate-y-1 hover:bg-[position:100%_0] hover:shadow-[0_26px_58px_rgba(37,99,235,0.44),0_0_48px_rgba(59,130,246,0.24)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/30 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
-                  <Send className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  {submitting ? "Bericht verzenden..." : "Bericht verzenden"}
+                  <Send className="absolute left-6 h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+
+                  <span>
+                    {submitting ? "Bericht verzenden..." : "Bericht verzenden"}
+                  </span>
+
+                  <ArrowRight className="absolute right-6 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
 
                 <div className="grid gap-6 border-t border-white/10 pt-7 text-sm leading-5 text-slate-300 sm:grid-cols-3 lg:text-[15px] lg:leading-6">
@@ -614,9 +619,9 @@ function PreferenceOption({
 }) {
   return (
     <label
-      className={`flex min-h-[64px] cursor-pointer items-center gap-3 rounded-[18px] border px-5 py-4 transition-all duration-300 ${
+      className={`flex min-h-[64px] cursor-pointer items-center gap-3 rounded-[18px] border px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 ${
         selected
-          ? "border-blue-500 bg-blue-500/10 shadow-[0_0_22px_rgba(37,99,235,0.12)]"
+          ? "border-blue-500 bg-blue-500/10 shadow-[0_0_26px_rgba(37,99,235,0.18)]"
           : "border-slate-700 bg-white/[0.025] hover:border-slate-600 hover:bg-white/[0.05]"
       }`}
     >
