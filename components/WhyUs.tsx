@@ -184,7 +184,7 @@ export default function WhyUs() {
             Waarom kiezen voor AMR IT Solutions?
           </div>
 
-          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-[3.5rem]">
             Betrouwbare IT-oplossingen met persoonlijke service
           </h2>
 
