@@ -468,26 +468,35 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-20">
-          <div className="mx-auto mb-9 max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-600">
-              <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+        <div className="relative mt-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-24 top-36 -z-10 h-[420px] w-[420px] rounded-full bg-blue-200/35 blur-[120px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 bottom-24 -z-10 h-[360px] w-[360px] rounded-full bg-cyan-100/40 blur-[110px]"
+          />
+
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-bold uppercase tracking-[0.14em] text-blue-600">
+              <MapPin className="h-4 w-4" aria-hidden="true" />
               Werkgebied
             </span>
 
-            <h3 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-              Actief in Breda en omgeving
+            <h3 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Actief in <span className="text-blue-600">Breda</span> en omgeving
             </h3>
 
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
               Wij helpen particulieren en bedrijven aan huis, op locatie of op
               afstand. Woont u in Breda of omgeving? Dan staan wij graag voor u
               klaar.
             </p>
           </div>
 
-          <div className="grid items-stretch gap-7 lg:grid-cols-[1.65fr_0.85fr]">
-            <div className="h-[420px] overflow-hidden rounded-[2rem] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.10)] ring-1 ring-slate-200">
+          <div className="relative grid items-stretch gap-7 lg:grid-cols-[1.65fr_0.85fr]">
+            <div className="group relative h-[460px] overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_22px_65px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_30px_80px_rgba(37,99,235,0.16)] sm:h-[500px] xl:h-[560px]">
               <iframe
                 title="Werkgebied AMR IT Solutions in Breda"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79374.54472286106!2d4.681941777056458!3d51.559900647613816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1b47e17d16d%3A0xe5057ea284d71b41!2sBreda!5e0!3m2!1snl!2snl!4v1782939734087!5m2!1snl!2snl"
@@ -501,43 +510,104 @@ export default function Contact() {
               />
             </div>
 
-            <div className="flex min-h-[420px] flex-col rounded-[2rem] bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.10)] ring-1 ring-slate-200 sm:p-8">
+            <div className="flex min-h-[460px] flex-col rounded-[2rem] border border-slate-200/90 bg-white p-7 shadow-[0_22px_65px_rgba(15,23,42,0.10)] sm:min-h-[500px] sm:p-8 xl:min-h-[560px]">
               <h4 className="text-2xl font-bold tracking-tight text-slate-950">
                 Wij werken in:
               </h4>
 
-              <div className="mt-6 space-y-3">
+              <div className="mt-5 divide-y divide-slate-100">
                 {locations.map((location) => (
-                  <div key={location} className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <span className="font-medium text-slate-700">
+                  <a
+                    key={location}
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-4 py-3.5 transition-colors duration-300 first:pt-0 hover:text-blue-600"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_8px_22px_rgba(37,99,235,0.24)]">
+                      <MapPin className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span className="font-medium text-slate-700 transition-colors group-hover:text-blue-700">
                       {location}
                     </span>
-                  </div>
+                    <ArrowRight className="ml-auto h-4 w-4 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-600" />
+                  </a>
                 ))}
               </div>
 
-              <div className="mt-auto pt-7">
-                <div className="rounded-2xl bg-blue-50 p-5">
+              <div className="mt-auto pt-6">
+                <div className="rounded-[24px] border border-blue-100 bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 p-5 shadow-[0_14px_35px_rgba(37,99,235,0.08)]">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-blue-100">
-                      <Monitor className="h-6 w-6" />
-                    </div>
+                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm ring-1 ring-blue-100">
+                      <Monitor className="h-7 w-7" aria-hidden="true" />
+                    </span>
                     <div>
-                      <p className="font-semibold text-blue-700">
-                        Ook hulp op afstand mogelijk
+                      <p className="font-bold text-blue-700">
+                        Online ondersteuning
                       </p>
                       <p className="mt-1 text-sm leading-6 text-slate-600">
-                        Veel problemen kunnen wij direct online oplossen via
-                        veilige ondersteuning op afstand.
+                        Veel problemen kunnen wij direct en veilig online
+                        oplossen via ondersteuning op afstand.
                       </p>
                     </div>
                   </div>
+
+                  <ul className="mt-4 space-y-2.5 text-sm font-medium text-slate-700">
+                    {["Snel en veilig verbonden", "Persoonlijke begeleiding", "Zonder voorrijkosten"].map((item) => (
+                      <li key={item} className="flex items-center gap-2.5">
+                        <Check className="h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="#contact"
+                    className="group mt-5 flex min-h-[54px] w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3.5 text-sm font-bold text-white shadow-[0_12px_28px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_18px_36px_rgba(37,99,235,0.38)]"
+                  >
+                    Vraag vrijblijvend advies aan
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="mt-7 grid overflow-hidden rounded-[26px] border border-slate-200/90 bg-white shadow-[0_16px_45px_rgba(15,23,42,0.08)] sm:grid-cols-3">
+            {[
+              [Clock3, "Vaak dezelfde dag geholpen", "Snelle hulp wanneer u het nodig heeft."],
+              [User, "Persoonlijk contact", "Direct contact met korte lijnen."],
+              [ShieldCheck, "Breda en omgeving", "Lokaal actief, altijd dichtbij."],
+            ].map(([Icon, title, text], index) => {
+              const BenefitIcon = Icon as typeof Clock3;
+
+              return (
+                <div
+                  key={String(title)}
+                  className={`flex items-center gap-4 p-6 ${
+                    index > 0 ? "border-t border-slate-100 sm:border-l sm:border-t-0" : ""
+                  }`}
+                >
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100">
+                    <BenefitIcon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="block font-bold text-slate-950">{String(title)}</span>
+                    <span className="mt-1 block text-sm leading-5 text-slate-600">{String(text)}</span>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-[22px] border border-blue-100 bg-blue-50/70 px-6 py-4 text-center text-sm text-slate-600">
+            <span className="inline-flex items-center gap-2 font-bold text-slate-900">
+              <MapPin className="h-4 w-4 text-blue-600" aria-hidden="true" />
+              Werkgebied:
+            </span>
+            <span>
+              Breda • Oosterhout • Etten-Leur • Prinsenbeek • Teteringen • Bavel • Ulvenhout • Rijen en meer
+            </span>
           </div>
         </div>
       </div>
