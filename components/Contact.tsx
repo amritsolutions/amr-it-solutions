@@ -469,6 +469,7 @@ export default function Contact() {
         </div>
 
         <div className="relative mt-20 overflow-hidden py-4 sm:py-8">
+          {/* Subtiele achtergronddecoratie */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-48 top-12 h-[460px] w-[460px] rounded-full bg-blue-100/55 blur-[130px]"
@@ -478,6 +479,7 @@ export default function Contact() {
             className="pointer-events-none absolute -right-40 top-0 h-[420px] w-[420px] rounded-full bg-cyan-100/35 blur-[130px]"
           />
 
+          {/* Titel */}
           <div className="relative mx-auto mb-12 max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-bold uppercase tracking-[0.12em] text-blue-600 ring-1 ring-blue-100">
               <MapPin className="h-4 w-4" />
@@ -495,6 +497,7 @@ export default function Contact() {
             </p>
           </div>
 
+          {/* Kaart en locaties */}
           <div className="relative grid items-start gap-10 lg:grid-cols-[1.55fr_0.85fr] lg:gap-12">
             <div className="relative h-[480px] overflow-hidden rounded-[30px] bg-white shadow-[0_24px_70px_rgba(37,99,235,0.12)] ring-1 ring-blue-100/80 sm:h-[520px]">
               <iframe
@@ -508,6 +511,18 @@ export default function Contact() {
                 allowFullScreen
                 className="block h-full w-full"
               />
+
+              {/* Visuele werkgebiedcirkel zoals in het voorbeeld */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-400/25 bg-blue-500/10 shadow-[0_0_70px_rgba(37,99,235,0.18)] sm:h-80 sm:w-80"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-blue-600 text-white shadow-[0_12px_30px_rgba(37,99,235,0.35)]"
+              >
+                <MapPin className="h-6 w-6" />
+              </div>
             </div>
 
             <div className="flex min-h-[480px] flex-col sm:min-h-[520px]">
@@ -552,13 +567,38 @@ export default function Contact() {
                         Veel problemen kunnen wij direct online oplossen via
                         veilige ondersteuning op afstand.
                       </p>
+
+                      <ul className="mt-4 space-y-2.5">
+                        {[
+                          "Snel en veilig",
+                          "Persoonlijke begeleiding",
+                          "Zonder voorrijkosten",
+                        ].map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-center gap-2.5 text-sm font-medium text-slate-700"
+                          >
+                            <Check className="h-4 w-4 shrink-0 text-blue-600" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
+
+                <a
+                  href="/#contact"
+                  className="group mt-5 inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_44px_rgba(37,99,235,0.38)]"
+                >
+                  Vraag vrijblijvend advies aan
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
               </div>
             </div>
           </div>
 
+          {/* Voordelenbalk */}
           <div className="relative mt-14 grid overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.07)] md:grid-cols-3">
             {[
               {
@@ -583,7 +623,9 @@ export default function Contact() {
                 <div
                   key={item.title}
                   className={`flex items-center gap-5 px-7 py-7 ${
-                    index > 0 ? "border-t border-slate-200/80 md:border-l md:border-t-0" : ""
+                    index > 0
+                      ? "border-t border-slate-200/80 md:border-l md:border-t-0"
+                      : ""
                   }`}
                 >
                   <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100">
@@ -602,6 +644,7 @@ export default function Contact() {
               );
             })}
           </div>
+        </div>
         </div>
       </div>
     </section>
