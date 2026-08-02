@@ -50,10 +50,10 @@ export default function ITSupportHero() {
         className="pointer-events-none absolute right-0 top-16 -z-10 h-[560px] w-[560px] rounded-full bg-blue-100/50 blur-[120px]"
       />
 
-      <div className="mx-auto max-w-7xl px-6 pb-20 pt-12 lg:px-8 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-6 pb-14 pt-8 lg:px-8 lg:pb-16">
         <Breadcrumb current="IT Support Breda" />
 
-        <div className="mt-10 grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           {/* Tekst */}
           <div className="relative z-20">
             <div className="inline-flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function ITSupportHero() {
               <span className="h-0.5 w-8 rounded-full bg-blue-600" />
             </div>
 
-            <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-[58px]">
+            <h1 className="mt-6 max-w-[640px] text-4xl font-extrabold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-[56px]">
               IT Support in{" "}
               <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 Breda
@@ -81,7 +81,7 @@ export default function ITSupportHero() {
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/#contact"
-                className="group inline-flex min-h-[60px] items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 font-bold text-white shadow-[0_16px_38px_rgba(37,99,235,0.3)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_22px_48px_rgba(37,99,235,0.4)]"
+                className="group inline-flex min-h-[60px] items-center justify-center gap-3 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 font-bold text-white shadow-[0_16px_38px_rgba(37,99,235,0.3)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_22px_48px_rgba(37,99,235,0.4)]"
               >
                 <Headphones className="h-5 w-5" />
                 IT Support aanvragen
@@ -93,7 +93,7 @@ export default function ITSupportHero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Neem contact op via WhatsApp"
-                className="group inline-flex min-h-[60px] items-center justify-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-4 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-[0_18px_36px_rgba(34,197,94,0.18)]"
+                className="group inline-flex min-h-[60px] items-center justify-center gap-3 rounded-3xl border-2 border-green-500 bg-white px-8 py-4 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-[0_18px_36px_rgba(34,197,94,0.18)]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 WhatsApp ons
@@ -105,12 +105,12 @@ export default function ITSupportHero() {
           <div className="relative min-h-[390px] lg:min-h-[570px]">
             <div
               aria-hidden="true"
-              className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-blue-100/90 via-blue-50 to-transparent lg:h-[540px] lg:w-[620px]"
+              className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-blue-100/90 via-blue-50 to-transparent lg:h-[520px] lg:w-[600px]"
             />
 
             <div
               aria-hidden="true"
-              className="absolute left-1/2 top-1/2 h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/70 lg:h-[590px] lg:w-[680px]"
+              className="absolute left-1/2 top-1/2 h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/70 lg:h-[560px] lg:w-[640px]"
             />
 
             <div className="absolute right-6 top-4 z-10 hidden grid-cols-6 gap-5 opacity-70 lg:grid">
@@ -128,13 +128,13 @@ export default function ITSupportHero() {
               width={900}
               height={680}
               priority
-              className="relative z-20 mx-auto mt-8 w-[95%] max-w-[590px] object-contain drop-shadow-[0_28px_60px_rgba(37,99,235,0.2)] transition duration-500 hover:scale-[1.025] lg:mt-0 lg:w-full lg:max-w-none"
+              className="relative z-20 mx-auto mt-4 w-full max-w-[670px] object-contain drop-shadow-[0_35px_70px_rgba(37,99,235,0.22)] transition duration-500 hover:scale-[1.02] lg:mt-0 lg:scale-[1.08]"
             />
           </div>
         </div>
 
         {/* Voordelenbalk */}
-        <div className="relative z-30 -mt-2 grid overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_24px_65px_rgba(15,23,42,0.08)] sm:grid-cols-2 lg:-mt-8 lg:grid-cols-4">
+        <div className="relative z-30 mt-6 grid overflow-hidden rounded-[32px] border border-slate-200/80 bg-white shadow-[0_24px_65px_rgba(15,23,42,0.08)] sm:grid-cols-2 lg:-mt-2 lg:grid-cols-4">
           {benefits.map(({ Icon, title, text }, index) => (
             <div
               key={title}
