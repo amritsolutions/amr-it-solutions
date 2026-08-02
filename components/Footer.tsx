@@ -21,41 +21,13 @@ import {
 } from "lucide-react";
 
 const services = [
-  {
-    label: "Computerreparatie",
-    href: "/computerreparatie",
-    icon: Monitor,
-  },
-  {
-    label: "Laptop sneller maken",
-    href: "/laptop-sneller-maken",
-    icon: Laptop,
-  },
-  {
-    label: "Windows installeren",
-    href: "/windows-installeren",
-    icon: PanelsTopLeft,
-  },
-  {
-    label: "Printer & WiFi",
-    href: "/printer-wifi-netwerk",
-    icon: Printer,
-  },
-  {
-    label: "Website laten maken",
-    href: "/website-laten-maken",
-    icon: Globe2,
-  },
-  {
-    label: "Microsoft 365",
-    href: "/microsoft-365",
-    icon: Cloud,
-  },
-  {
-    label: "Zakelijke IT",
-    href: "/#contact",
-    icon: BriefcaseBusiness,
-  },
+  { label: "Computerreparatie", href: "/computerreparatie", icon: Monitor },
+  { label: "Laptop sneller maken", href: "/laptop-sneller-maken", icon: Laptop },
+  { label: "Windows installeren", href: "/windows-installeren", icon: PanelsTopLeft },
+  { label: "Printer & WiFi", href: "/printer-wifi-netwerk", icon: Printer },
+  { label: "Website laten maken", href: "/website-laten-maken", icon: Globe2 },
+  { label: "Microsoft 365", href: "/microsoft-365", icon: Cloud },
+  { label: "Zakelijke IT", href: "/#contact", icon: BriefcaseBusiness },
 ];
 
 const highlights = [
@@ -67,47 +39,41 @@ const highlights = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#020817] text-slate-300">
-      {/* Blauwe lichtlijn */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+    <footer className="relative overflow-hidden rounded-t-[36px] border-t border-blue-500/20 bg-[#020817] text-slate-300">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400/95 to-transparent" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-24 w-[560px] -translate-x-1/2 rounded-full bg-blue-500/25 blur-3xl" />
+      <div className="pointer-events-none absolute -left-28 top-0 h-80 w-80 rounded-full bg-blue-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-500/[0.06] blur-[140px]" />
 
-      <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-[520px] -translate-x-1/2 rounded-full bg-blue-500/25 blur-[70px]" />
-
-      <div className="pointer-events-none absolute -left-48 top-20 h-[520px] w-[520px] rounded-full bg-blue-700/10 blur-[130px]" />
-
-      <div className="pointer-events-none absolute -right-48 top-10 h-[480px] w-[480px] rounded-full bg-blue-600/10 blur-[130px]" />
-
-      <div className="relative mx-auto max-w-[1500px] px-6 pb-10 pt-16 sm:px-8 sm:pt-20 lg:px-10">
-        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.9fr_1fr] lg:gap-16 xl:gap-24">
-          {/* Bedrijfsinformatie */}
+      <div className="relative mx-auto max-w-[1500px] px-6 pb-8 pt-14 sm:px-8 sm:pt-16 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.9fr_1fr] lg:gap-14 xl:gap-16">
           <div>
             <Image
               src="/logos/amr-logo-dark.png"
               alt="AMR IT Solutions"
-              width={290}
+              width={320}
               height={120}
-              className="h-auto w-[230px] object-contain sm:w-[260px]"
+              className="h-auto w-[270px] object-contain sm:w-[300px]"
             />
 
-            <p className="mt-8 max-w-md text-base leading-8 text-slate-400">
-              Persoonlijke IT-oplossingen voor particulieren en bedrijven.
-              Snel, betrouwbaar en betaalbaar. Van computerreparaties tot
-              websites en Microsoft 365.
+            <p className="mt-7 max-w-md text-base leading-8 text-slate-400">
+              Persoonlijke IT-oplossingen voor particulieren en bedrijven. Van
+              computerreparaties en Microsoft 365 tot professionele websites.
+              Snel, betrouwbaar en zonder ingewikkelde IT-taal.
             </p>
 
-            <ul className="mt-8 grid gap-x-7 gap-y-4 text-sm text-slate-300 sm:grid-cols-2">
+            <ul className="mt-7 grid gap-x-7 gap-y-4 text-sm text-slate-300 sm:grid-cols-2">
               {highlights.map((highlight) => (
                 <li key={highlight} className="flex items-center gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-400">
                     <Check className="h-4 w-4" />
                   </span>
-
                   <span>{highlight}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="/#contact"
                 className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_45px_rgba(37,99,235,0.4)]"
@@ -129,17 +95,16 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="mt-7 flex items-center gap-3 text-sm text-slate-400">
+            <div className="mt-6 flex items-center gap-3 text-sm text-slate-400">
               <ShieldCheck className="h-5 w-5 shrink-0 text-blue-400" />
               <span>Vrijblijvend advies • Geen verborgen kosten</span>
             </div>
           </div>
 
-          {/* Diensten */}
           <div>
             <SectionTitle>Diensten</SectionTitle>
 
-            <ul className="mt-7 divide-y divide-white/10">
+            <ul className="mt-6 divide-y divide-white/10">
               {services.map((service) => {
                 const Icon = service.icon;
 
@@ -147,12 +112,10 @@ export default function Footer() {
                   <li key={service.label}>
                     <Link
                       href={service.href}
-                      className="group flex min-h-[58px] items-center gap-4 py-3 text-sm text-slate-300 transition-colors duration-300 hover:text-white"
+                      className="group -mx-3 flex min-h-[58px] items-center gap-4 rounded-xl border border-transparent px-3 py-3 text-sm text-slate-300 transition-all duration-300 hover:translate-x-1 hover:border-blue-500/20 hover:bg-white/[0.04] hover:text-white"
                     >
                       <Icon className="h-6 w-6 shrink-0 text-blue-500 transition-transform duration-300 group-hover:scale-110" />
-
                       <span className="font-medium">{service.label}</span>
-
                       <ArrowRight className="ml-auto h-4 w-4 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
                     </Link>
                   </li>
@@ -162,17 +125,14 @@ export default function Footer() {
 
             <a
               href="/#contact"
-              className="group mt-7 flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/35 hover:bg-blue-500/[0.05]"
+              className="group mb-4 mt-6 flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/35 hover:bg-blue-500/[0.05] hover:shadow-[0_0_30px_rgba(37,99,235,0.12)]"
             >
               <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
                 <Phone className="h-6 w-6" />
               </span>
 
               <span>
-                <span className="block font-bold text-white">
-                  Hulp op locatie
-                </span>
-
+                <span className="block font-bold text-white">Hulp op locatie</span>
                 <span className="mt-1 block text-sm leading-6 text-slate-400">
                   Wij zijn actief in Breda en omgeving.
                 </span>
@@ -182,31 +142,27 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Contact */}
           <div>
             <SectionTitle>Contact</SectionTitle>
 
-            <div className="mt-7 space-y-4">
+            <div className="mt-6 space-y-4">
               <ContactCard
                 icon={<MapPin className="h-6 w-6" />}
                 label="Werkgebied"
                 value="Breda en omgeving"
               />
-
               <ContactCard
                 href="tel:+31649718684"
                 icon={<Phone className="h-6 w-6" />}
                 label="Telefoon"
                 value="06 49718684"
               />
-
               <ContactCard
                 href="mailto:info@amritsolutions.nl"
                 icon={<Mail className="h-6 w-6" />}
                 label="E-mail"
                 value="info@amritsolutions.nl"
               />
-
               <ContactCard
                 href="https://wa.me/31649718684"
                 external
@@ -219,8 +175,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Onderste balk */}
-        <div className="mt-16 border-t border-white/10 pt-8">
+        <div className="mt-12 border-t border-white/10 pt-8">
           <div className="grid gap-8 text-sm text-slate-400 lg:grid-cols-[0.9fr_2.2fr_1fr] lg:items-center">
             <div>
               <p>© 2026 AMR IT Solutions</p>
@@ -232,13 +187,11 @@ export default function Footer() {
                 icon={<Clock3 className="h-6 w-6" />}
                 text="We reageren meestal binnen één werkdag"
               />
-
               <TrustItem
                 icon={<LockKeyhole className="h-6 w-6" />}
                 text="Jouw gegevens worden veilig verwerkt"
                 bordered
               />
-
               <TrustItem
                 icon={<ShieldCheck className="h-6 w-6" />}
                 text="Vrijblijvend advies • Geen verborgen kosten"
@@ -250,39 +203,17 @@ export default function Footer() {
               aria-label="Footer navigatie"
               className="flex flex-wrap gap-x-4 gap-y-3 lg:justify-end"
             >
-              <a href="/#home" className="transition hover:text-white">
-                Home
-              </a>
-
+              <a href="/#home" className="transition hover:text-white">Home</a>
               <span className="text-blue-500">•</span>
-
-              <a href="/#diensten" className="transition hover:text-white">
-                Diensten
-              </a>
-
+              <a href="/#diensten" className="transition hover:text-white">Diensten</a>
               <span className="text-blue-500">•</span>
-
-              <a href="/#portfolio" className="transition hover:text-white">
-                Portfolio
-              </a>
-
+              <a href="/#portfolio" className="transition hover:text-white">Portfolio</a>
               <span className="text-blue-500">•</span>
-
-              <a href="/#contact" className="transition hover:text-white">
-                Contact
-              </a>
-
+              <a href="/#contact" className="transition hover:text-white">Contact</a>
               <span className="text-blue-500">•</span>
-
-              <Link href="/privacy" className="transition hover:text-white">
-                Privacy
-              </Link>
-
+              <Link href="/privacy" className="transition hover:text-white">Privacy</Link>
               <span className="text-blue-500">•</span>
-
-              <Link href="/cookies" className="transition hover:text-white">
-                Cookies
-              </Link>
+              <Link href="/cookies" className="transition hover:text-white">Cookies</Link>
             </nav>
           </div>
         </div>
@@ -318,6 +249,7 @@ function ContactCard({
   const className = [
     "group flex min-h-[86px] items-center gap-4 rounded-[22px] border p-5",
     "transition-all duration-300 hover:-translate-y-1",
+    "hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]",
     whatsapp
       ? "border-green-500/20 bg-green-500/[0.035] hover:border-green-400/45 hover:bg-green-500/[0.075]"
       : "border-white/10 bg-white/[0.025] hover:border-blue-400/35 hover:bg-white/[0.05]",
@@ -338,18 +270,14 @@ function ContactCard({
 
       <span className="min-w-0">
         <span className="block text-xs text-slate-500">{label}</span>
-        <span className="mt-1 block break-all text-sm font-semibold text-white">
-          {value}
-        </span>
+        <span className="mt-1 block break-all text-sm font-semibold text-white">{value}</span>
       </span>
 
       <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
     </>
   );
 
-  if (!href) {
-    return <div className={className}>{content}</div>;
-  }
+  if (!href) return <div className={className}>{content}</div>;
 
   return (
     <a
@@ -373,11 +301,7 @@ function TrustItem({
   bordered?: boolean;
 }) {
   return (
-    <div
-      className={`flex items-start gap-4 ${
-        bordered ? "sm:border-l sm:border-white/10 sm:pl-6" : ""
-      }`}
-    >
+    <div className={`flex items-start gap-4 ${bordered ? "sm:border-l sm:border-white/10 sm:pl-6" : ""}`}>
       <span className="shrink-0 text-blue-500">{icon}</span>
       <span className="leading-6">{text}</span>
     </div>
