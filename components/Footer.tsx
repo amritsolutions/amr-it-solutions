@@ -1,38 +1,60 @@
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Check,
+  Clock3,
+  Cloud,
+  Globe2,
+  Laptop,
+  LockKeyhole,
+  Mail,
+  MapPin,
+  Monitor,
+  PanelsTopLeft,
+  Phone,
+  Printer,
+  Send,
+  ShieldCheck,
+} from "lucide-react";
 
 const services = [
   {
     label: "Computerreparatie",
     href: "/computerreparatie",
-    externalSection: false,
+    icon: Monitor,
   },
   {
     label: "Laptop sneller maken",
-    href: "/#diensten",
-    externalSection: true,
+    href: "/laptop-sneller-maken",
+    icon: Laptop,
   },
   {
     label: "Windows installeren",
-    href: "/#diensten",
-    externalSection: true,
+    href: "/windows-installeren",
+    icon: PanelsTopLeft,
   },
   {
     label: "Printer & WiFi",
-    href: "/#diensten",
-    externalSection: true,
+    href: "/printer-wifi-netwerk",
+    icon: Printer,
   },
   {
     label: "Website laten maken",
     href: "/website-laten-maken",
-    externalSection: false,
+    icon: Globe2,
   },
   {
     label: "Microsoft 365",
-    href: "/#diensten",
-    externalSection: true,
+    href: "/microsoft-365",
+    icon: Cloud,
+  },
+  {
+    label: "Zakelijke IT",
+    href: "/#contact",
+    icon: BriefcaseBusiness,
   },
 ];
 
@@ -45,34 +67,39 @@ const highlights = [
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
-        <div className="grid gap-14 lg:grid-cols-[1.35fr_0.75fr_1fr] lg:gap-20">
+    <footer className="relative overflow-hidden bg-[#020817] text-slate-300">
+      {/* Blauwe lichtlijn */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+
+      <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-[520px] -translate-x-1/2 rounded-full bg-blue-500/25 blur-[70px]" />
+
+      <div className="pointer-events-none absolute -left-48 top-20 h-[520px] w-[520px] rounded-full bg-blue-700/10 blur-[130px]" />
+
+      <div className="pointer-events-none absolute -right-48 top-10 h-[480px] w-[480px] rounded-full bg-blue-600/10 blur-[130px]" />
+
+      <div className="relative mx-auto max-w-[1500px] px-6 pb-10 pt-16 sm:px-8 sm:pt-20 lg:px-10">
+        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.9fr_1fr] lg:gap-16 xl:gap-24">
           {/* Bedrijfsinformatie */}
           <div>
             <Image
-              src="/logos/logo.png"
-              alt="AMR IT Solutions logo"
-              width={150}
-              height={62}
-              className="rounded-2xl bg-white p-3 shadow-lg shadow-black/10"
+              src="/logos/amr-logo-dark.png"
+              alt="AMR IT Solutions"
+              width={290}
+              height={120}
+              className="h-auto w-[230px] object-contain sm:w-[260px]"
             />
 
-            <h2 className="mt-6 text-2xl font-extrabold tracking-tight text-white">
-              AMR IT Solutions
-            </h2>
-
-            <p className="mt-4 max-w-lg leading-7 text-slate-400">
-              AMR IT Solutions helpt particulieren, zzp&apos;ers en bedrijven
-              met snelle, betrouwbare en betaalbare IT-oplossingen. Van
-              computerreparaties tot websites en Microsoft 365.
+            <p className="mt-8 max-w-md text-base leading-8 text-slate-400">
+              Persoonlijke IT-oplossingen voor particulieren en bedrijven.
+              Snel, betrouwbaar en betaalbaar. Van computerreparaties tot
+              websites en Microsoft 365.
             </p>
 
-            <ul className="mt-6 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-x-7 gap-y-4 text-sm text-slate-300 sm:grid-cols-2">
               {highlights.map((highlight) => (
-                <li key={highlight} className="flex items-center gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/15 text-blue-400">
-                    <Check className="h-3.5 w-3.5" />
+                <li key={highlight} className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-blue-500/50 bg-blue-500/10 text-blue-400">
+                    <Check className="h-4 w-4" />
                   </span>
 
                   <span>{highlight}</span>
@@ -80,12 +107,14 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-4">
               <a
                 href="/#contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+                className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_45px_rgba(37,99,235,0.4)]"
               >
+                <Send className="h-5 w-5" />
                 Contact opnemen
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
 
               <a
@@ -93,149 +122,264 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat via WhatsApp"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/40 px-6 py-3 text-sm font-semibold text-green-400 transition duration-300 hover:-translate-y-0.5 hover:border-green-400 hover:bg-green-500/10 hover:text-green-300"
+                className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border border-green-500/35 bg-green-500/[0.03] px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-green-400/60 hover:bg-green-500/10"
               >
-                <WhatsAppIcon className="h-5 w-5" />
+                <WhatsAppIcon className="h-5 w-5 text-green-400" />
                 WhatsApp
               </a>
+            </div>
+
+            <div className="mt-7 flex items-center gap-3 text-sm text-slate-400">
+              <ShieldCheck className="h-5 w-5 shrink-0 text-blue-400" />
+              <span>Vrijblijvend advies • Geen verborgen kosten</span>
             </div>
           </div>
 
           {/* Diensten */}
           <div>
-            <h3 className="text-lg font-bold text-white">Diensten</h3>
+            <SectionTitle>Diensten</SectionTitle>
 
-            <ul className="mt-6 space-y-3 text-sm">
-              {services.map((service) => (
-                <li key={service.label}>
-                  {service.externalSection ? (
-                    <a
-                      href={service.href}
-                      className="inline-flex transition duration-200 hover:translate-x-1 hover:text-blue-400"
-                    >
-                      {service.label}
-                    </a>
-                  ) : (
+            <ul className="mt-7 divide-y divide-white/10">
+              {services.map((service) => {
+                const Icon = service.icon;
+
+                return (
+                  <li key={service.label}>
                     <Link
                       href={service.href}
-                      className="inline-flex transition duration-200 hover:translate-x-1 hover:text-blue-400"
+                      className="group flex min-h-[58px] items-center gap-4 py-3 text-sm text-slate-300 transition-colors duration-300 hover:text-white"
                     >
-                      {service.label}
+                      <Icon className="h-6 w-6 shrink-0 text-blue-500 transition-transform duration-300 group-hover:scale-110" />
+
+                      <span className="font-medium">{service.label}</span>
+
+                      <ArrowRight className="ml-auto h-4 w-4 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
                     </Link>
-                  )}
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
+
+            <a
+              href="/#contact"
+              className="group mt-7 flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/35 hover:bg-blue-500/[0.05]"
+            >
+              <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
+                <Phone className="h-6 w-6" />
+              </span>
+
+              <span>
+                <span className="block font-bold text-white">
+                  Hulp op locatie
+                </span>
+
+                <span className="mt-1 block text-sm leading-6 text-slate-400">
+                  Wij zijn actief in Breda en omgeving.
+                </span>
+              </span>
+
+              <ArrowRight className="ml-auto h-5 w-5 text-blue-500 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-bold text-white">Contact</h3>
+            <SectionTitle>Contact</SectionTitle>
 
-            <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
-                  <MapPin className="h-5 w-5" />
-                </div>
+            <div className="mt-7 space-y-4">
+              <ContactCard
+                icon={<MapPin className="h-6 w-6" />}
+                label="Werkgebied"
+                value="Breda en omgeving"
+              />
 
-                <div>
-                  <p className="text-xs text-slate-500">Werkgebied</p>
-                  <p className="mt-1 text-sm font-medium text-slate-200">
-                    Breda en omgeving
-                  </p>
-                </div>
-              </div>
-
-              <a
+              <ContactCard
                 href="tel:+31649718684"
-                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:border-blue-400/40 hover:bg-white/[0.06]"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 transition group-hover:bg-blue-500 group-hover:text-white">
-                  <Phone className="h-5 w-5" />
-                </div>
+                icon={<Phone className="h-6 w-6" />}
+                label="Telefoon"
+                value="06 49718684"
+              />
 
-                <div>
-                  <p className="text-xs text-slate-500">Telefoon</p>
-                  <p className="mt-1 text-sm font-medium text-slate-200">
-                    06 49718684
-                  </p>
-                </div>
-              </a>
-
-              <a
+              <ContactCard
                 href="mailto:info@amritsolutions.nl"
-                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:border-blue-400/40 hover:bg-white/[0.06]"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 transition group-hover:bg-blue-500 group-hover:text-white">
-                  <Mail className="h-5 w-5" />
-                </div>
+                icon={<Mail className="h-6 w-6" />}
+                label="E-mail"
+                value="info@amritsolutions.nl"
+              />
 
-                <div className="min-w-0">
-                  <p className="text-xs text-slate-500">E-mail</p>
-                  <p className="mt-1 break-all text-sm font-medium text-slate-200">
-                    info@amritsolutions.nl
-                  </p>
-                </div>
-              </a>
-
-              <a
+              <ContactCard
                 href="https://wa.me/31649718684"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Start direct een WhatsApp-chat"
-                className="group flex items-center gap-4 rounded-2xl border border-green-500/20 bg-green-500/[0.04] p-4 transition hover:border-green-400/40 hover:bg-green-500/[0.08]"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-500/15 text-green-400 transition group-hover:bg-green-500 group-hover:text-white">
-                  <WhatsAppIcon className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-xs text-slate-500">WhatsApp</p>
-                  <p className="mt-1 text-sm font-medium text-slate-200">
-                    Start direct een chat
-                  </p>
-                </div>
-              </a>
+                external
+                whatsapp
+                icon={<WhatsAppIcon className="h-6 w-6" />}
+                label="WhatsApp"
+                value="Start direct een chat"
+              />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Onderste balk */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 py-6 text-sm text-slate-500 md:flex-row">
-          <p>© 2026 AMR IT Solutions · Breda, Nederland</p>
+        {/* Onderste balk */}
+        <div className="mt-16 border-t border-white/10 pt-8">
+          <div className="grid gap-8 text-sm text-slate-400 lg:grid-cols-[0.9fr_2.2fr_1fr] lg:items-center">
+            <div>
+              <p>© 2026 AMR IT Solutions</p>
+              <p className="mt-1">Alle rechten voorbehouden.</p>
+            </div>
 
-          <nav
-            aria-label="Footer navigatie"
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
-          >
-            <a href="/#home" className="transition hover:text-white">
-              Home
-            </a>
+            <div className="grid gap-6 sm:grid-cols-3">
+              <TrustItem
+                icon={<Clock3 className="h-6 w-6" />}
+                text="We reageren meestal binnen één werkdag"
+              />
 
-            <a href="/#diensten" className="transition hover:text-white">
-              Diensten
-            </a>
+              <TrustItem
+                icon={<LockKeyhole className="h-6 w-6" />}
+                text="Jouw gegevens worden veilig verwerkt"
+                bordered
+              />
 
-            <a href="/#portfolio" className="transition hover:text-white">
-              Portfolio
-            </a>
+              <TrustItem
+                icon={<ShieldCheck className="h-6 w-6" />}
+                text="Vrijblijvend advies • Geen verborgen kosten"
+                bordered
+              />
+            </div>
 
-            <a href="/#contact" className="transition hover:text-white">
-              Contact
-            </a>
+            <nav
+              aria-label="Footer navigatie"
+              className="flex flex-wrap gap-x-4 gap-y-3 lg:justify-end"
+            >
+              <a href="/#home" className="transition hover:text-white">
+                Home
+              </a>
 
-            <Link href="/privacy" className="transition hover:text-white">
-              Privacy
-            </Link>
+              <span className="text-blue-500">•</span>
 
-            <Link href="/cookies" className="transition hover:text-white">
-              Cookies
-            </Link>
-          </nav>
+              <a href="/#diensten" className="transition hover:text-white">
+                Diensten
+              </a>
+
+              <span className="text-blue-500">•</span>
+
+              <a href="/#portfolio" className="transition hover:text-white">
+                Portfolio
+              </a>
+
+              <span className="text-blue-500">•</span>
+
+              <a href="/#contact" className="transition hover:text-white">
+                Contact
+              </a>
+
+              <span className="text-blue-500">•</span>
+
+              <Link href="/privacy" className="transition hover:text-white">
+                Privacy
+              </Link>
+
+              <span className="text-blue-500">•</span>
+
+              <Link href="/cookies" className="transition hover:text-white">
+                Cookies
+              </Link>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="text-xl font-bold text-white">{children}</h3>
+      <span className="mt-3 block h-0.5 w-8 rounded-full bg-blue-500" />
+    </div>
+  );
+}
+
+function ContactCard({
+  href,
+  icon,
+  label,
+  value,
+  whatsapp = false,
+  external = false,
+}: {
+  href?: string;
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  whatsapp?: boolean;
+  external?: boolean;
+}) {
+  const className = [
+    "group flex min-h-[86px] items-center gap-4 rounded-[22px] border p-5",
+    "transition-all duration-300 hover:-translate-y-1",
+    whatsapp
+      ? "border-green-500/20 bg-green-500/[0.035] hover:border-green-400/45 hover:bg-green-500/[0.075]"
+      : "border-white/10 bg-white/[0.025] hover:border-blue-400/35 hover:bg-white/[0.05]",
+  ].join(" ");
+
+  const content = (
+    <>
+      <span
+        className={[
+          "flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-2xl transition-all duration-300",
+          whatsapp
+            ? "bg-green-500/15 text-green-400 group-hover:bg-green-500 group-hover:text-white"
+            : "bg-blue-500/15 text-blue-400 group-hover:bg-blue-500 group-hover:text-white",
+        ].join(" ")}
+      >
+        {icon}
+      </span>
+
+      <span className="min-w-0">
+        <span className="block text-xs text-slate-500">{label}</span>
+        <span className="mt-1 block break-all text-sm font-semibold text-white">
+          {value}
+        </span>
+      </span>
+
+      <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
+    </>
+  );
+
+  if (!href) {
+    return <div className={className}>{content}</div>;
+  }
+
+  return (
+    <a
+      href={href}
+      className={className}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+    >
+      {content}
+    </a>
+  );
+}
+
+function TrustItem({
+  icon,
+  text,
+  bordered = false,
+}: {
+  icon: React.ReactNode;
+  text: string;
+  bordered?: boolean;
+}) {
+  return (
+    <div
+      className={`flex items-start gap-4 ${
+        bordered ? "sm:border-l sm:border-white/10 sm:pl-6" : ""
+      }`}
+    >
+      <span className="shrink-0 text-blue-500">{icon}</span>
+      <span className="leading-6">{text}</span>
+    </div>
   );
 }
