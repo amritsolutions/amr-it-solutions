@@ -62,7 +62,7 @@ export default function ITSupportHero() {
               <span className="h-0.5 w-8 rounded-full bg-blue-600" />
             </div>
 
-            <h1 className="mt-7 max-w-[700px] text-4xl font-extrabold leading-[1.06] tracking-tight text-slate-950 sm:text-5xl lg:text-[56px] xl:text-[60px]">
+            <h1 className="mt-7 text-4xl font-extrabold leading-[1.06] tracking-tight text-slate-950 sm:text-5xl lg:text-[56px] xl:text-[60px]">
               <span className="block lg:whitespace-nowrap">
                 IT Support in{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
@@ -106,12 +106,12 @@ export default function ITSupportHero() {
           <div className="relative min-h-[420px] lg:min-h-[560px]">
             <div
               aria-hidden="true"
-              className="absolute left-1/2 top-1/2 h-[410px] w-[410px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-blue-100 via-blue-50 to-transparent lg:h-[620px] lg:w-[700px]"
+              className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-blue-100 via-blue-50 to-transparent lg:h-[520px] lg:w-[600px]"
             />
 
             <div
               aria-hidden="true"
-              className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/80 lg:h-[680px] lg:w-[780px]"
+              className="absolute left-1/2 top-1/2 h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/80 lg:h-[570px] lg:w-[650px]"
             />
 
             <div className="absolute right-8 top-4 z-10 hidden grid-cols-6 gap-5 opacity-70 lg:grid">
@@ -129,13 +129,13 @@ export default function ITSupportHero() {
               width={1000}
               height={760}
               priority
-              className="absolute left-1/2 top-1/2 z-20 w-[100%] max-w-[720px] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_36px_78px_rgba(37,99,235,0.24)] transition duration-500 hover:scale-[1.02] lg:w-[112%] lg:max-w-[760px] lg:translate-x-8"
+              className="absolute left-1/2 top-1/2 z-20 w-[96%] max-w-[680px] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_32px_68px_rgba(37,99,235,0.22)] transition duration-500 hover:scale-[1.02] lg:w-[104%]"
             />
           </div>
         </div>
 
         {/* Voordelenbalk: bewust zonder negatieve marge, zodat hij niet over de knoppen valt */}
-        <div className="relative z-30 mt-10 grid overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.09)] sm:grid-cols-2 lg:-mt-2 lg:grid-cols-4">
+        <div className="relative z-30 mt-10 grid overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.09)] sm:grid-cols-2 lg:mt-6 lg:grid-cols-4">
           {benefits.map(({ Icon, title, text }, index) => (
             <div
               key={title}
