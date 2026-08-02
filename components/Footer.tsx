@@ -39,14 +39,16 @@ const highlights = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden rounded-t-[36px] border-t border-blue-500/20 bg-[#020817] text-slate-300">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400/95 to-transparent" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-24 w-[560px] -translate-x-1/2 rounded-full bg-blue-500/25 blur-3xl" />
+    <footer className="relative overflow-hidden rounded-t-[36px] border border-blue-500/20 bg-[#020817] text-slate-300">
+      {/* Duidelijke blauwe lijn en glow zoals in het voorbeeld */}
+      <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-blue-500/60 sm:inset-x-12 lg:inset-x-16" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-blue-400 to-transparent shadow-[0_0_18px_rgba(59,130,246,0.95)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-[680px] -translate-x-1/2 rounded-full bg-blue-500/35 blur-[42px]" />
       <div className="pointer-events-none absolute -left-28 top-0 h-80 w-80 rounded-full bg-blue-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-500/[0.06] blur-[140px]" />
 
       <div className="relative mx-auto max-w-[1500px] px-6 pb-8 pt-14 sm:px-8 sm:pt-16 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.9fr_1fr] lg:gap-14 xl:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_0.9fr_1fr] lg:gap-12 xl:gap-14">
           <div>
             <Image
               src="/logos/amr-logo-dark.png"
@@ -176,7 +178,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="grid gap-8 text-sm text-slate-400 lg:grid-cols-[0.9fr_2.2fr_1fr] lg:items-center">
+          <div className="grid gap-8 text-sm text-slate-400 lg:grid-cols-[0.68fr_1.95fr_1.37fr] lg:items-center lg:gap-6">
             <div>
               <p>© 2026 AMR IT Solutions</p>
               <p className="mt-1">Alle rechten voorbehouden.</p>
@@ -201,7 +203,7 @@ export default function Footer() {
 
             <nav
               aria-label="Footer navigatie"
-              className="flex flex-wrap gap-x-4 gap-y-3 lg:justify-end"
+              className="flex flex-wrap items-center gap-x-3 gap-y-3 lg:justify-end xl:flex-nowrap xl:whitespace-nowrap"
             >
               <a href="/#home" className="transition hover:text-white">Home</a>
               <span className="text-blue-500">•</span>
