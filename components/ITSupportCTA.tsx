@@ -40,7 +40,7 @@ export default function ITSupportCTA() {
       />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="relative isolate overflow-hidden rounded-[36px] border border-blue-400/20 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-950 px-8 py-14 text-center text-white shadow-[0_30px_80px_rgba(37,99,235,0.28)] sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+        <div className="relative isolate overflow-hidden rounded-[36px] border border-blue-400/20 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-950 px-8 py-12 text-center text-white shadow-[0_30px_80px_rgba(37,99,235,0.28)] sm:px-12 sm:py-14 lg:px-20 lg:py-16">
           {/* Decoratieve gloed */}
           <div
             aria-hidden="true"
@@ -84,7 +84,7 @@ export default function ITSupportCTA() {
             Direct hulp nodig?
           </p>
 
-          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[56px]">
+          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[50px]">
             Professionele IT Support in{" "}
             <span className="text-blue-200">Breda</span>
           </h2>
@@ -122,7 +122,7 @@ export default function ITSupportCTA() {
                 key={text}
                 className="flex items-center justify-center gap-3 text-sm font-semibold text-blue-100"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-blue-100 ring-1 ring-white/10">
                   <Icon className="h-4 w-4" />
                 </span>
 
