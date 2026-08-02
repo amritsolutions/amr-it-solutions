@@ -42,8 +42,8 @@ export default function Footer() {
     <footer className="relative overflow-hidden rounded-t-[36px] border border-blue-500/20 bg-[#020817] text-slate-300">
       {/* Duidelijke blauwe lijn en glow zoals in het voorbeeld */}
       <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-blue-500/60 sm:inset-x-12 lg:inset-x-16" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-blue-400 to-transparent shadow-[0_0_18px_rgba(59,130,246,0.95)]" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-[680px] -translate-x-1/2 rounded-full bg-blue-500/35 blur-[42px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_18px_rgba(59,130,246,0.95)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-[680px] -translate-x-1/2 rounded-full bg-blue-500/45 blur-[42px]" />
       <div className="pointer-events-none absolute -left-28 top-0 h-80 w-80 rounded-full bg-blue-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-500/[0.06] blur-[140px]" />
 
@@ -58,7 +58,7 @@ export default function Footer() {
               className="h-auto w-[270px] object-contain sm:w-[300px]"
             />
 
-            <p className="mt-7 max-w-md text-base leading-8 text-slate-400">
+            <p className="mt-9 max-w-md text-base leading-8 text-slate-400">
               Persoonlijke IT-oplossingen voor particulieren en bedrijven. Van
               computerreparaties en Microsoft 365 tot professionele websites.
               Snel, betrouwbaar en zonder ingewikkelde IT-taal.
