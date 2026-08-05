@@ -12,77 +12,78 @@ const services = [
     Icon: HardDrive,
     title: "SSD Upgrade",
     description:
-      "Vervang een trage harde schijf door een snelle SSD en geef je computer een enorme snelheidsboost.",
+      "Vervang je oude harde schijf door een snelle SSD en ervaar direct veel kortere opstart- en laadtijden.",
   },
   {
     Icon: MemoryStick,
-    title: "RAM Uitbreiden",
+    title: "RAM uitbreiden",
     description:
-      "Meer werkgeheugen zorgt voor betere prestaties bij multitasken en zware programma's.",
+      "Meer werkgeheugen zorgt voor soepel multitasken en betere prestaties bij dagelijks gebruik.",
   },
   {
     Icon: ShieldCheck,
-    title: "Virusverwijdering",
+    title: "Virus verwijderen",
     description:
-      "Wij verwijderen virussen, malware en ongewenste software en maken je systeem weer veilig.",
+      "Wij verwijderen virussen, malware en ongewenste software zodat je computer weer veilig werkt.",
   },
   {
     Icon: MonitorCog,
-    title: "Windows Herinstallatie",
+    title: "Windows opnieuw installeren",
     description:
-      "Een schone installatie van Windows voor optimale prestaties en stabiliteit.",
+      "Een schone Windows-installatie voor maximale stabiliteit, snelheid en betrouwbaarheid.",
   },
   {
     Icon: Wrench,
-    title: "Computer Reparatie",
+    title: "Hardware reparatie",
     description:
-      "Oplossingen voor hardwareproblemen, foutmeldingen en defecte onderdelen.",
+      "Reparatie of vervanging van defecte onderdelen zoals SSD's, geheugen, ventilatoren en meer.",
   },
   {
     Icon: Laptop,
-    title: "Laptop Onderhoud",
+    title: "Laptop onderhoud",
     description:
-      "Reiniging, updates en onderhoud om je laptop langer mee te laten gaan en optimaal te laten presteren.",
+      "Reiniging, updates en optimalisatie om de levensduur en prestaties van je laptop te verbeteren.",
   },
 ];
 
 export default function ComputerUpgradeServices() {
   return (
-    <section className="bg-slate-50 px-6 py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.28em] text-blue-600">
             Onze diensten
           </p>
 
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-            Upgrades & reparaties voor iedere computer
+          <h2 className="mt-4 text-4xl font-extrabold text-slate-900">
+            Complete upgrades en reparaties
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-slate-600">
-            Of je nu een tragere computer wilt versnellen of een defect wilt
-            laten repareren, wij zorgen voor een betrouwbare oplossing.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            Van SSD-upgrades en RAM-uitbreidingen tot Windows-installaties,
+            virusverwijdering en hardware-reparaties. Wij zorgen ervoor dat jouw
+            computer weer snel en betrouwbaar werkt.
           </p>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map(({ Icon, title, description }) => (
-            <article
+            <div
               key={title}
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-white">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
                 <Icon className="h-7 w-7" />
               </div>
 
-              <h3 className="mt-7 text-2xl font-bold text-slate-950">
+              <h3 className="mt-6 text-2xl font-bold text-slate-900">
                 {title}
               </h3>
 
               <p className="mt-4 leading-7 text-slate-600">
                 {description}
               </p>
-            </article>
+            </div>
           ))}
         </div>
       </div>
