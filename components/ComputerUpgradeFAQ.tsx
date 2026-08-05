@@ -22,7 +22,7 @@ const faqs = [
   {
     question: "Repareren jullie ook laptops?",
     answer:
-      "Ja. Wij repareren en upgraden zowel desktops als laptops van de meeste bekende merken.",
+      "Ja. Wij repareren en upgraden zowel desktops als laptops van vrijwel alle bekende merken.",
   },
   {
     question: "Is repareren goedkoper dan een nieuwe computer kopen?",
@@ -35,7 +35,7 @@ export default function ComputerUpgradeFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-slate-50 px-6 py-24">
+    <section className="bg-white px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <div className="text-center">
           <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
@@ -43,12 +43,12 @@ export default function ComputerUpgradeFAQ() {
           </p>
 
           <h2 className="mt-5 text-3xl font-extrabold text-slate-950 sm:text-4xl">
-            Veelgestelde vragen over upgrades & reparaties
+            Veelgestelde vragen over computer upgrades & reparaties
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Hier vind je antwoorden op de meest gestelde vragen over computer- en
-            laptopreparaties.
+            Hieronder vind je antwoorden op de meest gestelde vragen over
+            computerupgrades, SSD's, RAM-uitbreidingen en reparaties.
           </p>
         </div>
 
@@ -59,16 +59,17 @@ export default function ComputerUpgradeFAQ() {
             return (
               <div
                 key={faq.question}
-                className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:border-blue-200 hover:shadow-md"
               >
                 <button
+                  type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-6 py-5 text-left font-semibold text-slate-900 hover:bg-slate-50"
+                  className="flex w-full items-center justify-between px-6 py-5 text-left font-semibold text-slate-900 transition-colors hover:bg-slate-50"
                 >
-                  {faq.question}
+                  <span>{faq.question}</span>
 
                   <ChevronDown
-                    className={`h-5 w-5 transition-transform ${
+                    className={`h-5 w-5 shrink-0 text-blue-600 transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
