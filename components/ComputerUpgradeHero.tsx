@@ -1,15 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import {
-  ArrowRight,
-  CheckCircle2,
   HardDrive,
   MemoryStick,
   ShieldCheck,
   Wrench,
+  Phone,
 } from "lucide-react";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 const benefits = [
   {
@@ -18,106 +17,94 @@ const benefits = [
   },
   {
     Icon: MemoryStick,
-    text: "RAM-geheugen uitbreiden",
+    text: "RAM uitbreiden",
   },
   {
     Icon: ShieldCheck,
-    text: "Virusverwijdering",
+    text: "Virus verwijderen",
   },
   {
     Icon: Wrench,
-    text: "Windows-herinstallatie",
+    text: "Hardware reparatie",
   },
 ];
 
 export default function ComputerUpgradeHero() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 pb-24 pt-16 sm:pt-20 lg:pb-28 lg:pt-24">
-      <div className="absolute inset-x-0 top-0 -z-10 h-96 bg-gradient-to-b from-blue-50 to-white" />
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
+      <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr]">
+        {/* Linkerkant */}
+        <div className="relative z-20">
+          <Breadcrumb current="Computer Upgrade & Reparatie" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2 lg:gap-20">
-        <div>
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-7 flex items-center gap-2 text-sm font-medium text-slate-500"
-          >
-            <Link href="/" className="transition hover:text-blue-600">
-              Home
-            </Link>
-
-            <span>/</span>
-
-            <span className="text-slate-900">
-              Computer Upgrade & Reparatie
-            </span>
-          </nav>
-
-          <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
-            Sneller, stabieler en betrouwbaar
+          <p className="mt-10 text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
+            Computer Upgrade & Reparatie Breda
           </p>
 
-          <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Computer Upgrade & Reparatie in Breda
+          <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.12] tracking-tight text-slate-950 sm:text-5xl lg:text-[52px]">
+            Geef jouw computer een tweede leven
           </h1>
 
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Is je computer of laptop traag, instabiel of defect? AMR IT
-            Solutions helpt met professionele upgrades, onderhoud en reparaties
-            voor particulieren en kleine bedrijven in Breda en omgeving.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+            Is jouw computer of laptop traag of werkt deze niet meer zoals
+            vroeger? Wij helpen met SSD-upgrades, RAM-uitbreidingen,
+            virusverwijdering en hardware-reparaties zodat jouw apparaat weer
+            snel en betrouwbaar werkt.
           </p>
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-2">
-            {benefits.map(({ Icon, text }) => (
-              <div
-                key={text}
-                className="flex items-center gap-3 text-base font-semibold text-slate-800"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                  <Icon className="h-5 w-5" />
-                </span>
-
-                <span>{text}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
+          <div className="mt-8 flex flex-wrap gap-5">
+            <a
               href="/#contact"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
+              className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-5 font-bold text-white shadow-xl shadow-blue-600/25 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700"
             >
+              <Phone className="h-5 w-5" />
               Offerte aanvragen
-              <ArrowRight className="h-5 w-5" />
-            </Link>
+            </a>
 
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Neem contact op via WhatsApp"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-7 py-4 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-500 hover:text-white hover:shadow-xl"
+              className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-500 bg-white px-8 py-5 font-bold text-green-600 transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:text-white hover:shadow-lg"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              WhatsApp
+              WhatsApp ons
             </a>
           </div>
 
-          <div className="mt-8 flex items-center gap-3 text-sm font-medium text-slate-500">
-            <CheckCircle2 className="h-5 w-5 text-green-600" />
-            Persoonlijke service en duidelijke communicatie
+          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-8 sm:grid-cols-4">
+            {benefits.map(({ Icon, text }) => (
+              <div key={text} className="text-center text-slate-800">
+                <Icon className="mx-auto mb-3 h-10 w-10 text-blue-600" />
+                <p className="text-sm font-medium leading-5">
+                  {text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="relative mt-10 flex min-h-[320px] items-center justify-center lg:mt-0 lg:min-h-[610px]">
-          <div className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-50 sm:h-[430px] sm:w-[430px] lg:h-[520px] lg:w-[620px]" />
+        {/* Rechterkant */}
+        <div className="relative mt-10 min-h-[280px] lg:mt-0 lg:min-h-[610px]">
+          <div className="absolute left-1/2 top-8 h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-blue-100/70 lg:left-[20px] lg:top-[30px] lg:h-[540px] lg:w-[660px] lg:translate-x-0" />
+
+          <div className="absolute right-10 top-12 z-10 hidden grid-cols-6 gap-5 opacity-50 lg:grid">
+            {Array.from({ length: 24 }).map((_, index) => (
+              <span
+                key={index}
+                className="h-2 w-2 rounded-full bg-blue-300"
+              />
+            ))}
+          </div>
 
           <Image
             src="/images/upgrade-reparatie.png"
-            alt="Computer upgrade en reparatie door AMR IT Solutions"
+            alt="Computer upgrade en reparatie Breda"
             width={900}
             height={680}
             priority
-            className="relative z-20 mx-auto h-auto w-[95%] max-w-[620px] object-contain drop-shadow-[0_25px_50px_rgba(15,23,42,0.12)] transition duration-500 hover:scale-[1.02] lg:w-full lg:max-w-none"
+            className="relative z-20 mx-auto w-full max-w-[560px] object-contain drop-shadow-[0_25px_60px_rgba(37,99,235,0.18)] transition duration-500 hover:scale-[1.02] lg:w-[110%] lg:max-w-none lg:-translate-x-6"
           />
         </div>
       </div>
