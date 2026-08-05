@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Blijven mijn bestanden behouden?",
     answer:
-      "Dat hangt af van de situatie. Waar mogelijk maken we eerst een veilige back-up van jouw documenten, foto's en andere belangrijke bestanden voordat we Windows opnieuw installeren.",
+      "Waar mogelijk maken we eerst een veilige back-up van jouw documenten, foto's en andere belangrijke bestanden voordat we Windows opnieuw installeren. Zo voorkom je dat waardevolle gegevens verloren gaan.",
   },
   {
     question: "Installeren jullie ook Windows 11?",
@@ -22,7 +22,7 @@ const faqs = [
   {
     question: "Worden alle drivers ook geïnstalleerd?",
     answer:
-      "Ja. We installeren alle benodigde drivers zodat wifi, geluid, videokaart, printer en andere hardware direct correct werken.",
+      "Ja. Na de installatie zorgen we ervoor dat wifi, geluid, videokaart, printer en andere hardware direct correct functioneren.",
   },
 ];
 
@@ -37,13 +37,13 @@ export default function WindowsFAQ() {
             Veelgestelde vragen
           </p>
 
-          <h2 className="mt-5 text-3xl font-extrabold text-slate-950 sm:text-4xl">
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
             Veelgestelde vragen over Windows installeren
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
             Hieronder vind je antwoorden op de meest gestelde vragen over het
-            opnieuw installeren van Windows.
+            opnieuw installeren van Windows en onze werkwijze.
           </p>
         </div>
 
@@ -52,14 +52,14 @@ export default function WindowsFAQ() {
             const isOpen = openIndex === index;
 
             return (
-              <div
+              <article
                 key={faq.question}
-                className="overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:border-blue-200 hover:shadow-md"
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-lg"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-6 py-5 text-left font-semibold text-slate-900 transition-colors hover:bg-slate-50"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-slate-900 transition-colors hover:bg-slate-50"
                 >
                   <span>{faq.question}</span>
 
@@ -70,12 +70,20 @@ export default function WindowsFAQ() {
                   />
                 </button>
 
-                {isOpen && (
-                  <div className="border-t border-slate-200 px-6 py-5 leading-7 text-slate-600">
-                    {faq.answer}
+                <div
+                  className={`grid transition-all duration-300 ${
+                    isOpen
+                      ? "grid-rows-[1fr] border-t border-slate-200"
+                      : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 py-5 leading-7 text-slate-600">
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              </article>
             );
           })}
         </div>
