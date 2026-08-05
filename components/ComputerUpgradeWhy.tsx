@@ -9,32 +9,28 @@ const reasons = [
   {
     Icon: Gauge,
     title: "Merkbaar sneller",
-    description:
-      "Met de juiste SSD- of RAM-upgrade kan je computer vaak weer jarenlang snel en prettig blijven werken.",
+    text: "Met een SSD-upgrade of extra RAM voelt je computer vaak weer jarenlang snel en soepel aan.",
   },
   {
     Icon: BadgeEuro,
     title: "Eerlijk advies",
-    description:
-      "Wij adviseren alleen een upgrade of reparatie wanneer dit technisch en financieel echt de moeite waard is.",
+    text: "Wij adviseren alleen een upgrade of reparatie wanneer dat technisch én financieel de beste keuze is.",
   },
   {
     Icon: UserRoundCheck,
     title: "Persoonlijke service",
-    description:
-      "Je hebt direct contact, krijgt duidelijke uitleg en weet vooraf wat er aan je computer wordt gedaan.",
+    text: "Direct contact, duidelijke communicatie en een oplossing die past bij jouw computer en wensen.",
   },
   {
     Icon: ShieldCheck,
-    title: "Zorgvuldig uitgevoerd",
-    description:
-      "Wij werken veilig en nauwkeurig met je apparatuur en zorgen voor een stabiele en betrouwbare oplossing.",
+    title: "Betrouwbare kwaliteit",
+    text: "Wij werken zorgvuldig en professioneel zodat jouw computer weer stabiel en betrouwbaar functioneert.",
   },
 ];
 
 export default function ComputerUpgradeWhy() {
   return (
-    <section className="bg-white px-6 py-24">
+    <section className="bg-slate-50 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
@@ -42,30 +38,41 @@ export default function ComputerUpgradeWhy() {
           </p>
 
           <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-            Een slimme keuze voor je computer
+            Waarom klanten voor ons kiezen
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Geen onnodige kosten of ingewikkelde uitleg, maar eerlijk advies en
-            een oplossing die past bij jouw computer en gebruik.
+            Persoonlijke service, eerlijk advies en professionele upgrades en
+            reparaties waardoor jouw computer weer optimaal presteert.
           </p>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map(({ Icon, title, description }) => (
+          {reasons.map(({ Icon, title, text }) => (
             <article
               key={title}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group relative flex min-h-[330px] flex-col overflow-hidden rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_24px_60px_rgba(37,99,235,0.16)]"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-white">
-                <Icon className="h-7 w-7" />
+              {/* Blauwe lijn */}
+              <div className="absolute left-0 top-0 h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-500 group-hover:w-full" />
+
+              {/* Glow */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-100/40 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+              />
+
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg">
+                <Icon className="h-8 w-8" />
               </div>
 
               <h3 className="mt-7 text-2xl font-bold text-slate-950">
                 {title}
               </h3>
 
-              <p className="mt-4 leading-7 text-slate-600">{description}</p>
+              <p className="mt-4 flex-1 leading-7 text-slate-600">
+                {text}
+              </p>
             </article>
           ))}
         </div>
