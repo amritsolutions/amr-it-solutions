@@ -9,79 +9,93 @@ import {
 
 const services = [
   {
-    icon: Mail,
+    Icon: Mail,
     title: "Outlook & e-mail",
     text: "Wij helpen met Outlook instellen, e-mailaccounts koppelen en problemen met verzenden of ontvangen oplossen.",
   },
   {
-    icon: Cloud,
+    Icon: Cloud,
     title: "OneDrive instellen",
     text: "Bestanden veilig opslaan, synchroniseren en openen op computer, laptop en smartphone.",
   },
   {
-    icon: Users,
+    Icon: Users,
     title: "Microsoft Teams",
     text: "Hulp bij Teams, vergaderingen, chats, accounts en samenwerken binnen jouw organisatie.",
   },
   {
-    icon: CalendarDays,
+    Icon: CalendarDays,
     title: "Agenda & contacten",
-    text: "Wij zorgen dat agenda’s, contacten en afspraken goed synchroniseren op al jouw apparaten.",
+    text: "Wij zorgen dat agenda's, contacten en afspraken automatisch synchroniseren op al jouw apparaten.",
   },
   {
-    icon: ShieldCheck,
+    Icon: ShieldCheck,
     title: "Beveiliging & accounts",
-    text: "Hulp met wachtwoorden, tweestapsverificatie, herstelopties en veilig accountgebruik.",
+    text: "Hulp met wachtwoorden, tweestapsverificatie, herstelopties en veilig gebruik van Microsoft-accounts.",
   },
   {
-    icon: Settings,
+    Icon: Settings,
     title: "Microsoft 365 instellen",
-    text: "Volledige installatie en configuratie van Microsoft 365 voor particulieren, zzp’ers en kleine bedrijven.",
+    text: "Volledige installatie en configuratie van Microsoft 365 voor particulieren, zzp'ers en kleine bedrijven.",
   },
 ];
 
 export default function MicrosoftServices() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-blue-600">
-            Onze diensten
+    <section className="bg-white px-6 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
+            Onze oplossingen
           </p>
 
-          <h2 className="mt-4 text-4xl font-extrabold text-slate-900">
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
             Hulp met Microsoft 365 van A tot Z
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+          <p className="mt-5 text-lg leading-8 text-slate-600">
             Van Outlook en OneDrive tot Teams en accountbeveiliging. Wij zorgen
-            dat Microsoft 365 goed is ingesteld en prettig werkt.
+            dat Microsoft 365 correct is ingesteld, veilig werkt en prettig is
+            in dagelijks gebruik.
           </p>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
+          {services.map(({ Icon, title, text }) => (
+            <article
+              key={title}
+              className="group relative flex min-h-[340px] flex-col overflow-hidden rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_24px_60px_rgba(37,99,235,0.16)]"
+            >
+              {/* Blauwe lijn */}
+              <div className="absolute left-0 top-0 h-[3px] w-28 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-500 group-hover:w-full" />
 
-            return (
+              {/* Glow */}
               <div
-                key={service.title}
-                className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                  <Icon className="h-7 w-7" />
-                </div>
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-100/40 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+              />
 
-                <h3 className="mt-6 text-2xl font-bold text-slate-900">
-                  {service.title}
-                </h3>
-
-                <p className="mt-4 leading-7 text-slate-600">
-                  {service.text}
-                </p>
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg">
+                <Icon className="h-8 w-8" />
               </div>
-            );
-          })}
+
+              <h3 className="mt-7 text-2xl font-bold text-slate-950">
+                {title}
+              </h3>
+
+              <p className="mt-4 flex-1 leading-7 text-slate-600">
+                {text}
+              </p>
+
+              <a
+                href="/#contact"
+                className="mt-8 inline-flex items-center gap-2 font-semibold text-blue-600 transition-all duration-300 group-hover:gap-3"
+              >
+                Meer informatie
+                <span>→</span>
+              </a>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -7,69 +7,74 @@ import {
 
 const reasons = [
   {
-    icon: ShieldCheck,
+    Icon: ShieldCheck,
     title: "Veilig ingesteld",
-    text: "Wij helpen met beveiliging, herstelopties en tweestapsverificatie voor jouw Microsoft-account.",
+    text: "Wij helpen met beveiliging, herstelopties en tweestapsverificatie zodat jouw Microsoft-account optimaal beschermd is.",
   },
   {
-    icon: Clock3,
+    Icon: Clock3,
     title: "Snelle hulp",
-    text: "Problemen met Outlook, Teams of OneDrive lossen we zo snel en duidelijk mogelijk op.",
+    text: "Problemen met Outlook, Teams of OneDrive lossen we snel en duidelijk voor je op.",
   },
   {
-    icon: MapPin,
+    Icon: MapPin,
     title: "Breda & omgeving",
-    text: "Wij ondersteunen particulieren, zzp’ers en kleine bedrijven in Breda en omliggende plaatsen.",
+    text: "Persoonlijke ondersteuning voor particulieren, zzp'ers en kleine bedrijven in Breda en de regio.",
   },
   {
-    icon: MessageCircle,
+    Icon: MessageCircle,
     title: "Duidelijke uitleg",
-    text: "Geen ingewikkelde termen, maar begrijpelijke uitleg zodat je Microsoft 365 zelfverzekerd gebruikt.",
+    text: "Geen ingewikkelde IT-termen, maar heldere uitleg zodat je Microsoft 365 met vertrouwen gebruikt.",
   },
 ];
 
 export default function MicrosoftWhy() {
   return (
-    <section className="bg-slate-50 py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-blue-600">
+    <section className="bg-slate-50 px-6 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
             Waarom AMR IT Solutions?
           </p>
 
-          <h2 className="mt-4 text-4xl font-extrabold text-slate-900">
-            Waarom kiezen klanten voor ons?
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+            Waarom klanten voor ons kiezen
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+          <p className="mt-5 text-lg leading-8 text-slate-600">
             Persoonlijke ondersteuning, veilige instellingen en duidelijke
-            uitleg voor Microsoft 365.
+            uitleg zodat je zonder zorgen met Microsoft 365 kunt werken.
           </p>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((reason) => {
-            const Icon = reason.icon;
+          {reasons.map(({ Icon, title, text }) => (
+            <article
+              key={title}
+              className="group relative flex min-h-[330px] flex-col overflow-hidden rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_24px_60px_rgba(37,99,235,0.16)]"
+            >
+              {/* Blauwe lijn */}
+              <div className="absolute left-0 top-0 h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-500 group-hover:w-full" />
 
-            return (
+              {/* Glow */}
               <div
-                key={reason.title}
-                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-white">
-                  <Icon className="h-7 w-7" />
-                </div>
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-100/40 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+              />
 
-                <h3 className="mt-6 text-2xl font-bold text-slate-900">
-                  {reason.title}
-                </h3>
-
-                <p className="mt-4 leading-7 text-slate-600">
-                  {reason.text}
-                </p>
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg">
+                <Icon className="h-8 w-8" />
               </div>
-            );
-          })}
+
+              <h3 className="mt-7 text-2xl font-bold text-slate-950">
+                {title}
+              </h3>
+
+              <p className="mt-4 flex-1 leading-7 text-slate-600">
+                {text}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

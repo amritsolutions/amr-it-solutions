@@ -7,68 +7,89 @@ const faqs = [
   {
     question: "Kunnen jullie Outlook voor mij instellen?",
     answer:
-      "Ja. Wij koppelen jouw e-mailaccount aan Outlook en helpen met verzenden, ontvangen, agenda en synchronisatie.",
+      "Ja. Wij koppelen jouw e-mailadres aan Outlook en helpen met verzenden, ontvangen, agenda, contacten en synchronisatie.",
   },
   {
     question: "Helpen jullie ook met OneDrive?",
     answer:
-      "Ja. Wij stellen OneDrive in en zorgen dat bestanden goed synchroniseren tussen jouw computer, laptop en smartphone.",
+      "Ja. We stellen OneDrive correct in zodat jouw bestanden veilig synchroniseren tussen computer, laptop en smartphone.",
   },
   {
     question: "Kunnen jullie Microsoft Teams uitleggen?",
     answer:
-      "Ja. Wij helpen met vergaderingen, chats, accounts, camera, microfoon en samenwerken binnen Teams.",
+      "Ja. Wij helpen met vergaderingen, chats, camera, microfoon, scherm delen en samenwerken binnen Microsoft Teams.",
   },
   {
     question: "Helpen jullie ook met Microsoft 365 voor bedrijven?",
     answer:
-      "Ja. Wij ondersteunen zzp’ers en kleine bedrijven met accounts, e-mail, Teams, OneDrive en basisbeveiliging.",
+      "Ja. Wij ondersteunen particulieren, zzp'ers en kleine bedrijven met Microsoft 365, Outlook, Teams, OneDrive en accountbeheer.",
   },
 ];
 
 export default function MicrosoftFAQ() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="bg-white px-6 py-24">
+      <div className="mx-auto max-w-4xl">
         <div className="text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-blue-600">
+          <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
             Veelgestelde vragen
           </p>
 
-          <h2 className="mt-4 text-4xl font-extrabold text-slate-900">
-            Vragen over Microsoft 365
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+            Veelgestelde vragen over Microsoft 365
           </h2>
+
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Hieronder vind je antwoorden op de meest gestelde vragen over
+            Outlook, OneDrive, Teams en Microsoft 365.
+          </p>
         </div>
 
         <div className="mt-14 space-y-5">
-          {faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-            >
-              <button
-                type="button"
-                onClick={() => setOpen(open === index ? null : index)}
-                className="flex w-full items-center justify-between gap-4 p-6 text-left font-semibold text-slate-900"
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={faq.question}
+                className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
               >
-                {faq.question}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenIndex(isOpen ? null : index)
+                  }
+                  className="flex w-full items-center justify-between px-7 py-6 text-left font-semibold text-slate-900 transition-colors hover:bg-slate-50"
+                >
+                  <span className="pr-6 text-lg">
+                    {faq.question}
+                  </span>
 
-                <ChevronDown
-                  className={`h-5 w-5 shrink-0 text-blue-600 transition-transform duration-300 ${
-                    open === index ? "rotate-180" : ""
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-blue-600 transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                <div
+                  className={`grid overflow-hidden transition-all duration-300 ${
+                    isOpen
+                      ? "grid-rows-[1fr]"
+                      : "grid-rows-[0fr]"
                   }`}
-                />
-              </button>
-
-              {open === index && (
-                <div className="border-t border-slate-100 px-6 py-5 leading-7 text-slate-600">
-                  {faq.answer}
+                >
+                  <div className="overflow-hidden">
+                    <div className="border-t border-slate-100 px-7 py-6 leading-7 text-slate-600">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
