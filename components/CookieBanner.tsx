@@ -33,9 +33,9 @@ export default function CookieBanner() {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[9999] px-4 pb-4 sm:px-6 sm:pb-6">
-      <div className="mx-auto max-w-3xl">
-        <div className="relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.22)] sm:p-7">
+    <div className="fixed inset-x-0 bottom-0 z-[9999] px-4 pb-4 backdrop-blur-[2px] sm:px-6 sm:pb-6">
+      <div className="mx-auto max-w-2xl">
+        <div className="relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.22)] animate-in fade-in slide-in-from-bottom-6 duration-500 sm:p-7">
           {/* Decoratieve achtergrond */}
           <div
             aria-hidden="true"
@@ -77,9 +77,9 @@ export default function CookieBanner() {
 
                 <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
                   Wij gebruiken noodzakelijke cookies om de website goed te
-                  laten werken. Met jouw toestemming gebruiken we ook
-                  analytische cookies om anonieme bezoekersstatistieken te
-                  verzamelen en de website te verbeteren.
+                  laten functioneren. Met jouw toestemming gebruiken we
+                  daarnaast Google Analytics om anonieme bezoekersstatistieken
+                  te verzamelen. Zo kunnen we onze website blijven verbeteren.
                 </p>
 
                 <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold">
@@ -101,7 +101,7 @@ export default function CookieBanner() {
             </div>
 
             <div className="mt-6 flex flex-col-reverse gap-3 border-t border-slate-200/80 pt-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-2 text-xs leading-5 text-slate-500 sm:max-w-[330px]">
+              <div className="flex items-center gap-2 text-xs leading-5 text-slate-500 sm:max-w-[300px]">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-blue-600" />
 
                 <span>
