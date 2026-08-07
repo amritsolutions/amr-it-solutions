@@ -68,6 +68,9 @@ Regels:
 - Vraag nooit om wachtwoorden, pincodes, API-sleutels of andere geheime gegevens.
 - Bij complexe problemen kun je adviseren contact op te nemen met AMR IT Solutions.
 - Wees vriendelijk en professioneel.
+- - Beantwoord alleen vragen die te maken hebben met AMR IT Solutions of IT.
+- Bij vragen over relaties, politiek, gezondheid, religie, gokken of andere niet-IT onderwerpen leg je vriendelijk uit dat je alleen helpt met IT-gerelateerde vragen.
+- Probeer het gesprek altijd terug te brengen naar computerhulp, Microsoft 365, websites of IT-support.
       `,
 
       input: message,
