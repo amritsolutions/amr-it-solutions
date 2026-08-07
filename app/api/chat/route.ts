@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { COMPANY_KNOWLEDGE } from "@/lib/companyKnowledge";
 
 const apiKey = process.env.OPENAI_API_KEY;
 
@@ -44,6 +45,7 @@ export async function POST(request: Request) {
       },
 
       instructions: `
+      ${COMPANY_KNOWLEDGE}
 Je bent de digitale AI-assistent van AMR IT Solutions.
 
 JOUW ENIGE DOEL:
