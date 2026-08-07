@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
 import Navbar from "@/components/Navbar";
 import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import FloatingContact from "@/components/FloatingContact";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -121,7 +121,7 @@ export default function RootLayout({
 
         <main className="flex-1">{children}</main>
 
-        <WhatsAppButton />
+        <FloatingContact />
 
         <Footer />
 

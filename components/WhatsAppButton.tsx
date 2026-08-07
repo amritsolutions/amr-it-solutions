@@ -1,5 +1,9 @@
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 
+type WhatsAppButtonProps = {
+  hidden?: boolean;
+};
+
 function WhatsAppIcon() {
   return (
     <svg
@@ -13,7 +17,13 @@ function WhatsAppIcon() {
   );
 }
 
-export default function WhatsAppButton() {
+export default function WhatsAppButton({
+  hidden = false,
+}: WhatsAppButtonProps) {
+  if (hidden) {
+    return null;
+  }
+
   return (
     <a
       href={WHATSAPP_URL}
@@ -22,7 +32,7 @@ export default function WhatsAppButton() {
       aria-label="Chat met AMR IT Solutions via WhatsApp"
       title="Chat via WhatsApp"
       className="
-        fixed bottom-5 right-5 z-50
+        fixed bottom-28 right-6 z-40
         flex h-16 w-16 items-center justify-center
         rounded-full bg-[#25D366] text-white
         shadow-[0_14px_35px_rgba(37,211,102,0.38)]
@@ -34,7 +44,6 @@ export default function WhatsAppButton() {
         focus-visible:ring-4
         focus-visible:ring-green-300
         active:scale-95
-        sm:bottom-6 sm:right-6
       "
     >
       <WhatsAppIcon />
