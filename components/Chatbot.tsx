@@ -2,6 +2,12 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 
+import {
+  QUOTE_FLOWS,
+  detectQuoteCategory,
+  type QuoteCategory,
+} from "@/lib/quoteFlow";
+
 type Message = {
   sender: "bot" | "user";
   text: string;
@@ -13,7 +19,7 @@ type QuoteStep =
   | "email"
   | "phone"
   | "service"
-  | "description"
+  | "details"
   | "sending"
   | "done";
 
@@ -24,6 +30,8 @@ type QuoteData = {
   service: string;
   description: string;
 };
+
+type QuoteAnswers = Record<string, string>;
 
 type ChatbotProps = {
   onOpenChange?: (open: boolean) => void;
@@ -36,19 +44,29 @@ export default function Chatbot({
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [previousResponseId, setPreviousResponseId] = useState<string | null>(
-    null
-  );
+  const [previousResponseId, setPreviousResponseId] =
+    useState<string | null>(null);
 
-  const [quoteStep, setQuoteStep] = useState<QuoteStep>("idle");
+  const [quoteStep, setQuoteStep] =
+    useState<QuoteStep>("idle");
 
-  const [quoteData, setQuoteData] = useState<QuoteData>({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    description: "",
-  });
+  const [quoteCategory, setQuoteCategory] =
+    useState<QuoteCategory>("other");
+
+  const [quoteQuestionIndex, setQuoteQuestionIndex] =
+    useState(0);
+
+  const [quoteAnswers, setQuoteAnswers] =
+    useState<QuoteAnswers>({});
+
+  const [quoteData, setQuoteData] =
+    useState<QuoteData>({
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      description: "",
+    });
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -57,7 +75,8 @@ export default function Chatbot({
     },
   ]);
 
-  const chatAreaRef = useRef<HTMLDivElement | null>(null);
+  const chatAreaRef =
+    useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const chatArea = chatAreaRef.current;
@@ -65,7 +84,12 @@ export default function Chatbot({
     if (!chatArea) return;
 
     chatArea.scrollTop = chatArea.scrollHeight;
-  }, [messages, loading, quoteStep]);
+  }, [
+    messages,
+    loading,
+    quoteStep,
+    quoteQuestionIndex,
+  ]);
 
   function addBotMessage(text: string) {
     setMessages((current) => [
@@ -87,7 +111,7 @@ export default function Chatbot({
     ]);
   }
 
-  function startQuote() {
+  function resetQuoteData() {
     setQuoteData({
       name: "",
       email: "",
@@ -96,13 +120,23 @@ export default function Chatbot({
       description: "",
     });
 
+    setQuoteCategory("other");
+    setQuoteQuestionIndex(0);
+    setQuoteAnswers({});
+  }
+
+  function startQuote() {
+    resetQuoteData();
+
     setQuoteStep("name");
 
-    addUserMessage("Ik wil graag een offerte aanvragen");
+    addUserMessage(
+      "Ik wil graag een offerte aanvragen"
+    );
 
     addBotMessage(
-  "Natuurlijk! Ik stel je een paar korte vragen. Je gegevens worden alleen gebruikt om je aanvraag te behandelen. Wat is je naam?"
-);
+      "Natuurlijk! Ik stel je een paar korte vragen. Je gegevens worden alleen gebruikt om je aanvraag te behandelen. Wat is je naam?"
+    );
   }
 
   async function askAI(message: string) {
@@ -129,21 +163,29 @@ export default function Chatbot({
       try {
         data = JSON.parse(text);
       } catch {
-        throw new Error("De server gaf een ongeldig antwoord.");
+        throw new Error(
+          "De server gaf een ongeldig antwoord."
+        );
       }
 
       if (!response.ok) {
-        throw new Error(data.error || "Er ging iets mis.");
+        throw new Error(
+          data.error || "Er ging iets mis."
+        );
       }
 
       if (!data.answer) {
-        throw new Error("De AI gaf geen antwoord.");
+        throw new Error(
+          "De AI gaf geen antwoord."
+        );
       }
 
       addBotMessage(data.answer);
 
       if (data.responseId) {
-        setPreviousResponseId(data.responseId);
+        setPreviousResponseId(
+          data.responseId
+        );
       }
     } catch (error) {
       console.error("Chatfout:", error);
@@ -159,16 +201,22 @@ export default function Chatbot({
   async function sendQuote(data: QuoteData) {
     setQuoteStep("sending");
 
-    addBotMessage("Momentje, ik verstuur je aanvraag...");
+    addBotMessage(
+      "Momentje, ik verstuur je aanvraag..."
+    );
 
     try {
-      const response = await fetch("/api/chat-quote", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "/api/chat-quote",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const text = await response.text();
 
@@ -177,12 +225,15 @@ export default function Chatbot({
       try {
         result = JSON.parse(text);
       } catch {
-        throw new Error("De server gaf een ongeldig antwoord.");
+        throw new Error(
+          "De server gaf een ongeldig antwoord."
+        );
       }
 
       if (!response.ok) {
         throw new Error(
-          result.message || "De aanvraag kon niet worden verzonden."
+          result.message ||
+            "De aanvraag kon niet worden verzonden."
         );
       }
 
@@ -192,20 +243,101 @@ export default function Chatbot({
         `Bedankt ${data.name}! ✅ Je offerteaanvraag is verzonden naar AMR IT Solutions. We nemen zo snel mogelijk contact met je op.`
       );
     } catch (error) {
-      console.error("Offertefout:", error);
+      console.error(
+        "Offertefout:",
+        error
+      );
 
-      setQuoteStep("description");
+      setQuoteStep("idle");
 
       addBotMessage(
-        "Het verzenden is helaas niet gelukt. Probeer het nog een keer of neem rechtstreeks contact op met AMR IT Solutions."
+        "Het verzenden is helaas niet gelukt. Probeer het later opnieuw of neem rechtstreeks contact op met AMR IT Solutions."
       );
     }
   }
 
-  async function handleQuoteAnswer(message: string) {
+  function buildQuoteDescription(
+    category: QuoteCategory,
+    answers: QuoteAnswers
+  ) {
+    const questions =
+      QUOTE_FLOWS[category];
+
+    return questions
+      .map((question) => {
+        const answer =
+          answers[question.id] ||
+          "Niet opgegeven";
+
+        return `${question.question}\nAntwoord: ${answer}`;
+      })
+      .join("\n\n");
+  }
+
+  async function handleQuoteDetails(
+    message: string
+  ) {
+    const questions =
+      QUOTE_FLOWS[quoteCategory];
+
+    const currentQuestion =
+      questions[quoteQuestionIndex];
+
+    if (!currentQuestion) {
+      return;
+    }
+
+    const updatedAnswers = {
+      ...quoteAnswers,
+      [currentQuestion.id]: message,
+    };
+
+    setQuoteAnswers(updatedAnswers);
+
+    const nextIndex =
+      quoteQuestionIndex + 1;
+
+    if (nextIndex < questions.length) {
+      setQuoteQuestionIndex(nextIndex);
+
+      const nextQuestion =
+        questions[nextIndex];
+
+      addBotMessage(nextQuestion.question);
+
+      return;
+    }
+
+    const description =
+      buildQuoteDescription(
+        quoteCategory,
+        updatedAnswers
+      );
+
+    const completedData: QuoteData = {
+      ...quoteData,
+      description,
+    };
+
+    setQuoteData(completedData);
+
+    await sendQuote(completedData);
+  }
+
+  async function handleQuoteAnswer(
+    message: string
+  ) {
     addUserMessage(message);
 
     if (quoteStep === "name") {
+      if (message.length < 2) {
+        addBotMessage(
+          "Vul alsjeblieft je naam in."
+        );
+
+        return;
+      }
+
       setQuoteData((current) => ({
         ...current,
         name: message,
@@ -213,13 +345,16 @@ export default function Chatbot({
 
       setQuoteStep("email");
 
-      addBotMessage("Dank je. Wat is je e-mailadres?");
+      addBotMessage(
+        "Dank je. Wat is je e-mailadres?"
+      );
 
       return;
     }
 
     if (quoteStep === "email") {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailPattern.test(message)) {
         addBotMessage(
@@ -247,7 +382,8 @@ export default function Chatbot({
       setQuoteData((current) => ({
         ...current,
         phone:
-          message.toLowerCase() === "overslaan"
+          message.toLowerCase() ===
+          "overslaan"
             ? ""
             : message,
       }));
@@ -255,40 +391,44 @@ export default function Chatbot({
       setQuoteStep("service");
 
       addBotMessage(
-        "Waarvoor wil je een offerte? Bijvoorbeeld computerhulp, Microsoft 365 of een website."
+        "Waarvoor wil je een offerte? Bijvoorbeeld een website, computerhulp, Microsoft 365, wifi of een printer."
       );
 
       return;
     }
 
     if (quoteStep === "service") {
+      const category =
+        detectQuoteCategory(message);
+
+      const questions =
+        QUOTE_FLOWS[category];
+
       setQuoteData((current) => ({
         ...current,
         service: message,
       }));
 
-      setQuoteStep("description");
+      setQuoteCategory(category);
+      setQuoteQuestionIndex(0);
+      setQuoteAnswers({});
+      setQuoteStep("details");
 
       addBotMessage(
-        "Kun je kort omschrijven wat je precies nodig hebt?"
+        questions[0].question
       );
 
       return;
     }
 
-    if (quoteStep === "description") {
-      const completedData: QuoteData = {
-        ...quoteData,
-        description: message,
-      };
-
-      setQuoteData(completedData);
-
-      await sendQuote(completedData);
+    if (quoteStep === "details") {
+      await handleQuoteDetails(message);
     }
   }
 
-  async function sendMessage(event: FormEvent<HTMLFormElement>) {
+  async function sendMessage(
+    event: FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     const message = input.trim();
@@ -304,7 +444,7 @@ export default function Chatbot({
       quoteStep === "email" ||
       quoteStep === "phone" ||
       quoteStep === "service" ||
-      quoteStep === "description"
+      quoteStep === "details"
     ) {
       await handleQuoteAnswer(message);
 
@@ -314,9 +454,14 @@ export default function Chatbot({
     await askAI(message);
   }
 
-  async function quickQuestion(question: string) {
+  async function quickQuestion(
+    question: string
+  ) {
     if (loading) return;
-    if (quoteStep === "sending") return;
+
+    if (quoteStep === "sending") {
+      return;
+    }
 
     if (question === "offerte") {
       startQuote();
@@ -333,13 +478,7 @@ export default function Chatbot({
     setInput("");
     setLoading(false);
 
-    setQuoteData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      description: "",
-    });
+    resetQuoteData();
 
     setMessages([
       {
@@ -349,7 +488,7 @@ export default function Chatbot({
     ]);
   }
 
-  const inputPlaceholder = () => {
+  function inputPlaceholder() {
     if (quoteStep === "name") {
       return "Typ je naam...";
     }
@@ -366,8 +505,17 @@ export default function Chatbot({
       return "Welke dienst?";
     }
 
-    if (quoteStep === "description") {
-      return "Omschrijf je aanvraag...";
+    if (quoteStep === "details") {
+      const questions =
+        QUOTE_FLOWS[quoteCategory];
+
+      const question =
+        questions[quoteQuestionIndex];
+
+      return (
+        question?.placeholder ||
+        "Typ je antwoord..."
+      );
     }
 
     if (quoteStep === "sending") {
@@ -375,7 +523,7 @@ export default function Chatbot({
     }
 
     return "Typ je vraag...";
-  };
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -404,9 +552,9 @@ export default function Chatbot({
               <button
                 type="button"
                 onClick={() => {
-  setIsOpen(false);
-  onOpenChange?.(false);
-}}
+                  setIsOpen(false);
+                  onOpenChange?.(false);
+                }}
                 aria-label="Chat sluiten"
                 className="text-2xl leading-none text-white"
               >
@@ -420,18 +568,21 @@ export default function Chatbot({
             className="flex-1 overflow-y-auto bg-gray-50 p-4"
           >
             <div className="space-y-3">
-              {messages.map((message, index) => (
-                <div
-                  key={`${message.sender}-${index}`}
-                  className={
-                    message.sender === "user"
-                      ? "ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-blue-600 px-4 py-3 text-sm leading-relaxed text-white"
-                      : "mr-auto max-w-[85%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm"
-                  }
-                >
-                  {message.text}
-                </div>
-              ))}
+              {messages.map(
+                (message, index) => (
+                  <div
+                    key={`${message.sender}-${index}`}
+                    className={
+                      message.sender ===
+                      "user"
+                        ? "ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-blue-600 px-4 py-3 text-sm leading-relaxed text-white"
+                        : "mr-auto max-w-[85%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm"
+                    }
+                  >
+                    {message.text}
+                  </div>
+                )
+              )}
 
               {loading && (
                 <div className="mr-auto flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm">
@@ -495,13 +646,27 @@ export default function Chatbot({
                   <button
                     type="button"
                     disabled={loading}
-                    onClick={() => quickQuestion("offerte")}
+                    onClick={() =>
+                      quickQuestion("offerte")
+                    }
                     className="rounded-full border px-3 py-1.5 text-xs transition hover:bg-gray-100 disabled:opacity-50"
                   >
                     📩 Offerte
                   </button>
                 </div>
               </>
+            )}
+
+            {quoteStep === "details" && (
+              <div className="mb-2 text-xs text-gray-500">
+                Vraag{" "}
+                {quoteQuestionIndex + 1} van{" "}
+                {
+                  QUOTE_FLOWS[
+                    quoteCategory
+                  ].length
+                }
+              </div>
             )}
 
             {quoteStep === "done" && (
@@ -518,7 +683,9 @@ export default function Chatbot({
                 type="text"
                 value={input}
                 onChange={(event) =>
-                  setInput(event.target.value)
+                  setInput(
+                    event.target.value
+                  )
                 }
                 placeholder={inputPlaceholder()}
                 disabled={
@@ -549,14 +716,15 @@ export default function Chatbot({
       <button
         type="button"
         onClick={() => {
-  setIsOpen((current) => {
-    const next = !current;
-    onOpenChange?.(next);
-    return next;
-  });
+  const next = !isOpen;
+
+  setIsOpen(next);
+  onOpenChange?.(next);
 }}
         aria-label={
-          isOpen ? "Chat sluiten" : "Chat openen"
+          isOpen
+            ? "Chat sluiten"
+            : "Chat openen"
         }
         className="ml-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-2xl text-white shadow-xl transition hover:scale-105 hover:bg-blue-700"
       >
