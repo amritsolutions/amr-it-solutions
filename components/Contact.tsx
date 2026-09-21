@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -111,9 +110,11 @@ export default function Contact() {
     >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
         {/* Contact: bewust rustiger en minder 'dashboard/SaaS'. */}
-        <div className="overflow-hidden rounded-[28px] border border-slate-800 bg-[#06101f] text-slate-50 shadow-[0_28px_80px_rgba(15,23,42,0.18)]">
-          <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-            <aside className="border-b border-white/10 px-7 py-10 sm:px-10 sm:py-12 lg:border-b-0 lg:border-r lg:px-12 lg:py-14 xl:px-14">
+        <div className="relative overflow-hidden rounded-[24px] border border-blue-400/20 bg-[#06101f] text-slate-50 shadow-[0_28px_80px_rgba(15,23,42,0.20)]">
+          <div aria-hidden="true" className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-blue-500/[0.07] blur-[100px]" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-blue-500/[0.045] blur-[110px]" />
+          <div className="relative grid lg:grid-cols-[0.78fr_1.22fr]">
+            <aside className="border-b border-white/10 px-7 py-10 sm:px-10 sm:py-12 lg:border-b-0 lg:border-r lg:border-white/[0.07] lg:px-12 lg:py-14 xl:px-14">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400">
                 Contact
               </p>
@@ -128,31 +129,37 @@ export default function Contact() {
                 helpen je graag verder.
               </p>
 
-              <div className="mt-10 space-y-6 border-t border-white/10 pt-8">
+              <div className="mt-11 space-y-8 border-t border-white/10 pt-9">
                 <SimpleContactRow
                   href="tel:+31649718684"
-                  icon={<Phone className="h-5 w-5" />}
+                  icon={<Phone className="h-6 w-6" />}
                   label="Bel ons direct"
                   value="06 49718684"
                 />
                 <SimpleContactRow
                   href="mailto:info@amritsolutions.nl"
-                  icon={<Mail className="h-5 w-5" />}
+                  icon={<Mail className="h-6 w-6" />}
                   label="Stuur een e-mail"
                   value="info@amritsolutions.nl"
                 />
                 <SimpleContactRow
-                  icon={<MapPin className="h-5 w-5" />}
+                  icon={<MapPin className="h-6 w-6" />}
                   label="Werkgebied"
                   value="Breda en omgeving"
                 />
               </div>
 
-              <div className="mt-10 border-t border-white/10 pt-7">
-                <div className="grid gap-4 text-sm text-slate-300 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                  <MiniTrust icon={<Clock3 className="h-4 w-4" />} text="Meestal binnen één werkdag reactie" />
-                  <MiniTrust icon={<User className="h-4 w-4" />} text="Persoonlijk contact" />
-                  <MiniTrust icon={<ShieldCheck className="h-4 w-4" />} text="Geen verborgen kosten" />
+              <div className="mt-11 rounded-xl border border-blue-400/20 bg-blue-500/[0.055] p-6">
+                <div className="flex items-start gap-4">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-500/15 text-blue-300 ring-1 ring-blue-400/10">
+                    <User className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-semibold text-white">Persoonlijke IT-hulp, zonder gedoe.</p>
+                    <p className="mt-1 text-sm leading-6 text-slate-400">
+                      Je hebt direct contact met AMR IT Solutions — geen helpdesk of tussenpersoon.
+                    </p>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -167,7 +174,7 @@ export default function Contact() {
                   <h3 className="text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">
                     Waar kunnen we je mee helpen?
                   </h3>
-                  <p className="mt-2 max-w-2xl leading-7 text-slate-400">
+                  <p className="mt-2 max-w-2xl text-[15px] leading-7 text-slate-300">
                     Vertel kort wat er speelt. Je krijgt meestal binnen één
                     werkdag persoonlijk antwoord.
                   </p>
@@ -356,13 +363,13 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group mt-6 inline-flex min-h-[60px] w-full items-center justify-center gap-3 rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="group mt-6 inline-flex min-h-[58px] w-full items-center justify-center gap-3 rounded-xl border border-blue-400/30 bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-[0_10px_28px_rgba(37,99,235,0.18)] transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {submitting ? "Bericht verzenden..." : "Verstuur bericht"}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </button>
 
-                <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs leading-5 text-slate-500">
+                <p className="mt-4 flex items-center justify-center gap-2 text-center text-[13px] leading-5 text-slate-400">
                   <ShieldCheck className="h-4 w-4 shrink-0" />
                   Je gegevens worden alleen gebruikt om contact met je op te nemen.
                 </p>
@@ -577,20 +584,6 @@ function SimpleContactRow({
   );
 }
 
-function MiniTrust({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <div className="flex items-start gap-2.5">
-      <span className="mt-0.5 shrink-0 text-blue-400">{icon}</span>
-      <span className="leading-5">{text}</span>
-    </div>
-  );
-}
 
 function Field({
   label,
@@ -630,7 +623,7 @@ function PreferenceOption({
     <label
       className={`flex min-h-[58px] cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition ${
         selected
-          ? "border-blue-500 bg-blue-500/10"
+          ? "border-blue-400/80 bg-blue-500/[0.07]"
           : "border-slate-700 bg-[#0b1424] hover:border-slate-600"
       }`}
     >
