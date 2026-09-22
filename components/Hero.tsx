@@ -92,17 +92,17 @@ const features = [
   },
   {
     title: "Breda & omgeving",
-    description: "Lokaal actief in Breda en omliggende plaatsen.",
+    description: "Lokale IT-hulp bij jou in de buurt.",
     icon: LocationIcon,
   },
   {
     title: "Betrouwbaar & veilig",
-    description: "Uw gegevens en systemen zijn in veilige handen.",
+    description: "Zorgvuldig omgaan met jouw gegevens.",
     icon: ShieldIcon,
   },
   {
-    title: "Persoonlijk advies",
-    description: "Oplossingen die passen bij uw situatie.",
+    title: "Persoonlijk contact",
+    description: "Eén aanspreekpunt en duidelijke uitleg.",
     icon: PersonIcon,
   },
 ];
@@ -149,25 +149,30 @@ export default function Hero() {
 
         <div className="flex flex-col lg:min-h-[834px]">
           <div className="max-w-[650px] animate-fade-up">
+            {/* Lokale aanduiding */}
             <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-blue-50 px-5 py-3 text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">
               <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
               IT Support in Breda & omgeving
             </div>
 
+            {/* Hoofdtitel */}
             <h1 className="max-w-[670px] text-[2.65rem] font-extrabold leading-[1.07] tracking-[-0.045em] text-slate-950 sm:text-[3.6rem] lg:text-[4.15rem] xl:text-[4.4rem]">
-              IT-oplossingen
+              IT-probleem?
               <br />
-              voor particulieren
+              Wij helpen je
               <br />
-              <span className="text-blue-600">én bedrijven.</span>
+              <span className="text-blue-600">snel verder.</span>
             </h1>
 
+            {/* Introductietekst */}
             <p className="mt-7 max-w-[610px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-              AMR IT Solutions helpt met computerreparaties,
-              Windows-installaties, Microsoft 365, websites, WiFi-problemen en
-              betrouwbare IT-support in Breda en omgeving.
+              Problemen met je computer, WiFi of Microsoft 365? Of een
+              professionele website nodig? AMR IT Solutions helpt
+              particulieren, zzp&apos;ers en kleine bedrijven in Breda en
+              omgeving.
             </p>
 
+            {/* Actieknoppen */}
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <a
                 href="#contact"

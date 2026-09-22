@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Check,
   ChevronDown,
-  Clock3,
   Mail,
   MapPin,
   Monitor,
@@ -36,7 +35,6 @@ const services = [
   "IT Support Breda",
   "Anders",
 ];
-
 
 const inputClass =
   "min-h-[58px] w-full rounded-xl border border-slate-700 bg-[#0b1424] px-4 py-3.5 text-slate-50 outline-none transition placeholder:text-slate-500 hover:border-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/15";
@@ -109,11 +107,20 @@ export default function Contact() {
       className="bg-gradient-to-b from-white via-slate-50/70 to-white py-20 sm:py-24"
     >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
-        {/* Contact: bewust rustiger en minder 'dashboard/SaaS'. */}
+        {/* CONTACT */}
         <div className="relative overflow-hidden rounded-[24px] border border-blue-400/20 bg-[#06101f] text-slate-50 shadow-[0_28px_80px_rgba(15,23,42,0.20)]">
-          <div aria-hidden="true" className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-blue-500/[0.07] blur-[100px]" />
-          <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-blue-500/[0.045] blur-[110px]" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-blue-500/[0.07] blur-[100px]"
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-blue-500/[0.045] blur-[110px]"
+          />
+
           <div className="relative grid lg:grid-cols-[0.78fr_1.22fr]">
+            {/* Linkerkant */}
             <aside className="border-b border-white/10 px-7 py-10 sm:px-10 sm:py-12 lg:border-b-0 lg:border-r lg:border-white/[0.07] lg:px-12 lg:py-14 xl:px-14">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400">
                 Contact
@@ -136,12 +143,14 @@ export default function Contact() {
                   label="Bel ons direct"
                   value="06 49718684"
                 />
+
                 <SimpleContactRow
                   href="mailto:info@amritsolutions.nl"
                   icon={<Mail className="h-6 w-6" />}
                   label="Stuur een e-mail"
                   value="info@amritsolutions.nl"
                 />
+
                 <SimpleContactRow
                   icon={<MapPin className="h-6 w-6" />}
                   label="Werkgebied"
@@ -154,16 +163,22 @@ export default function Contact() {
                   <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-500/15 text-blue-300 ring-1 ring-blue-400/10">
                     <User className="h-5 w-5" />
                   </span>
+
                   <div>
-                    <p className="font-semibold text-white">Persoonlijke IT-hulp, zonder gedoe.</p>
+                    <p className="font-semibold text-white">
+                      Persoonlijke IT-hulp, zonder gedoe.
+                    </p>
+
                     <p className="mt-1 text-sm leading-6 text-slate-400">
-                      Je hebt direct contact met AMR IT Solutions — geen helpdesk of tussenpersoon.
+                      Je hebt direct contact met AMR IT Solutions — geen
+                      helpdesk of tussenpersoon.
                     </p>
                   </div>
                 </div>
               </div>
             </aside>
 
+            {/* Formulier */}
             <div className="px-7 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 xl:px-14">
               <form
                 onSubmit={handleSubmit}
@@ -174,6 +189,7 @@ export default function Contact() {
                   <h3 className="text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">
                     Waar kunnen we je mee helpen?
                   </h3>
+
                   <p className="mt-2 max-w-2xl text-[15px] leading-7 text-slate-300">
                     Vertel kort wat er speelt. Je krijgt meestal binnen één
                     werkdag persoonlijk antwoord.
@@ -245,6 +261,7 @@ export default function Contact() {
                         <option value="" disabled className="bg-slate-900">
                           Kies een dienst
                         </option>
+
                         {services.map((service) => (
                           <option
                             key={service}
@@ -255,6 +272,7 @@ export default function Contact() {
                           </option>
                         ))}
                       </select>
+
                       <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
                     </div>
                   </Field>
@@ -272,10 +290,13 @@ export default function Contact() {
                   </Field>
                 </div>
 
+                {/* Bestand */}
                 <div className="mt-5">
                   <p className="mb-2 text-sm font-medium text-slate-200">
                     Foto of bestand{" "}
-                    <span className="font-normal text-slate-500">(optioneel)</span>
+                    <span className="font-normal text-slate-500">
+                      (optioneel)
+                    </span>
                   </p>
 
                   <input
@@ -295,10 +316,12 @@ export default function Contact() {
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-800 text-blue-400">
                       <Paperclip className="h-4 w-4" />
                     </span>
+
                     <span className="min-w-0">
                       <span className="block font-medium text-slate-200">
                         {fileName || "Foto, screenshot of PDF toevoegen"}
                       </span>
+
                       <span className="mt-0.5 block text-xs text-slate-500">
                         JPG, PNG of PDF · maximaal 5 MB
                       </span>
@@ -306,6 +329,7 @@ export default function Contact() {
                   </button>
                 </div>
 
+                {/* Contactvoorkeur */}
                 <fieldset className="mt-7">
                   <legend className="mb-3 text-sm font-medium text-slate-200">
                     Hoe wil je dat we contact met je opnemen?{" "}
@@ -321,6 +345,7 @@ export default function Contact() {
                       icon={<WhatsAppIcon className="h-5 w-5" />}
                       iconClass="text-emerald-400"
                     />
+
                     <PreferenceOption
                       value="phone"
                       label="Bellen"
@@ -329,6 +354,7 @@ export default function Contact() {
                       icon={<Phone className="h-5 w-5" />}
                       iconClass="text-blue-400"
                     />
+
                     <PreferenceOption
                       value="email"
                       label="E-mail"
@@ -340,6 +366,7 @@ export default function Contact() {
                   </div>
                 </fieldset>
 
+                {/* Privacy */}
                 <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm leading-6 text-slate-300">
                   <input
                     type="checkbox"
@@ -348,6 +375,7 @@ export default function Contact() {
                     required
                     className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border-slate-500 bg-slate-900 accent-blue-600 focus:ring-2 focus:ring-blue-500/20"
                   />
+
                   <span>
                     Ik ga akkoord met de{" "}
                     <a
@@ -366,29 +394,36 @@ export default function Contact() {
                   className="group mt-6 inline-flex min-h-[58px] w-full items-center justify-center gap-3 rounded-xl border border-blue-400/30 bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-[0_10px_28px_rgba(37,99,235,0.18)] transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {submitting ? "Bericht verzenden..." : "Verstuur bericht"}
+
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </button>
 
                 <p className="mt-4 flex items-center justify-center gap-2 text-center text-[13px] leading-5 text-slate-400">
                   <ShieldCheck className="h-4 w-4 shrink-0" />
-                  Je gegevens worden alleen gebruikt om contact met je op te nemen.
+                  Je gegevens worden alleen gebruikt om contact met je op te
+                  nemen.
                 </p>
               </form>
             </div>
           </div>
         </div>
 
+        {/* =====================================================
+            WERKGEBIED
+        ====================================================== */}
         <div className="relative mt-20 overflow-hidden py-4 sm:py-8">
-          {/* Subtiele achtergronddecoratie */}
+          {/* Achtergrond */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-48 top-12 h-[460px] w-[460px] rounded-full bg-blue-100/55 blur-[130px]"
           />
+
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-40 top-0 h-[420px] w-[420px] rounded-full bg-cyan-100/35 blur-[130px]"
           />
 
+          {/* Titel */}
           <div className="relative mx-auto mb-12 max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-bold uppercase tracking-[0.12em] text-blue-600 ring-1 ring-blue-100">
               <MapPin className="h-4 w-4" />
@@ -400,13 +435,15 @@ export default function Contact() {
             </h3>
 
             <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-              Wij helpen particulieren en bedrijven aan huis, op locatie of op
-              afstand. Woont u in Breda of omgeving? Dan staan wij graag voor u
-              klaar.
+              IT-hulp nodig in Breda of omgeving? Wij helpen particulieren,
+              zzp&apos;ers en kleine bedrijven op locatie, aan huis of op
+              afstand.
             </p>
           </div>
 
+          {/* Kaart + rechterkant */}
           <div className="relative grid items-start gap-10 lg:grid-cols-[1.55fr_0.85fr] lg:gap-12">
+            {/* Kaart */}
             <div className="relative h-[480px] overflow-hidden rounded-[30px] bg-white shadow-[0_24px_70px_rgba(37,99,235,0.12)] ring-1 ring-blue-100/80 sm:h-[520px]">
               <iframe
                 title="Werkgebied AMR IT Solutions in Breda"
@@ -419,10 +456,14 @@ export default function Contact() {
                 allowFullScreen
                 className="block h-full w-full"
               />
+
+              {/* Blauwe cirkel */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-400/25 bg-blue-500/10 shadow-[0_0_70px_rgba(37,99,235,0.18)] sm:h-80 sm:w-80"
               />
+
+              {/* Marker */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-blue-600 text-white shadow-[0_12px_30px_rgba(37,99,235,0.35)]"
@@ -431,50 +472,78 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Rechterkant */}
             <div className="flex min-h-[480px] flex-col sm:min-h-[520px]">
-              <h4 className="text-2xl font-extrabold tracking-tight text-slate-950">
-                Wij werken in:
-              </h4>
+              <div>
+                <h4 className="text-2xl font-extrabold tracking-tight text-slate-950">
+                  Ons werkgebied
+                </h4>
 
-              <div className="mt-5 divide-y divide-slate-200/80">
+                <p className="mt-2 text-sm leading-6 text-slate-500">
+                  We zijn actief in Breda en verschillende plaatsen in de
+                  omgeving.
+                </p>
+              </div>
+
+              {/* Plaatsen */}
+              <div className="mt-4 divide-y divide-slate-200/80">
                 {locations.map((location) => (
                   <a
                     key={location}
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`}
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      location
+                    )}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex min-h-[66px] items-center gap-4 py-3 outline-none transition-colors duration-300 hover:text-blue-600 focus-visible:rounded-2xl focus-visible:ring-4 focus-visible:ring-blue-500/15"
+                    className="group flex min-h-[62px] items-center gap-4 py-2.5 outline-none transition-colors duration-300 hover:text-blue-600 focus-visible:rounded-2xl focus-visible:ring-4 focus-visible:ring-blue-500/15"
                   >
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_10px_24px_rgba(37,99,235,0.22)]">
                       <MapPin className="h-5 w-5" />
                     </span>
+
                     <span className="font-medium text-slate-700 transition-colors duration-300 group-hover:text-blue-700">
                       {location}
                     </span>
+
                     <ArrowRight className="ml-auto h-4 w-4 text-blue-500 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 ))}
               </div>
 
-              <div className="mt-auto pt-7">
+              {/* Andere plaats */}
+              <p className="mt-4 text-sm leading-6 text-slate-500">
+                Staat jouw woonplaats er niet tussen?{" "}
+                <a
+                  href="/#contact"
+                  className="font-semibold text-blue-600 transition hover:text-blue-700"
+                >
+                  Neem gerust contact op.
+                </a>
+              </p>
+
+              {/* Hulp op afstand */}
+              <div className="mt-auto pt-6">
                 <div className="rounded-[24px] bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 p-6 shadow-[0_18px_45px_rgba(37,99,235,0.10)] ring-1 ring-blue-100">
                   <div className="flex items-start gap-4">
                     <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm ring-1 ring-blue-100">
                       <Monitor className="h-7 w-7" />
                     </span>
+
                     <div>
                       <p className="text-lg font-bold text-blue-700">
                         Ook hulp op afstand mogelijk
                       </p>
+
                       <p className="mt-1 text-sm leading-6 text-slate-600">
-                        Veel problemen kunnen wij direct online oplossen via
+                        Veel problemen kunnen we direct online oplossen via
                         veilige ondersteuning op afstand.
                       </p>
+
                       <ul className="mt-4 space-y-2.5">
                         {[
                           "Snel en veilig",
                           "Persoonlijke begeleiding",
-                          "Zonder voorrijkosten",
+                          "Geen voorrijkosten bij hulp op afstand",
                         ].map((item) => (
                           <li
                             key={item}
@@ -493,55 +562,11 @@ export default function Contact() {
                   href="/#contact"
                   className="group mt-5 inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(37,99,235,0.28)] transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-600 hover:shadow-[0_20px_44px_rgba(37,99,235,0.38)]"
                 >
-                  Vraag vrijblijvend advies aan
+                  Hulp nodig in jouw omgeving?
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
-          </div>
-
-          <div className="relative mt-14 grid overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.07)] md:grid-cols-3">
-            {[
-              {
-                icon: Clock3,
-                title: "Vaak dezelfde dag geholpen",
-                text: "Snelle hulp wanneer u het nodig heeft.",
-              },
-              {
-                icon: User,
-                title: "Persoonlijk contact",
-                text: "Direct contact met korte lijnen.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Breda en omgeving",
-                text: "Lokaal actief, altijd dichtbij.",
-              },
-            ].map((item, index) => {
-              const BenefitIcon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className={`flex items-center gap-5 px-7 py-7 ${
-                    index > 0
-                      ? "border-t border-slate-200/80 md:border-l md:border-t-0"
-                      : ""
-                  }`}
-                >
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100">
-                    <BenefitIcon className="h-7 w-7" />
-                  </span>
-                  <span>
-                    <span className="block font-bold text-slate-950">
-                      {item.title}
-                    </span>
-                    <span className="mt-1 block text-sm leading-6 text-slate-600">
-                      {item.text}
-                    </span>
-                  </span>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
@@ -565,6 +590,7 @@ function SimpleContactRow({
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
         {icon}
       </span>
+
       <span>
         <span className="block text-sm text-slate-400">{label}</span>
         <span className="mt-0.5 block font-semibold text-white">{value}</span>
@@ -584,7 +610,6 @@ function SimpleContactRow({
   );
 }
 
-
 function Field({
   label,
   required,
@@ -599,6 +624,7 @@ function Field({
       <span className="mb-2 block text-sm font-medium text-slate-200">
         {label} {required && <span className="text-red-400">*</span>}
       </span>
+
       <span className="relative block">{children}</span>
     </label>
   );
@@ -636,8 +662,11 @@ function PreferenceOption({
         className="sr-only"
         required
       />
+
       <span className={iconClass}>{icon}</span>
+
       <span className="font-semibold text-white">{label}</span>
+
       <span
         className={`ml-auto flex h-5 w-5 items-center justify-center rounded-full border ${
           selected ? "border-blue-400 bg-blue-500" : "border-slate-500"

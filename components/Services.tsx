@@ -16,57 +16,65 @@ type Service = {
   title: string;
   text: string;
   link: string;
+  linkText: string;
 };
 
 const services: Service[] = [
   {
     icon: Laptop,
     title: "IT Support Breda",
-    text: "Snelle hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik voor particulieren en kleine bedrijven in Breda en omgeving.",
+    text: "Hulp bij computerproblemen, software, e-mail, accounts en dagelijks IT-gebruik.",
     link: "/it-support-breda",
+    linkText: "Bekijk IT-support",
   },
   {
     icon: Monitor,
     title: "Computerreparatie & Windows",
-    text: "Windows installeren, opnieuw installeren, herstellen en computers gebruiksklaar maken. Ook hulp bij foutmeldingen, updates en trage systemen.",
+    text: "Hulp bij Windows, foutmeldingen, updates, herstel en computers die niet goed meer werken.",
     link: "/computerreparatie",
+    linkText: "Bekijk computerreparatie",
   },
   {
     icon: Zap,
     title: "Laptop sneller maken",
-    text: "Trage laptops opschonen, optimaliseren en verbeteren met slimme instellingen, softwarecontrole en advies over SSD- of geheugenupgrades.",
+    text: "Is je laptop traag? We controleren en optimaliseren het systeem en adviseren over mogelijke upgrades.",
     link: "/laptop-sneller-maken",
+    linkText: "Bekijk laptop sneller maken",
   },
   {
     icon: Printer,
     title: "Printer, WiFi & netwerk",
-    text: "Hulp bij printers installeren, WiFi-problemen oplossen, netwerkverbindingen verbeteren en apparaten opnieuw verbinden.",
+    text: "Problemen met je printer, WiFi of netwerk? We helpen met installatie, verbinding en storingen.",
     link: "/printer-wifi-netwerk",
+    linkText: "Bekijk WiFi & netwerk",
   },
   {
     icon: Globe,
     title: "Website laten maken",
-    text: "Moderne, snelle en mobiele websites voor zzp’ers, kleine bedrijven en portfolio’s. Inclusief domein, hostingadvies en basis-SEO.",
+    text: "Een moderne, snelle en mobielvriendelijke website voor zzp’ers en kleine bedrijven.",
     link: "/website-laten-maken",
+    linkText: "Bekijk websites",
   },
   {
     icon: Cloud,
     title: "Microsoft 365 hulp",
-    text: "Ondersteuning bij Outlook, OneDrive, Teams, Exchange, e-mailinstellingen en Microsoft 365 voor particulieren en bedrijven.",
+    text: "Hulp met Outlook, OneDrive, Teams, e-mail en het instellen of gebruiken van Microsoft 365.",
     link: "/microsoft-365",
+    linkText: "Bekijk Microsoft 365",
   },
   {
     icon: HardDrive,
     title: "Data overzetten & back-up",
-    text: "Bestanden, foto’s, documenten, e-mail en instellingen veilig overzetten naar een nieuwe computer of een betrouwbare back-up maken.",
+    text: "Bestanden, foto’s, e-mail en instellingen veilig overzetten of een betrouwbare back-up maken.",
     link: "/data-overzetten",
+    linkText: "Bekijk data & back-up",
   },
 ];
 
 const benefits = [
   "Persoonlijke service",
   "Snelle ondersteuning",
-  "Transparante tarieven",
+  "Duidelijke afspraken",
 ];
 
 export default function Services() {
@@ -102,14 +110,14 @@ export default function Services() {
           </div>
 
           <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            IT support, computerreparatie en websites{" "}
-            <span className="text-blue-600">in Breda</span>
+            Waar kunnen we je{" "}
+            <span className="text-blue-600">mee helpen?</span>
           </h2>
 
           <p className="mt-6 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            AMR IT Solutions helpt particulieren, studenten, zzp’ers en kleine
-            bedrijven met praktische IT-oplossingen. Van trage laptops en
-            WiFi-problemen tot Microsoft 365 en professionele websites.
+            Van IT-support en computerreparatie tot Microsoft 365, WiFi en
+            websites. AMR IT Solutions helpt particulieren, zzp&apos;ers en
+            kleine bedrijven in Breda en omgeving.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-slate-700">
@@ -125,65 +133,65 @@ export default function Services() {
         </div>
 
         {/* Kaarten */}
-<div className="mt-14 grid items-stretch gap-7 md:grid-cols-2 lg:grid-cols-3">
-  {services.map((service, index) => {
-    const Icon = service.icon;
-    const isLast = index === services.length - 1;
+        <div className="mt-14 grid items-stretch gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            const isLast = index === services.length - 1;
 
-    return (
-      <article
-        key={service.title}
-        className={[
-          "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-[30px]",
-          "border border-slate-200/80 bg-white/90 p-7 backdrop-blur-sm",
-          "shadow-[0_14px_40px_rgba(15,23,42,0.06)]",
-          "transition-all duration-300 ease-out",
-          "before:absolute before:inset-x-0 before:top-0 before:h-[3px]",
-          "before:bg-gradient-to-r before:from-blue-500 before:via-blue-600 before:to-cyan-400",
-          "hover:-translate-y-1.5 hover:border-blue-200",
-          "hover:shadow-[0_24px_55px_rgba(37,99,235,0.14)]",
-          isLast
-            ? "md:col-span-2 md:mx-auto md:w-[calc(50%-14px)] lg:col-span-1 lg:col-start-2 lg:w-full"
-            : "",
-        ].join(" ")}
-      >
-        <div className="flex items-start gap-5">
-          <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 ring-1 ring-blue-100/80 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_10px_28px_rgba(37,99,235,0.18)]">
-            <Icon
-              aria-hidden="true"
-              className="h-9 w-9 text-blue-600 transition-transform duration-300 group-hover:-rotate-3"
-              strokeWidth={2}
-            />
-          </div>
+            return (
+              <article
+                key={service.title}
+                className={[
+                  "group relative flex h-full min-h-[250px] flex-col overflow-hidden rounded-[30px]",
+                  "border border-slate-200/80 bg-white/90 p-7 backdrop-blur-sm",
+                  "shadow-[0_14px_40px_rgba(15,23,42,0.06)]",
+                  "transition-all duration-300 ease-out",
+                  "before:absolute before:inset-x-0 before:top-0 before:h-[3px]",
+                  "before:bg-gradient-to-r before:from-blue-500 before:via-blue-600 before:to-cyan-400",
+                  "hover:-translate-y-1.5 hover:border-blue-200",
+                  "hover:shadow-[0_24px_55px_rgba(37,99,235,0.14)]",
+                  isLast
+                    ? "md:col-span-2 md:mx-auto md:w-[calc(50%-14px)] lg:col-span-1 lg:col-start-2 lg:w-full"
+                    : "",
+                ].join(" ")}
+              >
+                <div className="flex items-start gap-5">
+                  <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 ring-1 ring-blue-100/80 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_10px_28px_rgba(37,99,235,0.18)]">
+                    <Icon
+                      aria-hidden="true"
+                      className="h-9 w-9 text-blue-600 transition-transform duration-300 group-hover:-rotate-3"
+                      strokeWidth={2}
+                    />
+                  </div>
 
-          <div className="min-w-0">
-            <h3 className="text-xl font-bold leading-snug tracking-tight text-slate-950">
-              {service.title}
-            </h3>
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-bold leading-snug tracking-tight text-slate-950">
+                      {service.title}
+                    </h3>
 
-            <p className="mt-3 text-[15px] leading-7 text-slate-600">
-              {service.text}
-            </p>
-          </div>
+                    <p className="mt-3 text-[15px] leading-7 text-slate-600">
+                      {service.text}
+                    </p>
+                  </div>
+                </div>
+
+                <Link
+                  href={service.link}
+                  aria-label={service.linkText}
+                  className="mt-auto flex items-center justify-between pt-7 text-sm font-bold text-blue-600"
+                >
+                  <span className="transition-colors duration-300 group-hover:text-blue-700">
+                    {service.linkText}
+                  </span>
+
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(37,99,235,0.28)]">
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </Link>
+              </article>
+            );
+          })}
         </div>
-
-        <Link
-          href={service.link}
-          aria-label={`Meer informatie over ${service.title}`}
-          className="mt-auto flex items-center justify-between pt-7 text-sm font-bold text-blue-600"
-        >
-          <span className="transition-colors duration-300 group-hover:text-blue-700">
-            Meer informatie
-          </span>
-
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(37,99,235,0.28)]">
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </span>
-        </Link>
-      </article>
-    );
-  })}
-</div>
 
         {/* CTA */}
         <div className="mt-12 flex justify-center">
