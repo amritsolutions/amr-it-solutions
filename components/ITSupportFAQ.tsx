@@ -1,37 +1,38 @@
 "use client";
 
 import { useState } from "react";
-import {
-  HelpCircle,
-  Minus,
-  Plus,
-} from "lucide-react";
+import { HelpCircle, Minus, Plus } from "lucide-react";
 
 const faqs = [
   {
     question: "Waarvoor kan ik IT Support aanvragen?",
     answer:
-      "Wij helpen onder andere met computers, laptops, WiFi, printers, Microsoft 365, Outlook, e-mailproblemen en algemene IT-vragen.",
+      "Wij helpen onder andere met computers, laptops, WiFi, printers, Microsoft 365, Outlook, e-mailproblemen, back-ups en andere dagelijkse IT-vragen.",
   },
   {
     question: "Komen jullie ook aan huis in Breda?",
     answer:
-      "Ja. Wij bieden IT Support aan huis in Breda en omgeving. Indien mogelijk kunnen we je ook veilig op afstand helpen.",
+      "Ja. Wij bieden IT Support aan huis en op locatie in Breda en omgeving. Als het probleem op afstand opgelost kan worden, is ondersteuning op afstand ook mogelijk.",
   },
   {
-    question: "Helpen jullie ook bedrijven?",
+    question: "Helpen jullie ook zzp'ers en kleine bedrijven?",
     answer:
-      "Zeker. Wij ondersteunen particulieren, zzp'ers en kleine bedrijven met professionele en betrouwbare IT-oplossingen.",
+      "Ja. Wij helpen particulieren, zzp'ers en kleine bedrijven met praktische IT-ondersteuning, bijvoorbeeld bij computers, WiFi, e-mail en Microsoft 365.",
   },
   {
     question: "Kan ik ook hulp krijgen met Microsoft 365?",
     answer:
-      "Ja. Wij helpen met Outlook, OneDrive, Teams, e-mailinstellingen en andere Microsoft 365-diensten.",
+      "Ja. Wij helpen onder andere met Outlook, OneDrive, Teams, e-mailinstellingen en het instellen en gebruiken van Microsoft 365.",
   },
   {
-    question: "Hoe snel kunnen jullie helpen?",
+    question: "Kunnen jullie mij ook op afstand helpen?",
     answer:
-      "In veel gevallen kunnen we dezelfde dag of de volgende werkdag ondersteuning bieden. Neem contact op om de actuele mogelijkheden te bespreken.",
+      "Ja. Voor problemen die geen bezoek op locatie vereisen, kunnen we je indien mogelijk veilig op afstand ondersteunen. We bespreken vooraf welke vorm van hulp het beste past bij het probleem.",
+  },
+  {
+    question: "Ik weet niet precies wat het probleem is. Kunnen jullie toch helpen?",
+    answer:
+      "Ja. Je hoeft vooraf niet precies te weten wat er mis is. Vertel ons wat je merkt of welke foutmelding je ziet, dan bekijken we samen wat er aan de hand is en welke oplossing passend is.",
   },
 ];
 
@@ -82,8 +83,9 @@ export default function ITSupportFAQ() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            Hieronder vind je antwoorden op de meest gestelde vragen over onze
-            IT Support in Breda en omgeving.
+            Hulp nodig met een computer, WiFi, printer, e-mail of Microsoft
+            365? Hieronder beantwoorden we veelgestelde vragen over onze IT
+            Support in Breda en omgeving.
           </p>
         </div>
 

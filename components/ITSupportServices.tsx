@@ -13,37 +13,37 @@ const services = [
     Icon: Laptop,
     title: "Computer & laptop hulp",
     description:
-      "Hulp bij trage computers, Windows-problemen, foutmeldingen en dagelijks IT-gebruik.",
+      "Hulp bij trage computers en laptops, Windows-problemen, foutmeldingen en andere dagelijkse IT-problemen.",
   },
   {
     Icon: Wifi,
     title: "WiFi & netwerk",
     description:
-      "Wij lossen internetproblemen op, stellen routers in en verbeteren het WiFi-bereik.",
+      "Hulp bij internetproblemen, het instellen van routers en het verbeteren van je WiFi-bereik thuis of op het werk.",
   },
   {
     Icon: Printer,
     title: "Printer installeren",
     description:
-      "Nieuwe printer aansluiten, drivers installeren en problemen met printen of scannen oplossen.",
+      "Een nieuwe printer aansluiten, drivers installeren en problemen met printen, scannen of verbinding oplossen.",
   },
   {
     Icon: Mail,
     title: "Outlook & e-mail",
     description:
-      "Outlook instellen, e-mail synchroniseren en problemen met accounts of ontvangst oplossen.",
+      "Outlook en e-mail instellen, accounts synchroniseren en problemen met verzenden of ontvangen oplossen.",
   },
   {
     Icon: Cloud,
     title: "Microsoft 365",
     description:
-      "Ondersteuning bij Outlook, OneDrive, Teams en het instellen van Microsoft-accounts.",
+      "Ondersteuning bij Outlook, OneDrive, Teams en het instellen en gebruiken van Microsoft 365-accounts.",
   },
   {
     Icon: ShieldCheck,
     title: "Beveiliging & onderhoud",
     description:
-      "Hulp bij Windows-updates, viruscontrole, back-ups en het veilig houden van je computer.",
+      "Hulp bij Windows-updates, back-ups en controle op malware en ongewenste software om je computer goed te onderhouden.",
   },
 ];
 
@@ -93,9 +93,10 @@ export default function ITSupportServices() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            Of je nu problemen hebt met je computer, laptop, WiFi, printer of
-            Microsoft 365: wij bieden snelle en betrouwbare IT Support in Breda
-            en omgeving.
+            Hulp nodig met je computer, laptop, WiFi, printer, e-mail of
+            Microsoft 365? AMR IT Solutions biedt persoonlijke IT Support voor
+            particulieren, zzp&apos;ers en kleine bedrijven in Breda en
+            omgeving.
           </p>
         </div>
 

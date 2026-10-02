@@ -17,12 +17,12 @@ const benefits = [
   {
     Icon: Zap,
     title: "Snelle hulp",
-    text: "We reageren snel en helpen je direct verder.",
+    text: "We reageren snel en zoeken samen naar een passende oplossing.",
   },
   {
     Icon: MapPin,
     title: "Breda & omgeving",
-    text: "Altijd dichtbij en snel bij jou ter plaatse.",
+    text: "Lokale IT-hulp in Breda en omgeving.",
   },
   {
     Icon: MonitorSmartphone,
@@ -59,6 +59,7 @@ export default function ITSupportHero() {
               <span className="text-sm font-extrabold uppercase tracking-[0.28em] text-blue-600">
                 IT Support Breda
               </span>
+
               <span className="h-0.5 w-8 rounded-full bg-blue-600" />
             </div>
 
@@ -69,6 +70,7 @@ export default function ITSupportHero() {
                   Breda
                 </span>
               </span>
+
               <span className="block">voor particulieren</span>
               <span className="block">én bedrijven</span>
             </h1>
@@ -134,7 +136,7 @@ export default function ITSupportHero() {
           </div>
         </div>
 
-        {/* Voordelenbalk: bewust zonder negatieve marge, zodat hij niet over de knoppen valt */}
+        {/* Voordelenbalk */}
         <div className="relative z-30 mt-10 grid overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.09)] sm:grid-cols-2 lg:mt-6 lg:grid-cols-4">
           {benefits.map(({ Icon, title, text }, index) => (
             <div

@@ -9,27 +9,31 @@ import {
 const reasons = [
   {
     Icon: Clock3,
-    title: "Snelle hulp",
+    title: "Snelle ondersteuning",
     description:
-      "Wij proberen IT-problemen zo snel mogelijk op te lossen, vaak nog dezelfde dag of de volgende werkdag.",
+      "We reageren zo snel mogelijk en bespreken direct welke vorm van ondersteuning het beste past bij jouw IT-probleem.",
+    label: "Praktisch geholpen",
   },
   {
     Icon: UserRound,
     title: "Persoonlijke ondersteuning",
     description:
-      "Geen ingewikkelde helpdesk of lange wachtrijen, maar direct en persoonlijk contact met AMR IT Solutions.",
+      "Geen ingewikkelde helpdesk, maar persoonlijk contact en duidelijke uitleg tijdens het hele traject.",
+    label: "Persoonlijk contact",
   },
   {
     Icon: MapPin,
     title: "Breda & omgeving",
     description:
-      "Wij helpen particulieren, zzp’ers en kleine bedrijven in Breda en omliggende plaatsen.",
+      "IT-hulp voor particulieren, zzp’ers en kleine bedrijven in Breda en omliggende plaatsen.",
+    label: "Lokale ondersteuning",
   },
   {
     Icon: ShieldCheck,
-    title: "Betrouwbare oplossingen",
+    title: "Zorgvuldige aanpak",
     description:
-      "We lossen niet alleen het probleem op, maar zorgen ook dat je computer veilig en stabiel blijft werken.",
+      "We kijken niet alleen naar het probleem zelf, maar denken waar mogelijk ook mee over een veilige en stabiele oplossing.",
+    label: "Duidelijke aanpak",
   },
 ];
 
@@ -57,7 +61,7 @@ export default function ITSupportWhy() {
       {/* Decoratieve stippen */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-10 bottom-20 hidden grid-cols-6 gap-4 opacity-40 lg:grid"
+        className="pointer-events-none absolute bottom-20 left-10 hidden grid-cols-6 gap-4 opacity-40 lg:grid"
       >
         {Array.from({ length: 24 }).map((_, index) => (
           <span
@@ -78,20 +82,21 @@ export default function ITSupportWhy() {
           </div>
 
           <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
-            Waarom klanten voor{" "}
+            Persoonlijke IT-hulp,{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-              ons kiezen
+              duidelijk geregeld
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            Persoonlijke service, duidelijke communicatie en betrouwbare
-            oplossingen voor al je IT-vragen in Breda en omgeving.
+            Persoonlijke service, duidelijke communicatie en praktische
+            oplossingen voor IT-problemen bij particulieren, zzp&apos;ers en
+            kleine bedrijven in Breda en omgeving.
           </p>
         </div>
 
         <div className="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map(({ Icon, title, description }) => (
+          {reasons.map(({ Icon, title, description, label }) => (
             <article
               key={title}
               className="group relative flex min-h-[355px] flex-col overflow-hidden rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-[0_16px_42px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_28px_65px_rgba(37,99,235,0.15)]"
@@ -119,7 +124,7 @@ export default function ITSupportWhy() {
                   <Check className="h-4 w-4" />
                 </span>
 
-                <span>Direct voordeel voor jou</span>
+                <span>{label}</span>
               </div>
             </article>
           ))}
