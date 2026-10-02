@@ -79,10 +79,11 @@ export default function ComputerHero() {
             </h1>
 
             <p className="mt-7 max-w-[630px] text-base leading-8 text-slate-600 sm:text-lg">
-              AMR IT Solutions helpt particulieren en kleine bedrijven met
-              snelle computerreparaties, laptopproblemen,
-              Windows-installaties, virusverwijdering en hardware-upgrades.
-            </p>
+  AMR IT Solutions helpt particulieren, zzp&apos;ers en kleine bedrijven
+  in Breda en omgeving met computer- en laptopproblemen,
+  Windows-problemen, SSD-upgrades, malware en andere technische
+  problemen.
+</p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link

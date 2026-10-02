@@ -1,5 +1,5 @@
 import {
-  ArrowRight,
+  Check,
   Clock,
   MapPin,
   MessageCircle,
@@ -9,23 +9,27 @@ import {
 const reasons = [
   {
     Icon: Clock,
-    title: "Snelle hulp",
-    text: "In veel gevallen dezelfde dag of de volgende werkdag geholpen.",
+    title: "Snelle ondersteuning",
+    text: "We reageren zo snel mogelijk en bespreken wat de beste aanpak is voor jouw computer- of laptopprobleem.",
+    label: "Praktische aanpak",
   },
   {
     Icon: ShieldCheck,
-    title: "Betrouwbare service",
-    text: "Duidelijke afspraken, eerlijk advies en geen verrassingen achteraf.",
+    title: "Duidelijke afspraken",
+    text: "Vooraf bespreken we de werkzaamheden en mogelijkheden, zodat je weet waar je aan toe bent.",
+    label: "Geen onduidelijkheid",
   },
   {
     Icon: MapPin,
     title: "Breda & omgeving",
-    text: "Hulp aan huis, op locatie of op afstand voor particulieren en bedrijven.",
+    text: "Computerhulp aan huis, op locatie of waar mogelijk op afstand in Breda en omgeving.",
+    label: "Lokale ondersteuning",
   },
   {
     Icon: MessageCircle,
     title: "Duidelijke uitleg",
-    text: "Geen moeilijke IT-taal, maar heldere uitleg zodat je precies weet wat er gebeurt.",
+    text: "Geen ingewikkelde IT-taal, maar heldere uitleg over het probleem en de mogelijke oplossing.",
+    label: "Persoonlijk contact",
   },
 ];
 
@@ -55,21 +59,21 @@ export default function ComputerWhy() {
           </div>
 
           <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
-            Waarom klanten voor{" "}
+            Computerhulp met een{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-              ons kiezen
+              persoonlijke aanpak
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            Persoonlijke service, snelle communicatie en betrouwbare oplossingen
-            voor computer- en laptopproblemen.
+            Persoonlijke service, duidelijke communicatie en praktische hulp
+            bij computer- en laptopproblemen in Breda en omgeving.
           </p>
         </div>
 
         {/* Cards */}
         <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {reasons.map(({ Icon, title, text }) => (
+          {reasons.map(({ Icon, title, text, label }) => (
             <article
               key={title}
               className="group relative overflow-hidden rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-[0_14px_40px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_28px_60px_rgba(37,99,235,0.16)]"
@@ -95,13 +99,13 @@ export default function ComputerWhy() {
                 {text}
               </p>
 
-              {/* Pijl */}
-              <div className="relative z-10 mt-8 flex items-center text-blue-600">
-                <span className="text-sm font-bold">
-                  Meer voordelen
+              {/* Onderste regel */}
+              <div className="relative z-10 mt-8 flex items-center gap-2 text-blue-600">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 ring-1 ring-blue-100 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                  <Check className="h-4 w-4" />
                 </span>
 
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
+                <span className="text-sm font-bold">{label}</span>
               </div>
             </article>
           ))}

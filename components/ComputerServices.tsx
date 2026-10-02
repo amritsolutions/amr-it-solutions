@@ -11,25 +11,25 @@ const services = [
   {
     Icon: Monitor,
     title: "Windows installeren",
-    text: "Nieuwe Windows-installatie of opnieuw installeren zonder dataverlies.",
+    text: "Hulp bij een nieuwe Windows-installatie, herinstallatie en het opnieuw instellen van je computer.",
     link: "/windows-installeren",
   },
   {
     Icon: ShieldCheck,
-    title: "Virus verwijderen",
-    text: "Virussen, malware en ongewenste programma’s veilig verwijderen.",
+    title: "Malware verwijderen",
+    text: "Hulp bij virussen, malware en ongewenste software op je computer of laptop.",
     link: "/virus-verwijderen",
   },
   {
     Icon: Gauge,
     title: "Laptop sneller maken",
-    text: "Optimalisatie, opschoning en advies over SSD- of geheugenupgrades.",
+    text: "Optimalisatie, opschoning en advies over een SSD- of geheugenupgrade voor betere prestaties.",
     link: "/laptop-sneller-maken",
   },
   {
     Icon: Wrench,
     title: "Upgrades & reparaties",
-    text: "Hardware-upgrades en reparaties voor laptops en desktopcomputers.",
+    text: "Hulp bij hardware-upgrades en verschillende technische problemen met laptops en desktopcomputers.",
     link: "/computer-upgrade-reparatie",
   },
 ];
@@ -79,8 +79,9 @@ export default function ComputerServices() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-            Wij lossen de meest voorkomende computer- en laptopproblemen snel
-            en professioneel op.
+            Hulp nodig met je computer of laptop in Breda en omgeving? We
+            helpen onder andere met Windows, malware, trage computers,
+            upgrades en verschillende technische problemen.
           </p>
         </div>
 
