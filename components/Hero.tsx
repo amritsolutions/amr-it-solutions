@@ -110,7 +110,7 @@ const features = [
 export default function Hero() {
   return (
     <section id="home" className="relative w-full overflow-hidden bg-white">
-      {/* Desktopachtergrond */}
+      {/* Desktop achtergrond - ONGEWIJZIGD */}
       <div className="absolute inset-0 hidden bg-white lg:block">
         <Image
           src="/images/hero.jpg"
@@ -132,31 +132,18 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/70 to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 pb-14 pt-10 sm:px-10 sm:pt-12 lg:min-h-[930px] lg:px-16 lg:pb-16 lg:pt-20 xl:px-20">
-        {/* Mobiele afbeelding */}
-        <div className="relative mb-9 h-[260px] overflow-hidden rounded-[1.75rem] sm:h-[360px] lg:hidden">
-          <Image
-            src="/images/hero.jpg"
-            alt="Moderne IT-werkplek met laptop en serverapparatuur"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 0px"
-            className="object-cover object-[68%_center]"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-        </div>
-
+      <div className="relative mx-auto max-w-[1440px] px-5 pb-12 pt-8 sm:px-10 sm:pb-14 sm:pt-12 lg:min-h-[930px] lg:px-16 lg:pb-16 lg:pt-20 xl:px-20">
         <div className="flex flex-col lg:min-h-[834px]">
+          {/* Tekst */}
           <div className="max-w-[650px] animate-fade-up">
             {/* Lokale aanduiding */}
-            <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-blue-50 px-5 py-3 text-xs font-bold uppercase tracking-wide text-blue-600 sm:text-sm">
-              <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+            <div className="mb-5 inline-flex items-center gap-2.5 rounded-full bg-blue-50 px-4 py-2.5 text-[11px] font-bold uppercase tracking-wide text-blue-600 sm:mb-7 sm:px-5 sm:py-3 sm:text-sm">
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-blue-600" />
               IT Support in Breda & omgeving
             </div>
 
             {/* Hoofdtitel */}
-            <h1 className="max-w-[670px] text-[2.65rem] font-extrabold leading-[1.07] tracking-[-0.045em] text-slate-950 sm:text-[3.6rem] lg:text-[4.15rem] xl:text-[4.4rem]">
+            <h1 className="max-w-[670px] text-[2.65rem] font-extrabold leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-[3.6rem] sm:leading-[1.07] lg:text-[4.15rem] xl:text-[4.4rem]">
               IT-probleem?
               <br />
               Wij helpen je
@@ -165,7 +152,7 @@ export default function Hero() {
             </h1>
 
             {/* Introductietekst */}
-            <p className="mt-7 max-w-[610px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-[610px] text-[15px] leading-7 text-slate-600 sm:mt-7 sm:text-lg sm:leading-8">
               Problemen met je computer, WiFi of Microsoft 365? Of een
               professionele website nodig? AMR IT Solutions helpt
               particulieren, zzp&apos;ers en kleine bedrijven in Breda en
@@ -173,10 +160,10 @@ export default function Hero() {
             </p>
 
             {/* Actieknoppen */}
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href="#contact"
-                className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+                className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700 sm:w-auto"
               >
                 <MessageIcon />
                 Vraag direct hulp
@@ -184,7 +171,7 @@ export default function Hero() {
 
               <a
                 href="#diensten"
-                className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-50"
+                className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-50 sm:w-auto"
               >
                 <GridIcon />
                 Bekijk diensten
@@ -192,26 +179,40 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Mobiele afbeelding - nu NA de tekst en knoppen */}
+          <div className="relative mt-9 h-[230px] overflow-hidden rounded-[1.5rem] sm:mt-10 sm:h-[340px] sm:rounded-[1.75rem] lg:hidden">
+            <Image
+              src="/images/hero.jpg"
+              alt="Moderne IT-werkplek met laptop en serverapparatuur"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 0px"
+              className="object-cover object-[68%_center]"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+          </div>
+
           {/* Informatiekaarten */}
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-auto lg:grid-cols-4 lg:pt-20">
+          <div className="mt-9 grid gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:mt-auto lg:grid-cols-4 lg:pt-20">
             {features.map((feature) => {
               const Icon = feature.icon;
 
               return (
                 <article
                   key={feature.title}
-                  className="flex min-h-[132px] items-start gap-4 rounded-2xl bg-white/95 p-5 shadow-[0_12px_35px_rgba(15,23,42,0.10)] ring-1 ring-slate-200/90 backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.14)] sm:p-6"
+                  className="flex min-h-[108px] items-center gap-4 rounded-2xl bg-white/95 p-4 shadow-[0_10px_30px_rgba(15,23,42,0.08)] ring-1 ring-slate-200/90 backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.14)] sm:min-h-[132px] sm:items-start sm:p-6"
                 >
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 sm:h-14 sm:w-14">
                     <Icon />
                   </div>
 
-                  <div className="min-w-0 pt-0.5">
+                  <div className="min-w-0 sm:pt-0.5">
                     <h2 className="font-bold leading-5 text-slate-950">
                       {feature.title}
                     </h2>
 
-                    <p className="mt-2 text-sm leading-5 text-slate-500">
+                    <p className="mt-1.5 text-sm leading-5 text-slate-500 sm:mt-2">
                       {feature.description}
                     </p>
                   </div>
