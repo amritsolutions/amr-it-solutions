@@ -36,7 +36,7 @@ const services = [
   {
     Icon: Rocket,
     title: "Online zetten",
-    text: "Wij regelen hosting, domein, Vercel en zorgen dat jouw website direct online staat.",
+    text: "Wij helpen met hosting en domein en zorgen dat jouw website goed en veilig online staat.",
   },
 ];
 
@@ -50,12 +50,14 @@ export default function WebsiteServices() {
           </p>
 
           <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-            Websites die professioneel overkomen
+            Alles voor een professionele bedrijfswebsite
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Van moderne bedrijfswebsites tot portfolio's en landingspagina's.
-            Alles wordt snel, mobielvriendelijk en professioneel gebouwd.
+            Van bedrijfswebsites en portfolio&apos;s tot landingspagina&apos;s
+            voor zzp&apos;ers, starters en kleine bedrijven in Breda en
+            omgeving. We bouwen iedere website snel, mobielvriendelijk en met
+            een goede technische basis voor SEO.
           </p>
         </div>
 

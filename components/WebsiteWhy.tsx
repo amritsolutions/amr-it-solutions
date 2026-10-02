@@ -8,23 +8,23 @@ import {
 const reasons = [
   {
     Icon: Clock3,
-    title: "Snelle oplevering",
-    text: "Binnen korte tijd staat jouw professionele website online, volledig klaar voor gebruik.",
+    title: "Efficiënte aanpak",
+    text: "We werken met duidelijke stappen en afspraken om jouw website efficiënt van idee naar online resultaat te brengen.",
   },
   {
     Icon: ShieldCheck,
-    title: "Betrouwbare kwaliteit",
-    text: "Wij bouwen moderne websites met veilige code, uitstekende prestaties en een professionele uitstraling.",
+    title: "Zorgvuldig gebouwd",
+    text: "We bouwen moderne websites met aandacht voor veiligheid, snelheid en een professionele uitstraling.",
   },
   {
     Icon: Smartphone,
-    title: "Perfect op elk apparaat",
-    text: "Jouw website ziet er perfect uit op desktop, tablet én mobiel.",
+    title: "Geschikt voor elk apparaat",
+    text: "Jouw website wordt responsive gebouwd voor een goede weergave op desktop, tablet en mobiel.",
   },
   {
     Icon: MessageCircle,
     title: "Persoonlijk contact",
-    text: "Korte lijnen, duidelijke communicatie en één vast aanspreekpunt gedurende het hele traject.",
+    text: "Korte lijnen, duidelijke communicatie en persoonlijk contact gedurende het hele traject.",
   },
 ];
 
@@ -38,13 +38,13 @@ export default function WebsiteWhy() {
           </p>
 
           <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-            Waarom klanten voor ons kiezen
+            Persoonlijk van idee tot website
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Wij bouwen niet alleen mooie websites, maar zorgen ook dat ze snel,
-            veilig en gebruiksvriendelijk zijn zodat jouw bedrijf online kan
-            groeien.
+            Een website laten maken in Breda of omgeving? We combineren
+            persoonlijk contact met een moderne technische aanpak en bouwen
+            een website die past bij jouw bedrijf en doelgroep.
           </p>
         </div>
 
