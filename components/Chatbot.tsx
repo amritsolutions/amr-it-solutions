@@ -1,6 +1,11 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import {
   QUOTE_FLOWS,
@@ -37,6 +42,38 @@ type ChatbotProps = {
   onOpenChange?: (open: boolean) => void;
 };
 
+const WELCOME_MESSAGE =
+  "Hey! 👋 Ik ben Mira. Waarmee kan ik je vandaag helpen? 😊";
+
+const EMPTY_QUOTE_DATA: QuoteData = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  description: "",
+};
+
+/*
+ * Mira's profielfoto.
+ * Rechtstreeks als SVG in de code.
+ * Er is dus geen apart afbeeldingsbestand nodig.
+ */
+function MiraAvatar({
+  size = 44,
+}: {
+  size?: number;
+}) {
+  return (
+    <img
+      src="/mira-avatar.png"
+      alt="Mira"
+      width={size}
+      height={size}
+      className="shrink-0 rounded-full object-cover"
+    />
+  );
+}
+
 export default function Chatbot({
   onOpenChange,
 }: ChatbotProps) {
@@ -44,8 +81,10 @@ export default function Chatbot({
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [previousResponseId, setPreviousResponseId] =
-    useState<string | null>(null);
+  const [
+    previousResponseId,
+    setPreviousResponseId,
+  ] = useState<string | null>(null);
 
   const [quoteStep, setQuoteStep] =
     useState<QuoteStep>("idle");
@@ -53,27 +92,26 @@ export default function Chatbot({
   const [quoteCategory, setQuoteCategory] =
     useState<QuoteCategory>("other");
 
-  const [quoteQuestionIndex, setQuoteQuestionIndex] =
-    useState(0);
+  const [
+    quoteQuestionIndex,
+    setQuoteQuestionIndex,
+  ] = useState(0);
 
   const [quoteAnswers, setQuoteAnswers] =
     useState<QuoteAnswers>({});
 
   const [quoteData, setQuoteData] =
     useState<QuoteData>({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      description: "",
+      ...EMPTY_QUOTE_DATA,
     });
 
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      sender: "bot",
-      text: "Hoi! 👋 Welkom bij AMR IT Solutions. Waarmee kan ik je helpen?",
-    },
-  ]);
+  const [messages, setMessages] =
+    useState<Message[]>([
+      {
+        sender: "bot",
+        text: WELCOME_MESSAGE,
+      },
+    ]);
 
   const chatAreaRef =
     useRef<HTMLDivElement | null>(null);
@@ -83,7 +121,8 @@ export default function Chatbot({
 
     if (!chatArea) return;
 
-    chatArea.scrollTop = chatArea.scrollHeight;
+    chatArea.scrollTop =
+      chatArea.scrollHeight;
   }, [
     messages,
     loading,
@@ -113,11 +152,7 @@ export default function Chatbot({
 
   function resetQuoteData() {
     setQuoteData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      description: "",
+      ...EMPTY_QUOTE_DATA,
     });
 
     setQuoteCategory("other");
@@ -139,22 +174,29 @@ export default function Chatbot({
     );
   }
 
+  /*
+   * Bestaande AI-koppeling.
+   * Deze blijft /api/chat gebruiken.
+   */
   async function askAI(message: string) {
     addUserMessage(message);
-
     setLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message,
-          previousResponseId,
-        }),
-      });
+      const response = await fetch(
+        "/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            message,
+            previousResponseId,
+          }),
+        }
+      );
 
       const text = await response.text();
 
@@ -170,7 +212,8 @@ export default function Chatbot({
 
       if (!response.ok) {
         throw new Error(
-          data.error || "Er ging iets mis."
+          data.error ||
+            "Er ging iets mis."
         );
       }
 
@@ -188,17 +231,26 @@ export default function Chatbot({
         );
       }
     } catch (error) {
-      console.error("Chatfout:", error);
+      console.error(
+        "Chatfout:",
+        error
+      );
 
       addBotMessage(
-        "Sorry, er ging iets mis met de AI-assistent. Probeer het straks opnieuw."
+        "Sorry, er ging iets mis. Probeer het straks opnieuw."
       );
     } finally {
       setLoading(false);
     }
   }
 
-  async function sendQuote(data: QuoteData) {
+  /*
+   * Bestaande offertefunctie.
+   * Deze blijft /api/chat-quote gebruiken.
+   */
+  async function sendQuote(
+    data: QuoteData
+  ) {
     setQuoteStep("sending");
 
     addBotMessage(
@@ -292,18 +344,27 @@ export default function Chatbot({
       [currentQuestion.id]: message,
     };
 
-    setQuoteAnswers(updatedAnswers);
+    setQuoteAnswers(
+      updatedAnswers
+    );
 
     const nextIndex =
       quoteQuestionIndex + 1;
 
-    if (nextIndex < questions.length) {
-      setQuoteQuestionIndex(nextIndex);
+    if (
+      nextIndex <
+      questions.length
+    ) {
+      setQuoteQuestionIndex(
+        nextIndex
+      );
 
       const nextQuestion =
         questions[nextIndex];
 
-      addBotMessage(nextQuestion.question);
+      addBotMessage(
+        nextQuestion.question
+      );
 
       return;
     }
@@ -319,9 +380,13 @@ export default function Chatbot({
       description,
     };
 
-    setQuoteData(completedData);
+    setQuoteData(
+      completedData
+    );
 
-    await sendQuote(completedData);
+    await sendQuote(
+      completedData
+    );
   }
 
   async function handleQuoteAnswer(
@@ -356,7 +421,9 @@ export default function Chatbot({
       const emailPattern =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!emailPattern.test(message)) {
+      if (
+        !emailPattern.test(message)
+      ) {
         addBotMessage(
           "Dat lijkt geen geldig e-mailadres. Probeer bijvoorbeeld naam@voorbeeld.nl."
         );
@@ -399,7 +466,9 @@ export default function Chatbot({
 
     if (quoteStep === "service") {
       const category =
-        detectQuoteCategory(message);
+        detectQuoteCategory(
+          message
+        );
 
       const questions =
         QUOTE_FLOWS[category];
@@ -409,7 +478,10 @@ export default function Chatbot({
         service: message,
       }));
 
-      setQuoteCategory(category);
+      setQuoteCategory(
+        category
+      );
+
       setQuoteQuestionIndex(0);
       setQuoteAnswers({});
       setQuoteStep("details");
@@ -422,7 +494,9 @@ export default function Chatbot({
     }
 
     if (quoteStep === "details") {
-      await handleQuoteDetails(message);
+      await handleQuoteDetails(
+        message
+      );
     }
   }
 
@@ -431,11 +505,16 @@ export default function Chatbot({
   ) {
     event.preventDefault();
 
-    const message = input.trim();
+    const message =
+      input.trim();
 
     if (!message) return;
     if (loading) return;
-    if (quoteStep === "sending") return;
+    if (
+      quoteStep === "sending"
+    ) {
+      return;
+    }
 
     setInput("");
 
@@ -446,7 +525,9 @@ export default function Chatbot({
       quoteStep === "service" ||
       quoteStep === "details"
     ) {
-      await handleQuoteAnswer(message);
+      await handleQuoteAnswer(
+        message
+      );
 
       return;
     }
@@ -459,13 +540,16 @@ export default function Chatbot({
   ) {
     if (loading) return;
 
-    if (quoteStep === "sending") {
+    if (
+      quoteStep === "sending"
+    ) {
       return;
     }
 
-    if (question === "offerte") {
+    if (
+      question === "offerte"
+    ) {
       startQuote();
-
       return;
     }
 
@@ -483,7 +567,7 @@ export default function Chatbot({
     setMessages([
       {
         sender: "bot",
-        text: "Hoi! 👋 Welkom bij AMR IT Solutions. Waarmee kan ik je helpen?",
+        text: WELCOME_MESSAGE,
       },
     ]);
   }
@@ -507,10 +591,14 @@ export default function Chatbot({
 
     if (quoteStep === "details") {
       const questions =
-        QUOTE_FLOWS[quoteCategory];
+        QUOTE_FLOWS[
+          quoteCategory
+        ];
 
       const question =
-        questions[quoteQuestionIndex];
+        questions[
+          quoteQuestionIndex
+        ];
 
       return (
         question?.placeholder ||
@@ -518,7 +606,9 @@ export default function Chatbot({
       );
     }
 
-    if (quoteStep === "sending") {
+    if (
+      quoteStep === "sending"
+    ) {
       return "Aanvraag wordt verzonden...";
     }
 
@@ -528,16 +618,25 @@ export default function Chatbot({
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {isOpen && (
-        <div className="mb-4 flex h-[520px] w-[360px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
-          <div className="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
-            <div>
-              <p className="font-semibold">
-                AMR Assistent
-              </p>
+        <div className="mb-4 flex h-[540px] w-[370px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
 
-              <p className="text-xs text-gray-300">
-                Online hulp van AMR IT Solutions
-              </p>
+          {/* Mira header */}
+          <div className="flex items-center justify-between bg-slate-900 px-4 py-4 text-white">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full border-2 border-white/20">
+                <MiraAvatar size={46} />
+              </div>
+
+              <div>
+                <p className="text-base font-semibold">
+                  Mira
+                </p>
+
+                <p className="flex items-center gap-1.5 text-xs text-gray-300">
+                  <span className="h-2 w-2 rounded-full bg-green-400" />
+                  Online
+                </p>
+              </div>
             </div>
 
             <div className="flex items-center gap-3">
@@ -563,44 +662,59 @@ export default function Chatbot({
             </div>
           </div>
 
+          {/* Chatberichten */}
           <div
             ref={chatAreaRef}
             className="flex-1 overflow-y-auto bg-gray-50 p-4"
           >
-            <div className="space-y-3">
+            <div className="space-y-4">
               {messages.map(
                 (message, index) => (
                   <div
                     key={`${message.sender}-${index}`}
                     className={
-                      message.sender ===
-                      "user"
-                        ? "ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-blue-600 px-4 py-3 text-sm leading-relaxed text-white"
-                        : "mr-auto max-w-[85%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm"
+                      message.sender === "user"
+                        ? "flex justify-end"
+                        : "flex items-end gap-2"
                     }
                   >
-                    {message.text}
+                    {message.sender === "bot" && (
+                      <MiraAvatar size={30} />
+                    )}
+
+                    <div
+                      className={
+                        message.sender === "user"
+                          ? "max-w-[82%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-blue-600 px-4 py-3 text-sm leading-relaxed text-white"
+                          : "max-w-[82%] whitespace-pre-wrap rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm"
+                      }
+                    >
+                      {message.text}
+                    </div>
                   </div>
                 )
               )}
 
               {loading && (
-                <div className="mr-auto flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm">
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.3s]" />
+                <div className="flex items-end gap-2">
+                  <MiraAvatar size={30} />
 
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.15s]" />
-
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
+                  <div className="flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.3s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.15s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
+                  </div>
                 </div>
               )}
             </div>
           </div>
 
+          {/* Onderwerpen en invoer */}
           <div className="border-t bg-white p-3">
             {quoteStep === "idle" && (
               <>
                 <p className="mb-2 text-xs font-medium text-gray-500">
-                  Kies een onderwerp:
+                  Waarmee kan ik je helpen?
                 </p>
 
                 <div className="mb-3 flex flex-wrap gap-2">
@@ -647,7 +761,9 @@ export default function Chatbot({
                     type="button"
                     disabled={loading}
                     onClick={() =>
-                      quickQuestion("offerte")
+                      quickQuestion(
+                        "offerte"
+                      )
                     }
                     className="rounded-full border px-3 py-1.5 text-xs transition hover:bg-gray-100 disabled:opacity-50"
                   >
@@ -660,7 +776,8 @@ export default function Chatbot({
             {quoteStep === "details" && (
               <div className="mb-2 text-xs text-gray-500">
                 Vraag{" "}
-                {quoteQuestionIndex + 1} van{" "}
+                {quoteQuestionIndex + 1}{" "}
+                van{" "}
                 {
                   QUOTE_FLOWS[
                     quoteCategory
@@ -694,6 +811,7 @@ export default function Chatbot({
                 }
                 maxLength={500}
                 autoComplete="off"
+                aria-label="Bericht aan Mira"
                 className="min-w-0 flex-1 rounded-xl border border-gray-300 px-3 py-2 text-sm outline-none transition focus:border-blue-500 disabled:bg-gray-100"
               />
 
@@ -713,22 +831,27 @@ export default function Chatbot({
         </div>
       )}
 
+      {/* Ronde Mira-chatknop */}
       <button
         type="button"
         onClick={() => {
-  const next = !isOpen;
+          const next = !isOpen;
 
-  setIsOpen(next);
-  onOpenChange?.(next);
-}}
+          setIsOpen(next);
+          onOpenChange?.(next);
+        }}
         aria-label={
           isOpen
             ? "Chat sluiten"
-            : "Chat openen"
+            : "Chat openen met Mira"
         }
-        className="ml-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-2xl text-white shadow-xl transition hover:scale-105 hover:bg-blue-700"
+        className="ml-auto flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-blue-600 text-2xl text-white shadow-xl transition hover:scale-105"
       >
-        {isOpen ? "×" : "💬"}
+        {isOpen ? (
+          "×"
+        ) : (
+          <MiraAvatar size={64} />
+        )}
       </button>
     </div>
   );
